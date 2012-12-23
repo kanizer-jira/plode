@@ -1,3 +1,33 @@
 $gridMargin: 20px;
 
+
+
+/**
+ *
+ * RESUME
+ *
+ **/
+.resume-job{
+	
+	.resume-hdr-grp{
+		padding-bottom: 50px;
+	
+		.resume-hdr-title{
+			color: #ff0000;
+		}
+
+		.resume-hdr-role{
+			color: #cccccc;
+		}
+		
+	}
+
+	.resume-body{
+		text-decoration: none;
+		color: #ddd;
+	}
+	
+}
+
+
 //@import "bootstrap/bootstrap.min";

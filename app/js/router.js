@@ -4,8 +4,9 @@ define([
 	'underscore',
 	'backbone',
 	'views/projects/list',
+	'views/resume/resumeview',
 ],
-function($, _, Backbone, ProjectListView){
+function($, _, Backbone, ProjectListView, ResumeView){
 
 	var MainRouter = Backbone.Router.extend(
 	{
@@ -14,11 +15,13 @@ function($, _, Backbone, ProjectListView){
 		
 		,routes:{
 			"home"	: "showHome"
-			,"test" : "showTest"
+			,"resume" : "showResume"
 		}
 	
-		,showTest: function(e){
-			console.log("ROUTE: showTest");
+		,showResume: function(e){
+			console.log("ROUTE: showResume");
+			var resumeView = new ResumeView();
+			resumeView.render();
 		}
 	});
 
