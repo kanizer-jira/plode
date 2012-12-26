@@ -10,16 +10,56 @@ function($, _, Backbone){
 
 	var APP = {};
 
-	APP.data = [
+	APP.data = {
+		tags: [ // CLIENTS
+				"akqa"
+				,"weidenkennedy"
+				,"ralphlauren"
+
+				// TECH
+				,"actionscript"
+				,"javascript"
+				,"silverlight"
+/*
+				,"php"
+				,"mysql"
+				,"android"
+				,"ios"
+				,"css3"
+				,"html5"
+*/
+
+				// TYPE
+				,"web"
+/*
+				,"mobile"
+				,"app"
+*/
+
+				// FRAMEWORKS
+				,"flashmediaserver"
+				,"motion"
+				,"papervision3d"
+/*
+				,"backbonejs"
+				,"jquery"
+				,"jquerymobile"
+				,"phonegap"
+				,"sencha"
+				,"codeigniter"
+*/
+			 ]
+		,projects: [
 		{
 			id: "visa"
 			,sequence: 1
 			,label: "VISA"
 			,desc: "go.visa.com site"
 			,img: "img/thumb_visa.jpg"
-			,tags: ["flash", "akqa"]
+			,tags: ["actionscript", "akqa", "papervision3d", "web"]
 			,detail:{
-				desc: "The Visa Go site was designed to allow users to explore the experiences available through assorted Visa Signature Card programs.<br /><br />A database of offers was presented as a scrolling, 3D grid of tiles that can be sorted and deep-linked into for integration with assorted ad units.<br /><br />A singular code base was dynamically re-skinned and ported to alternate iterations that ran in parallel on Yahoo and Facebook.<br /><br /><a href='#'>link1</a><br /><a href='#'>link2</a>"
+				desc: "The Visa Go site was designed to allow users to explore the experiences available through assorted Visa Signature Card programs.<br /><br />A database of offers was presented as a scrolling, 3D grid of tiles that can be sorted and deep-linked into for integration with assorted ad units.<br /><br />A singular code base was dynamically re-skinned and ported to alternate iterations that ran in parallel on Yahoo and Facebook."
+				,links:[{ label: "link1", path: "#"}, { label: "link2", path: "#"}]
 				,vid: "Stylelist Redesign"
 				,slate: "img/detail_aol_stylelist.jpg"
 			}
@@ -30,9 +70,10 @@ function($, _, Backbone){
 			,label: "JORDAN"
 			,desc: "chris paul 3 site"
 			,img: "img/thumb_jordan.jpg"
-			,tags: ["w+k", "akqa"]
+			,tags: ["w+k", "actionscript", "flash media server", "web"]
 			,detail:{
-				desc: "Jordan wanted to showcase Chris Paul and his CP3.V shoe with a site that celebrates the on the court chaos where Chris Paul's skills shine. By immersing the viewer on the court during the final play of a game, the viewer is encouraged to explore the scene from numerous angles, speeds and scenes.<br /><br />Balancing load times, FMS latency and interactivity required several integrated systems to cross-reference and track images, videos, interaction points and progress.<br /><br /><a href='#'>link1</a><br /><a href='#'>link2</a>"
+				desc: "Jordan wanted to showcase Chris Paul and his CP3.V shoe with a site that celebrates the on the court chaos where Chris Paul's skills shine. By immersing the viewer on the court during the final play of a game, the viewer is encouraged to explore the scene from numerous angles, speeds and scenes.<br /><br />Balancing load times, FMS latency and interactivity required several integrated systems to cross-reference and track images, videos, interaction points and progress."
+				,links:[{ label: "link1", path: "#"}, { label: "link2", path: "#"}]
 				,vid: "path"
 				,slate: "img/detail_cp.jpg"
 			}
@@ -43,7 +84,7 @@ function($, _, Backbone){
 			,label: "TARGET"
 			,desc: '"weekly ad"'
 			,img: "img/thumb_target.jpg"
-			,tags: ["flash", "akqa"]
+			,tags: ["actionscript", "akqa", "web"]
 			,detail:{
 				desc: "Target wanted to bring their long-standing, offline marketing tool to the web. Users can browse weekly deals in an extremely configurable, shareable format.<br /><br />This site brings social media platforms, Target's deals database and a customized user experience together."
 				,vid: "path"
@@ -56,15 +97,15 @@ function($, _, Backbone){
 			,label: "Ralph Lauren"
 			,desc: "RRL Site"
 			,img: "img/thumb_rl.jpg"
-			,tags: ["flash", "plode"]
+			,tags: ["actionscript", "ralph lauren", "web"]
 			,detail:{
-				desc: "Ralph Lauren launched the RRL line of clothing and retail outlets with a site centered around photo shoots that reflected the vintage style of the brand.<br/><br />Integration with the overarching Ralph Lauren site framework required a fair amount of JS communication to react to browser resizing, scrolling and interaction with navigation on the page yet outside of the flash module. Ralph Lauren's product API was utilized to populate, sort and search through the dynamic array of shoppable items displayed in the site.<br /><br /><a href='#'>link1</a>"
+				desc: "Ralph Lauren launched the RRL line of clothing and retail outlets with a site centered around photo shoots that reflected the vintage style of the brand.<br/><br />Integration with the overarching Ralph Lauren site framework required a fair amount of JS communication to react to browser resizing, scrolling and interaction with navigation on the page yet outside of the flash module. Ralph Lauren's product API was utilized to populate, sort and search through the dynamic array of shoppable items displayed in the site."
+				,links:[{ label: "link1", path: "#"}]
 				,vid: "path"
 				,slate: "img/detail_rl.jpg"
 			}
 		}
-	];
-
+	]};
 
 
 

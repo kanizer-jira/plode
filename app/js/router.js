@@ -21,20 +21,28 @@ function($, _, Backbone, APP, ProjectCollection, ProjectGridView, DetailView, Re
 		,routes:{
 			"" 				: "showHome"
 			,"projects"		: "showHome"
-			,"projects/:id"	: "showHomeFiltered"
+			,"projects/:id"	: "showHome"
 			,"about" 		: "showResume"
 			,"detail/:id" 	: "showDetail"
 		}
 	
-		,showHomeFiltered: function(id){
-			console.log("ROUTE: showHomeFiltered: ", id);
+		,showHome: function(id){
+			console.log("ROUTE: showHome: ", id);
 
  			APP.instances.headerView.setNav("projects");
  			this.cleanup("projects");
- 			
+
+			var param = {};
+ 			if(id != undefined)
+ 			{
+	 			// CREATE ARRAY OF FILTER KEYS
+				var a = id.split("+");
+				param = {ids:a};
+			}
+			
 			// Call render on the module we loaded in via the dependency array
 			// 'views/projects/list'
-			var gridView = new ProjectGridView({id: id});
+			var gridView = new ProjectGridView(param);
 			gridView.render();
 		}
 
@@ -88,22 +96,6 @@ function($, _, Backbone, APP, ProjectCollection, ProjectGridView, DetailView, Re
 	var initialize = function(){
 	
 		var app_router = new MainRouter();
-		app_router.on("route:showHome", function(){
-			console.log("ROUTE: showHome");
-
- 			APP.instances.headerView.setNav("projects");
- 			this.cleanup("projects");
-
-			// Call render on the module we loaded in via the dependency array
-			// 'views/projects/list'
-			var gridView = new ProjectGridView();
-			gridView.render();
-		});
-	
-		app_router.on('defaultAction', function(actions){
-			// We have no matching route, lets just log what the URL was
-			console.log('No route:', actions);
-		});
 
 		Backbone.history.start();
 		//Backbone.history.start({pushState: false, root: "test.html"});

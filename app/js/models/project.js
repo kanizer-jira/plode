@@ -31,7 +31,8 @@ function(_, Backbone){
 	,img: "img/thumb_visa.jpg"
 	,tags: ["flash", "akqa"]
 	,detail:{
-		desc: "markup"
+		desc: "content"
+		,links:[{ label: "link1", path: "#"}, { label: "link2", path: "#"}]
 		,vid: "Stylelist Redesign"
 		,slate: "img/detail_aol_stylelist.jpg"
 	}

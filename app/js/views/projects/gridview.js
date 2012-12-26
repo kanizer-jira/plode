@@ -19,29 +19,60 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 	var ProjectGridView = Backbone.View.extend({
 		el: '#content'
 		,initialize: function(params){
-			if(params) this.id = params.id;
+			if(params) this.ids = params.ids;
 			this.$el.append("<div id='project-grid'></div>");
 			this.$grid = this.$el.find("#project-grid");
 			this.$grid.css({ "display": "none" });
+			this.$grid.append("<div id='project-grid-badges'></div>");
+			this.$badges = this.$el.find("#project-grid-badges");
+        	this.thumbsIdList = [];
+			
+			this.destroyEvents();
 		}
 		,render: function(){
 			this.collection = new ProjectsCollection();
 	        this.collection.forEach(this.addOne, this);
+
+	        // DRAW TAGS
+	        var tags = APP.data.tags;
+	        var that = this;
+			_.each(tags, function(tag){
+				var $badge = $("<div class='plode-badge'>" + tag + "</div>");
+
+	        	if(that.ids){
+		        	// FILTER RESULT SET
+		        	if(that.ids.indexOf(tag) > -1)
+						$badge.addClass("active");
+				}
+				else $badge.addClass("active");
+				
+				that.$badges.append($badge[0]);
+			});
+
 			this.$grid.fadeIn(200);
 	    }
 	    
-        ,addOne: function(item) {
+        ,addOne: function(thumbModel) {
+        	var that = this;
         	var view;
-        	if(this.id){
-	        	// FILTER RESULT SET
-	        	if(item.tags.indexOf(this.id) > -1)
-				{
-			        view = new ThumbView({model: item});
-			        view.render();
-			        
-			        // APPEND CORRECT GRID CLASS
-			        this.$grid.append(view.el);
-				}	        	
+        	
+        	if(this.ids){
+				_.each(that.ids, function(id){
+		        	// FILTER RESULT SET
+		        	if(thumbModel.tags.indexOf(id) > -1 // TAG MATCHES FILTER ID
+		        		&& that.thumbsIdList.indexOf(thumbModel.id) == -1 // VIEW DOESN'T ALREADY EXIST
+		        		)
+					{
+				        view = new ThumbView({model: thumbModel});
+				        view.render();
+
+			        	// CREATE LIST OF EXISTING THUMBS
+			        	that.thumbsIdList.push(thumbModel.id);
+				        
+				        // APPEND CORRECT GRID CLASS
+				        that.$grid.append(view.el);
+					}	        	
+				});
         	}else{
 		        view = new ThumbView({model: item});
 		        view.render();
@@ -50,6 +81,54 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 		        this.$grid.append(view.el);
         	}
 		}
+		
+		,events: {
+			"click #project-grid-badges>.plode-badge" : "onBadgeClick"
+		}
+
+		,onBadgeClick: function(e){
+			console.log("click: ", e.currentTarget);
+			var that = this;
+			var active = [];
+			this.$badges.find(".plode-badge.active").each(function(){
+				var tag = $(this).html();
+				active.push(tag);
+			});
+
+			var $badge = $(e.currentTarget);
+			var id = $badge.html();
+			if(!$badge.hasClass("active")){
+				if(active.indexOf(id) == -1) active.push(id);
+				var pattern = ",",
+				re = new RegExp(pattern, "g");
+				var s = active.toString().replace(re, "+")
+				that.$grid.fadeOut(100, function(){
+					that.$grid.remove();
+					APP.instances.mainRouter.navigate("projects/" + s, {trigger: true});
+				});
+			}
+			else{
+				
+				
+				/**
+				 *
+				 *
+				 * DESELECT TAGS AND RELOAD PAGE
+				 * 
+				 *
+				 */
+				
+				
+				
+				
+			}
+		}
+		
+		,destroyEvents: function() {
+		    //COMPLETELY UNBIND THE VIEW
+		    this.undelegateEvents();
+		    $(this.el).removeData().unbind(); 
+	    }
 	});
 
 	var ThumbView = Backbone.View.extend({
@@ -65,9 +144,11 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 
 			this.$bg = this.$el.find(".grid-item-overlay-bg");
 			this.$label = this.$el.find(".grid-item-label-wrapper");
+			this.$move = this.$el.find(".move");
 			this.$text = this.$el.find(".grid-item-label");
 			this.$tags = this.$el.find(".grid-item-tags");
 			this.$arrow = this.$el.find(".grid-item-arrow");
+			this.$arrowLrg = this.$el.find(".arrow-lrg");
 		}
 		,events:{
 			"mouseover" 	: "onItemOver"
@@ -94,7 +175,11 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 				"height": "auto"
 				,"opacity": 1
 			});
-			this.$arrow.css("padding-right", 20);
+			this.$arrow.css({"display": "none"});
+			this.$arrowLrg.css({
+				"margin-left": 0
+				,"opacity": 1
+				});
 		}
 		,onItemOut: function(e){
 			var hpadding = 3;
@@ -121,9 +206,12 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 				"height": 0
 				,"opacity": 0
 			});
-			this.$arrow.css({
-				"padding-right": 10
+			this.$arrow.fadeIn(200);
+			this.$arrowLrg.css({
+				"margin-left": 50
+				,"opacity": 0
 			});
+			
 		}
 		,onItemClick: function(e){
 			var id = $(e.currentTarget).attr("thumb-id");

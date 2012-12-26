@@ -34,7 +34,7 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 			this.$wrapper.fadeIn(200);
 		}
 		,events:{
-			"click .plode-badge" : "onBadgeClick"
+			"click .detail-tags .plode-badge" : "onBadgeClick"
 		}
 		,onBadgeClick: function(e){
 			var id = $(e.currentTarget).html();

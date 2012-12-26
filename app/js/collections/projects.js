@@ -14,7 +14,7 @@ function(_, Backbone, APP, ProjectModel){
 	    ,sort_key: "sequence"
 		,initialize: function(){
 			var that = this;
-			_.each(APP.data, function(item){
+			_.each(APP.data.projects, function(item){
 				var model = new ProjectModel(item);
 				that.add(model);
 			})

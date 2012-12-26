@@ -129,7 +129,7 @@ body{
 
 .plode-badge{
 	display: inline-block;
-	margin: 2px auto;
+	margin: 1px;
 	padding: 2px 10px;
 	background: $grey;
 	text-align: center;
@@ -145,7 +145,7 @@ body{
 	}
 }
 
-.plode-badge.selected{
+.plode-badge.active{
 	@extend .plode-badge;
 	background: $red;
 	color: white;
@@ -349,6 +349,9 @@ a{
  **/
 #project-grid{
 	
+	#project-grid-badges{
+		width: 500px;
+	}
 	.grid-item{
 		display: inline-block;
 		cursor: hand;
@@ -405,9 +408,13 @@ a{
 					vertical-align: middle;
 					padding: 0 10px;
 					
-					>span{
-						color: white;
+					.move{
 						@include trans($durMed);
+						span{
+							color: white;
+							line-height: 1.1em;
+							@include trans($durMed);
+						}
 					}
 
 					.grid-item-tags{
@@ -415,7 +422,8 @@ a{
 						@include opac(0);
 						@include trans($durMed);
 					}
-				}				
+				}	
+							
 				.vcenter{
 					float: right;
 					display: table;
@@ -426,6 +434,33 @@ a{
 						display: table-cell;
 						vertical-align: middle;
 						padding-right: 10px;
+						color: white;
+					}				
+				}
+			}
+			.arrow-lrg-wrapper{
+				position: absolute;
+				display: inline-block;
+				width: 100%;
+				height: 100%;
+				clip: rect(0, $gridItemW, $gridItemH, 0);
+				
+				.arrow-lrg{
+					width: 100%;
+					height: 100%;
+					display: table;
+					padding-right: 10px;
+					margin-left: 50px;
+					text-align: right;
+					@include opac(0);
+					@include trans($durMed);
+	
+					.grid-item-arrow-lrg{
+						display: table-cell;
+						vertical-align: middle;
+						padding-right: 0px;
+						font-size: 6em;
+						color: $red;
 						@include trans($durMed);
 					}				
 				}
