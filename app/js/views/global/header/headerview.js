@@ -30,8 +30,6 @@ function($, _, Backbone, APP, template)
 			var id = $li.attr("id").split("_")[1];
 			if(!$li.find(".nav-item").hasClass("active"))
 			{
-//				console.log("click: ", id);
-	
 				// ID MUST MATCH ROUTES
 	 			APP.instances.mainRouter.navigate(id, {trigger: true});
 			}
@@ -46,7 +44,7 @@ function($, _, Backbone, APP, template)
 				if(key == id)
 				{
 					$(this).find(".nav-item").addClass("active");
-					$hl.height(4).css("margin-top", -4);
+					$hl.height(2).css("margin-top", -2);
 				}
 				else
 				{

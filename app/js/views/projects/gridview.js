@@ -74,7 +74,7 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 					}	        	
 				});
         	}else{
-		        view = new ThumbView({model: item});
+		        view = new ThumbView({model: thumbModel});
 		        view.render();
 		        
 		        // APPEND CORRECT GRID CLASS
@@ -88,7 +88,6 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 
 		,onBadgeClick: function(e){
 			console.log("click: ", e.currentTarget);
-			var that = this;
 			var active = [];
 			this.$badges.find(".plode-badge.active").each(function(){
 				var tag = $(this).html();
@@ -97,31 +96,21 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 
 			var $badge = $(e.currentTarget);
 			var id = $badge.html();
+			var re = new RegExp(",", "g");
+			var s;
+			var ind = active.indexOf(id);
 			if(!$badge.hasClass("active")){
-				if(active.indexOf(id) == -1) active.push(id);
-				var pattern = ",",
-				re = new RegExp(pattern, "g");
-				var s = active.toString().replace(re, "+")
-				that.$grid.fadeOut(100, function(){
-					that.$grid.remove();
-					APP.instances.mainRouter.navigate("projects/" + s, {trigger: true});
-				});
+				if(ind == -1) active.push(id);
 			}
 			else{
-				
-				
-				/**
-				 *
-				 *
-				 * DESELECT TAGS AND RELOAD PAGE
-				 * 
-				 *
-				 */
-				
-				
-				
-				
+				if(ind > -1) active.splice(ind, 1);
 			}
+
+			var	s = active.toString().replace(re, "+");
+			this.$grid.fadeOut(100, function(){
+				$(this).remove();
+				APP.instances.mainRouter.navigate("projects/" + s, {trigger: true});
+			});
 		}
 		
 		,destroyEvents: function() {
@@ -142,6 +131,7 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 			this.$el.html(compiledTemplate);
 			this.$el.attr("thumb-id", this.model.id);
 
+//			this.$img = this.$el.find(".grid-item-bg");
 			this.$bg = this.$el.find(".grid-item-overlay-bg");
 			this.$label = this.$el.find(".grid-item-label-wrapper");
 			this.$move = this.$el.find(".move");
@@ -168,11 +158,12 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 			this.$label.width(w).height(h)
 			   	  .css({
 					    "margin-top": 0
-					    ,"margin-left": 5
+					    ,"margin-left": 10
 				  });
 			this.$text.find("span").css("font-size", "2em");
 			this.$tags.css({
 				"height": "auto"
+				,"padding-top": 10
 				,"opacity": 1
 			});
 			this.$arrow.css({"display": "none"});
@@ -185,7 +176,7 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 			var hpadding = 3;
 			var vpadding = 10;
 			var w = this.$el.width() - hpadding * 2;
-			var h = 40;
+			var h = 30;
 			var vmargin = (this.$el.height() - h - vpadding);
 			this.$bg.width(w).height(h)
 				   .css({
@@ -205,6 +196,7 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 			this.$tags.css({
 				"height": 0
 				,"opacity": 0
+				,"padding-top": 0
 			});
 			this.$arrow.fadeIn(200);
 			this.$arrowLrg.css({

@@ -4,20 +4,23 @@
  *
  **/
 $w: 900px;
+$marL: 10px;
+$marB: 20px;
 $headerTopMargin: 30px;
 $headerH: 50px;
 $footerH: 30px;
 $gridMargin: 20px;
-$gridItemW: 284px;
-$gridItemH: 179px;
-$gridItemLabelH: 40px;
+$gridItemW: 285px;
+$gridItemH: 180px;
+$gridItemLabelH: 30px;
 $durShort: .1s;
 $durMed: .2s;
 $durLong: .5s;
 $shadowOpacity: 1;
 
 $red: #ff0000;
-$grey: #ccc;
+$grey: #bbb;
+$lightGrey: #ddd;
 $midGrey: #aaa;
 $darkGrey: #666;
 
@@ -109,6 +112,16 @@ body{
 	font-size: 75%; /* ~12px base font size */
 }
 
+a{
+	text-decoration: none;
+	color: $midGrey;
+
+	&:hover{
+		text-decoration: none;
+		color: $red;
+	}
+}
+
 #wrapper{
 	width: 100%;
 	min-height: 100%;
@@ -130,17 +143,18 @@ body{
 .plode-badge{
 	display: inline-block;
 	margin: 1px;
-	padding: 2px 10px;
-	background: $grey;
+	padding: 1px 5px 2px 5px;
+	background: $lightGrey;
 	text-align: center;
 	-moz-border-radius: 15px;
 	border-radius: 15px;
 	cursor: pointer;
 	cursor: hand;
+	font-size: .8em;
 	@include no-select;
 	
 	&:hover{
-		background: $darkGrey;
+		background: $grey;
 		color: white;
 	}
 }
@@ -151,14 +165,11 @@ body{
 	color: white;
 }
 
-a{
-	text-decoration: none;
-	color: $grey;
-
-	&:hover{
-		text-decoration: none;
-		color: $red;
-	}
+.bullet-square{
+	width: 4px;
+	height: 4px;
+	background: $red;
+	float: left;
 }
 
 
@@ -170,111 +181,112 @@ a{
  *
  **/
 #masthead{
-		width: 100%;
+	width: 100%;
+	height: $headerH;
+//	position: fixed;
+	padding: $headerTopMargin 0;
+	background: #fff;
+	z-index: 1000;
+
+	.header-margins{
+		@include margins;
+		@include shadow(0, 5px, 9px, -7px, .9);
 		height: $headerH;
-//		position: fixed;
-		padding: $headerTopMargin 0;
-		background: #fff;
-		z-index: 1000;
-	
-		.header-margins{
-			@include margins;
-			@include shadow(0, 5px, 9px, -7px, .9);
+		border-bottom: 1px $midGrey;
+		border-bottom-style: solid;
+
+		.header-inner-left{
 			height: $headerH;
-			border-bottom: 1px $midGrey;
-			border-bottom-style: solid;
-	
-			.header-inner-left{
-				height: $headerH;
-				position: absolute;
-				display: table;
-				z-index: 20;
-	
-				.header-title-block{
-				    display: table-cell;
-				    vertical-align: middle;
-				    cursor: hand;
-				    cursor: pointer;
-					font-size: 2em;
-	    				
-					.header-title{
-						@include lato-bold;
-						letter-spacing: -1px;
-						color: $red;
-					}
-					
-					.header-role{
-						@include lato-light;
-					}
+			position: absolute;
+			display: table;
+			z-index: 20;
+			padding-left: $marL;
+
+			.header-title-block{
+			    display: table-cell;
+			    vertical-align: middle;
+			    cursor: hand;
+			    cursor: pointer;
+				font-size: 2em;
+    				
+				.header-title{
+					@include lato-bold;
+					letter-spacing: -1px;
+					color: $red;
+				}
+				
+				.header-role{
+					@include lato-light;
 				}
 			}
-			
-			.header-inner-right{
-				width: $w;
-				height: $headerH;
-				position: absolute;
-				
-				.header-nav-block{
-					height: 100%;
-				    @include no-select;
-					
-					ul{
-						height: 100%;
-						padding: 0;
-						margin: 0;
-						float: right;
-						list-style: none;
-	
-						li{
-							height: 100%;
-							float: left;
-							color: $grey;
-							
-							.vcenter{
-								height: 100%;
-								display: table;
-
-								.nav-item{
-								    display:table-cell;
-								    vertical-align: middle;
-									cursor: hand;
-									cursor: pointer;
-									padding: 0 1.25em;
-									font-size: 1.125em;
-									@include lato-light;
-									
-									&:hover {
-										color: $red;
-								        text-decoration: none;
-								    }
-								}   
-							}
+		}
 		
-							.active{
-								cursor: default;
-								color: $red;
+		.header-inner-right{
+			width: $w;
+			height: $headerH;
+			position: absolute;
+			
+			.header-nav-block{
+				height: 100%;
+			    @include no-select;
+				
+				ul{
+					height: 100%;
+					padding: 0;
+					margin: 0;
+					float: right;
+					list-style: none;
+
+					li{
+						height: 100%;
+						float: left;
+						color: $grey;
+						
+						.vcenter{
+							height: 100%;
+							display: table;
+
+							.nav-item{
+							    display:table-cell;
+							    vertical-align: middle;
+								cursor: hand;
+								cursor: pointer;
+								padding: 0 2em;
+								font-size: 1.125em;
+								@include lato-light;
 								
 								&:hover {
 									color: $red;
 							        text-decoration: none;
 							    }
-							}
+							}   
+						}
+	
+						.active{
+							cursor: default;
+							color: $red;
+							
+							&:hover {
+								color: $red;
+						        text-decoration: none;
+						    }
+						}
 
-							.header-nav-highlight-bar{
-								width: 100%;
-								height: 0px;
-								margin-top: 0px;
-								background: red;
+						.header-nav-highlight-bar{
+							width: 100%;
+							height: 0px;
+							margin-top: 0px;
+							background: red;
 
-								-webkit-transition: all .1s ease-out;
-								transition: all .1s ease-out;
-							}
+							-webkit-transition: all .1s ease-out;
+							transition: all .1s ease-out;
 						}
 					}
 				}
 			}
 		}
 	}
+}
 
 
 
@@ -285,55 +297,52 @@ a{
  *
  **/
 #footer{
-	position: relative;
-	margin-top: -$footerH; /* negative value of footer height */
-	bottom: 0px;	
 	width: 100%;
 	height: $footerH;
+	margin-top: -$footerH;
+	bottom: 0px;	
+	position: relative;
 	font-size: .838em;
 	
-	.footer-bg{
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		background-color: white;
-
-		-webkit-transition: background-color .3s ease-out;
-		transition: background-color .3s ease-out;
-	}
-
 	.footer-wrapper{
 		width: 100%;
 		height: 100%;
 		position: absolute;
 
 		.footer-content{
-			width: $w;
+			width: $w - $marL;
 			height: 100%;
 			margin: 0px auto;
-			display: table;
 			border-top: $midGrey 1px solid;
+			padding-left: $marL;
 			
 			.footer-vcenter{
-			    display:table-cell;
-			    vertical-align: middle;
-			    @include lato-light;
-			    
-			    a{
-					color: $grey;
-					text-decoration: none;    
-				    cursor: pointer;
-			    
-					&:hover{
-						color: $red;
+				display: inline-table;
+				height: 100%;
+				float: left;
+				padding-left: 5px;
+
+				.footer-vcenter-wrapper{
+				    display:table-cell;
+				    vertical-align: middle;
+				    @include lato-light;
+				    
+				    a{
+						color: $midGrey;
 						text-decoration: none;    
-					}
-			    }
-			    
-			    .footer-label{
-			    	@include lato-bold; 
-				    color: $darkGrey;
-			    }
+					    cursor: pointer;
+				    
+						&:hover{
+							color: $red;
+							text-decoration: none;    
+						}
+				    }
+				    
+				    .footer-label{
+				    	@include lato-bold; 
+					    color: $darkGrey;
+				    }
+				}
 			}
 		}
 	}
@@ -351,14 +360,16 @@ a{
 	
 	#project-grid-badges{
 		width: 500px;
+		padding: 0 0 $marB $marL;
 	}
+	
 	.grid-item{
 		display: inline-block;
 		cursor: hand;
 		cursor: pointer;
 		width: $gridItemW;
 		height: $gridItemH;
-		padding: 8px;
+		padding: 7px;
 		
 		&:hover{
 		}
@@ -376,7 +387,7 @@ a{
 			}
 			
 			.des{
-				@include opac(.5);
+				@include opac(1);
 			}
 		}
 		
@@ -384,6 +395,7 @@ a{
 			position: absolute;
 			width: $gridItemW;
 			height: $gridItemH;
+			clip: rect(0, $gridItemW, $gridItemH, 0);
 
 			.grid-item-overlay-bg{
 				position: absolute;
@@ -407,6 +419,7 @@ a{
 					display: table-cell;
 					vertical-align: middle;
 					padding: 0 10px;
+					font-size: .8em;
 					
 					.move{
 						@include trans($durMed);
@@ -415,12 +428,21 @@ a{
 							line-height: 1.1em;
 							@include trans($durMed);
 						}
+						
+						span.label{
+							@include lato-reg;
+						}
+
+						span.desc{
+							@include lato-light;
+						}
 					}
 
 					.grid-item-tags{
 						height: 0;
+						width: $gridItemW - 100px;
 						@include opac(0);
-						@include trans($durMed);
+						@include trans($durShort);
 					}
 				}	
 							

@@ -69,8 +69,8 @@ function($, _, Backbone){
 			,sequence: 0
 			,label: "JORDAN"
 			,desc: "chris paul 3 site"
-			,img: "img/thumb_jordan.jpg"
-			,tags: ["w+k", "actionscript", "flash media server", "web"]
+			,img: "img/thumb_sample.jpg"
+			,tags: ["weidenkennedy", "actionscript", "flashmediaserver", "web"]
 			,detail:{
 				desc: "Jordan wanted to showcase Chris Paul and his CP3.V shoe with a site that celebrates the on the court chaos where Chris Paul's skills shine. By immersing the viewer on the court during the final play of a game, the viewer is encouraged to explore the scene from numerous angles, speeds and scenes.<br /><br />Balancing load times, FMS latency and interactivity required several integrated systems to cross-reference and track images, videos, interaction points and progress."
 				,links:[{ label: "link1", path: "#"}, { label: "link2", path: "#"}]
@@ -97,7 +97,7 @@ function($, _, Backbone){
 			,label: "Ralph Lauren"
 			,desc: "RRL Site"
 			,img: "img/thumb_rl.jpg"
-			,tags: ["actionscript", "ralph lauren", "web"]
+			,tags: ["actionscript", "ralphlauren", "web"]
 			,detail:{
 				desc: "Ralph Lauren launched the RRL line of clothing and retail outlets with a site centered around photo shoots that reflected the vintage style of the brand.<br/><br />Integration with the overarching Ralph Lauren site framework required a fair amount of JS communication to react to browser resizing, scrolling and interaction with navigation on the page yet outside of the flash module. Ralph Lauren's product API was utilized to populate, sort and search through the dynamic array of shoppable items displayed in the site."
 				,links:[{ label: "link1", path: "#"}]
