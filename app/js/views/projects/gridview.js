@@ -109,7 +109,8 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 			var	s = active.toString().replace(re, "+");
 			this.$grid.fadeOut(100, function(){
 				$(this).remove();
-				APP.instances.mainRouter.navigate("projects/" + s, {trigger: true});
+				var path = (s == "") ? "projects" : "projects/" + s;
+				APP.instances.mainRouter.navigate(path, {trigger: true});
 			});
 		}
 		

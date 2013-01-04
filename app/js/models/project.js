@@ -9,8 +9,8 @@ function(_, Backbone){
 		initialize: function(obj){
 			this.id = obj.id;
 			this.sequence = obj.sequence;
-			this.label = obj.label;
-			this.desc = obj.desc;
+			this.label = obj.label.toUpperCase();
+			this.desc = obj.desc.toUpperCase();
 			this.img = obj.img;
 			this.tags = obj.tags;
 			this.detail = obj.detail;

@@ -4,6 +4,7 @@
  *
  **/
 $w: 900px;
+$arrowW: 45px;
 $marL: 10px;
 $marB: 20px;
 $headerTopMargin: 30px;
@@ -13,6 +14,7 @@ $gridMargin: 20px;
 $gridItemW: 285px;
 $gridItemH: 180px;
 $gridItemLabelH: 30px;
+$vidH: 350px;
 $durShort: .1s;
 $durMed: .2s;
 $durLong: .5s;
@@ -323,6 +325,7 @@ a{
 				padding-left: 5px;
 
 				.footer-vcenter-wrapper{
+				    width: 95%;
 				    display:table-cell;
 				    vertical-align: middle;
 				    @include lato-light;
@@ -416,6 +419,7 @@ a{
 				@include trans($durMed);
 
 				.grid-item-label{
+					width: 50%;
 					display: table-cell;
 					vertical-align: middle;
 					padding: 0 10px;
@@ -460,6 +464,7 @@ a{
 					}				
 				}
 			}
+			
 			.arrow-lrg-wrapper{
 				position: absolute;
 				display: inline-block;
@@ -501,25 +506,55 @@ a{
 
 
 
+
 /**
  *
  * DETAIL
  *
  **/
 #project-detail{
-	width: 100%;
+	width: $w;
+	padding: 0 $arrowW;
+	margin-left: -$arrowW;
 	
 	.detail-item{
 		width: 100%;
 		
-		.detail-video{
-			width: 100%;
-			height: 350px;
-			background: $grey;
+		.detail-video-wrapper{
+			width: $w + $arrowW * 2;
+			margin-left: -$arrowW;
+			display: inline-block;
+
+			.arrow{
+				width: $arrowW;
+				height: $vidH;
+				display: table;
+				
+				a{
+					display: table-cell;
+					vertical-align: middle;
+				}
+			}	
+					
+			.arrow-l{
+				float: left;
+			}
+		
+			.arrow-r{
+				float: right;
+				text-align: right;
+			}
+		
+			.detail-video{
+				width: $w;
+				height: $vidH;
+				float: left;
+				background: $grey;
+			}
 		}
 		
 		.detail-content{
-			padding: 30px 0;
+			padding: 30px 10px 0 10px;
 		
 			.detail-header{
 				width: 100%;
@@ -537,7 +572,7 @@ a{
 					
 					.desc{
 						@include lato-light;
-						color: $grey;
+						color: $midGrey;
 					}
 				}
 				
@@ -547,20 +582,29 @@ a{
 					font-size: 1em;
 					float: right;
 					
-					.arrow{
+					.vcenter-wrapper{
+						display: table;
+						height: 20px;
 						float: left;
-						color: $red;
-					}
-					
-					.label{
-						display: inline-block;
-						float: left;
+
+						.vcenter{
+							display: table-cell;
+							vertical-align: middle;
+							
+							.arrow{
+								padding-right: 5px;
+							}
+							
+							.label{
+								display: inline-block;
+							}
+						}
 					}
 				}
 			}
 			
 			.detail-tags{
-				
+				padding: 5px 0 15px 0;
 			}
 			
 			.detail-desc{
@@ -581,7 +625,8 @@ a{
  *
  **/
 #about{
-		
+	padding: 0 $marL;
+	
 	.resume-blurb{
 		@include lato-light;
 		font-size: 1.7em;
@@ -595,6 +640,21 @@ a{
 		.col{
 			width: 48%;
 			margin-right: 2%;
+			
+			.vcenter-wrapper{
+				display: table;
+				height: 20px;
+				
+				.vcenter{
+					display: table-cell;
+					vertical-align: middle;
+				}
+			}
+
+			.vcenter-wrapper.bullet{
+				float: left;
+				padding-right: 5px;
+			}
 		}
 		
 		.col0{
@@ -602,6 +662,7 @@ a{
 
 			.resume-job{
 				padding-bottom: 20px;
+				padding-left: 10px;
 				
 				.resume-hdr-grp{
 					padding-bottom: 5px;
@@ -611,7 +672,7 @@ a{
 			
 					.resume-hdr-role{
 						@include lato-italic;
-						color: $grey;
+						color: $midGrey;
 					}
 				}
 			
@@ -631,6 +692,7 @@ a{
 			
 			.resume-skills{
 				padding-bottom: 20px;
+				padding-left: 10px;
 
 				.resume-skills-item{
 					padding-bottom: 15px;
@@ -650,7 +712,7 @@ a{
 			}
 				
 			.resume-edu{
-				
+				padding-left: 10px;
 			}
 		}
 
@@ -660,6 +722,192 @@ a{
 }
 
 
+
+
+
+$narrowW: 300px;
+$narrowHeaderH: 100px;
+$narrowNavH: 40px;
+$narrowMarV: 10px;
+
+@media screen and (min-width: 200px) and (max-width: 400px) {
+    /* Style adjustments for viewports that meet the condition */
+	#content{
+		width: $narrowW;
+	}
+
+	#project-grid-badges{
+		width: $narrowW !important;
+	}
+	
+	#wrapper{
+		width: $narrowW;
+		margin: 0 auto;
+	}
+
+	#masthead{
+		width: $narrowW;
+		height: $narrowHeaderH;
+		
+		.header-margins{
+			width: 100%;
+			height: $narrowHeaderH + 6px;
+			
+			.header-inner-left{
+				position: relative;
+
+				.header-title-block{
+
+					.header-role{
+						display: block;
+						margin-top: -10px;
+					}
+				}
+			}
+
+			.header-inner-right{
+				width: 100%;
+				height: $narrowNavH;
+				position: relative;
+				margin-top: 10px;
+				border-top: solid $grey 1px;
+
+				.header-nav-block{
+					
+					ul{
+						float: none;
+						
+						li{
+							width: 50%;
+							
+							.vcenter{
+								width: 100%;
+								
+								.nav-item{
+									text-align: center;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#footer{
+		.footer-wrapper{
+			.footer-content{
+				width: $narrowW;
+				padding: 0px;
+				font-size: 1.2em;
+				
+				.footer-vcenter{
+					.footer-vcenter-wrapper{
+						.footer-extra{
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	#project-grid{
+	
+		#project-grid-badges{
+			width: $narrowW;
+			padding: 0 0 $marB 0;
+			text-align: center;
+		}
+		
+		.grid-item{
+			.grid-item-overlay{
+				.grid-item-label-wrapper{
+					.grid-item-label{
+						.grid-item-tags{
+							display: none;
+						}
+					}
+				}
+				.arrow-lrg-wrapper{
+					.arrow-lrg{
+						display: none;
+					}
+				}
+			}
+		}
+	}
+	
+	#project-detail{
+		width:  $narrowW;
+		padding: 0;
+		margin: 0;
+		
+		.detail-item{
+			.detail-video-wrapper{
+				width: $narrowW;
+				margin: 0;
+				
+				.arrow{
+					display: none;
+				}
+				
+				.detail-video{
+					width: $narrowW;
+					height: 200px;
+				}
+			
+			}
+			.detail-content{
+//				width: $narrowW - 10px * 2;
+				
+				
+				.detail-header{
+
+					.detail-header-txt{
+						display: block;
+					}
+					
+					.detail-header-back{
+						float: left;
+					}
+				}
+			}
+		}
+	}
+	
+	#about{
+		.resume-blurb{
+			font-size: 1.2em;
+			padding-bottom: 20px;
+		}
+		
+		.resume-columns{
+			.col{
+				width: 100%;
+				margin: 0;
+			}
+			
+			.col0{
+				float: none;
+				
+			}
+
+			.col1{
+				float: none;
+				
+				.resume-skills{
+					padding-bottom: 0;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 144dpi) {
+    /* Style adjustments for high resolution devices */
+}
 
 
 
