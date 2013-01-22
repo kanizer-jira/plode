@@ -1,0 +1,34 @@
+/**
+ * PLODE.COM - IE STYLES
+ */
+/**
+ *
+ * VARS
+ *
+ **/
+/**
+ *
+ * MIXINS
+ *
+ **/
+/**
+ *
+ * GRID
+ *
+ **/
+.grid-item-label-wrapper .vcenter {
+  height: 30px !important; }
+
+/**
+ *
+ * DETAIL
+ *
+ **/
+#project-detail .detail-item .detail-video-wrapper .arrow .arrow-wrapper span {
+  position: absolute; }
+  #project-detail .detail-item .detail-video-wrapper .arrow .arrow-wrapper span span {
+    position: absolute; }
+    #project-detail .detail-item .detail-video-wrapper .arrow .arrow-wrapper span span span {
+      position: absolute;
+      opacity: 0.3;
+      filter: alpha(opacity=30); }

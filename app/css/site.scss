@@ -65,7 +65,7 @@ $darkGrey: #666;
 @mixin shadow ($xoffset:0, $yoffset:0, $blur: 25px, $spread:0, $opac: $shadowOpacity){	
 	-moz-box-shadow: $xoffset $yoffset $blur $spread rgba(0, 0, 0, $opac);
 	-webkit-box-shadow: $xoffset $yoffset $blur $spread  rgba(0, 0, 0, $opac);
-	box-shadow: $xoffset $yoffset $blur $spread  rgba(0, 0, 0, $opac);
+	box-shadow: $xoffset $yoffset $blur $spread rgba(0, 0, 0, $opac);
 	
 	-webkit-transition: -webkit-box-shadow .3s ease-out;
 	transition: box-shadow .3s ease-out;
@@ -184,17 +184,35 @@ a{
  * MASTHEAD
  *
  **/
+
+#masthead-wrapper{
+	padding: $headerTopMargin 0;
+	height: $headerH;
+}
+
+#masthead-shadow{
+	width: 100%;
+	height: $headerH;
+	position: absolute;
+	background: #fff;
+
+	.header-margins{
+		@include margins;
+		@include shadow(0, 5px, 9px, -7px, .9);
+		height: $headerH;
+	}
+}
+
 #masthead{
 	width: 100%;
 	height: $headerH;
-//	position: fixed;
-	padding: $headerTopMargin 0;
+	position: absolute;
 	background: #fff;
 	z-index: 1000;
 
 	.header-margins{
 		@include margins;
-		@include shadow(0, 5px, 9px, -7px, .9);
+//		@include shadow(0, 5px, 9px, -7px, .9);
 		height: $headerH;
 		border-bottom: 1px $midGrey;
 		border-bottom-style: solid;
@@ -536,7 +554,7 @@ a{
 		
 		.detail-video-wrapper{
 			width: $w + ($arrowW + $arrowMar) * 2;
-			margin-left: -$arrowW;
+			margin-left: -$arrowW - $arrowMar;
 			display: inline-block;
 			
 			.arrow{
@@ -668,7 +686,36 @@ a{
 		@include lato-light;
 		font-size: 1.7em;
 		text-align: justify;
+		padding-bottom: 10px;
+	}
+	
+	.print-btn-wrapper{
+		width: 100%;
+		display: inline-block;
 		padding-bottom: 40px;
+	}
+	
+	.print-btn{
+		font-size: 1em;
+		
+		.vcenter-wrapper{
+			display: table;
+			height: 20px;
+			float: left;
+
+			.vcenter{
+				display: table-cell;
+				vertical-align: middle;
+				
+				.icon{
+					padding-right: 5px;
+				}
+				
+				.label{
+					display: inline-block;
+				}
+			}
+		}
 	}
 	
 	.resume-columns{
@@ -782,6 +829,23 @@ $narrowMarV: 10px;
 		margin: 0 auto;
 	}
 
+	#masthead-wrapper{
+		width: $narrowW;
+		height: $narrowHeaderH;
+	}
+	
+	#masthead-shadow{
+		// ADD MARGIN TO PREVENT BLEED OVER SIDES
+		width: $narrowW - 6;
+		height: $narrowHeaderH;
+		padding-left: 3px;
+
+		.header-margins{
+			width: 100%;
+			height: $narrowHeaderH + 6px;
+		}
+	}
+	
 	#masthead{
 		width: $narrowW;
 		height: $narrowHeaderH;
@@ -891,7 +955,7 @@ $narrowMarV: 10px;
 				
 				.detail-video{
 					width: $narrowW;
-					height: 200px;
+					height: ($narrowW * $vidH) / $w;
 
 					video{
 						width: 100%;
@@ -923,6 +987,10 @@ $narrowMarV: 10px;
 		.resume-blurb{
 			font-size: 1.2em;
 			padding-bottom: 20px;
+		}
+		
+		.print-btn-wrapper{
+			display: none;
 		}
 		
 		.resume-columns{

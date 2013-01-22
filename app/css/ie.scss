@@ -1,0 +1,84 @@
+/**
+ * PLODE.COM - IE STYLES
+ */
+ 
+ 
+ 
+ 
+/**
+ *
+ * VARS
+ *
+ **/
+$w: 900px;
+$arrowW: 41px;
+$arrowH: 75px;
+$arrowMar: 4px;
+$vidH: 350px;
+$gridItemLabelH: 30px;
+
+
+
+/**
+ *
+ * MIXINS
+ *
+ **/
+@mixin opac($val){
+	opacity: $val;
+	filter: alpha(opacity= $val * 100);
+}
+
+
+
+
+/**
+ *
+ * GRID
+ *
+ **/
+.grid-item-label-wrapper{
+
+	.vcenter{
+		height: $gridItemLabelH !important;
+	}
+}
+
+
+
+
+/**
+ *
+ * DETAIL
+ *
+ **/
+#project-detail{
+	
+	.detail-item{
+		
+		.detail-video-wrapper{
+			
+			.arrow{
+				
+				.arrow-wrapper{
+					
+					span{
+						position: absolute;
+//						@include opac(.3);
+
+						span{
+							position: absolute;
+//							@include opac(.3);
+
+							span{
+								position: absolute;
+								@include opac(.3);
+							}
+						}
+					}
+					
+				}
+			}	
+		}
+	}
+}

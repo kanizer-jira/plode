@@ -25,6 +25,14 @@ function($, _, Backbone, template)
 			this.$about.html(compiledTemplate);
 			this.$about.fadeIn(200);
 		}
+		,events:{
+			"click .print a" : "onClickPrint"
+		}
+		,onClickPrint: function(e){
+			e.stopPropagation();
+			e.preventDefault();
+			window.print();
+		}
 	});
 
 	// Our module now returns our view	
