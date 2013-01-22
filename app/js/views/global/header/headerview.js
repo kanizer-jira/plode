@@ -16,21 +16,30 @@ function($, _, Backbone, APP, template)
 	var HeaderView = Backbone.View.extend({
 		el: $('#masthead')
 		,render: function(){
+
+			// OBSCURE EMAIL
+			var email = APP.riddleEmail(false);
+		
 			// Compile the template using Underscores micro-templating
-			var compiledTemplate = _.template( template, { name: "Ginger Kid" });
+			var compiledTemplate = _.template( template, { email: email });
 			this.$el.html(compiledTemplate);
 		}
 		
 		,events: {
-			"click .nav-item" : "onNavClick"
+			"click .header-title-block" : "onTitleClick"
+			,"click .nav-item" : "onNavClick"
 		}
 		
+		,onTitleClick: function(e){
+ 			APP.instances.mainRouter.navigate("projects", {trigger: true});
+		}
 		,onNavClick: function(e){
 			var $li = $(e.target).parent().parent();
 			var id = $li.attr("id").split("_")[1];
-			if(!$li.find(".nav-item").hasClass("active"))
+			if(!$li.find(".nav-item").hasClass("active") || id == "projects")
 			{
 				// ID MUST MATCH ROUTES
+				// OR, GO BACK TO GRID VIEW FROM DETAILS VIEW
 	 			APP.instances.mainRouter.navigate(id, {trigger: true});
 			}
 		}

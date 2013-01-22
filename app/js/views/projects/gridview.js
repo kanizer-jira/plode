@@ -140,6 +140,9 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 			this.$tags = this.$el.find(".grid-item-tags");
 			this.$arrow = this.$el.find(".grid-item-arrow");
 			this.$arrowLrg = this.$el.find(".arrow-lrg");
+			
+			// ADD SPINNER
+			APP.showPinwheel(this.$el.find(".pinwheel"));
 		}
 		,events:{
 			"mouseover" 	: "onItemOver"
