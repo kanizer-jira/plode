@@ -1,4 +1,2 @@
 *.DS_Store
 .project
-deploy/utils/loggers/phplog.txt
-deploy/.idea
