@@ -27,7 +27,7 @@ function($, _, Backbone, APP, ProjectCollection, ProjectGridView, DetailView, Re
 		}
 	
 		,showHome: function(id){
-			console.log("ROUTE: showHome: ", id);
+			APP.log("ROUTE: showHome: ", id);
 
  			APP.instances.headerView.setNav("projects");
  			this.cleanup("projects");
@@ -47,7 +47,7 @@ function($, _, Backbone, APP, ProjectCollection, ProjectGridView, DetailView, Re
 		}
 
 		,showResume: function(e){
-			console.log("ROUTE: showResume");
+			APP.log("ROUTE: showResume");
 
  			APP.instances.headerView.setNav("about");
  			this.cleanup("about");
@@ -57,7 +57,7 @@ function($, _, Backbone, APP, ProjectCollection, ProjectGridView, DetailView, Re
 		}
 
 		,showDetail: function(id){
-			console.log("ROUTE: showDetail", id);
+			APP.log("ROUTE: showDetail", id);
 
  			APP.instances.headerView.setNav("projects");
  			this.cleanup("detail");
@@ -72,6 +72,7 @@ function($, _, Backbone, APP, ProjectCollection, ProjectGridView, DetailView, Re
 					var key = s.split(":")[0];
 					var label = "#" + s.split(":")[1];
 					if(id != key) $(label).remove();
+					else if(id == "detail" && $("#project-detail") != null) $(label).remove();
 				});
 		}
 	});

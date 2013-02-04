@@ -16,6 +16,7 @@ $arrowH: 75px;
 $arrowMar: 4px;
 $vidH: 350px;
 $gridItemLabelH: 30px;
+$headerH: 50px;
 
 
 
@@ -29,6 +30,32 @@ $gridItemLabelH: 30px;
 	filter: alpha(opacity= $val * 100);
 }
 
+
+
+
+/**
+ *
+ * HEADER
+ *
+ **/
+#masthead{
+
+	.header-margins{
+		
+		.header-inner-right{
+			
+			.header-nav-block{
+				
+				ul{
+
+					li{
+						height: $headerH;
+					}
+				}
+			}
+		}
+	}
+}
 
 
 
@@ -52,33 +79,3 @@ $gridItemLabelH: 30px;
  * DETAIL
  *
  **/
-#project-detail{
-	
-	.detail-item{
-		
-		.detail-video-wrapper{
-			
-			.arrow{
-				
-				.arrow-wrapper{
-					
-					span{
-						position: absolute;
-//						@include opac(.3);
-
-						span{
-							position: absolute;
-//							@include opac(.3);
-
-							span{
-								position: absolute;
-								@include opac(.3);
-							}
-						}
-					}
-					
-				}
-			}	
-		}
-	}
-}

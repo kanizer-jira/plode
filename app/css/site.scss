@@ -16,7 +16,10 @@ $gridMargin: 20px;
 $gridItemW: 285px;
 $gridItemH: 180px;
 $gridItemLabelH: 30px;
-$vidH: 350px;
+$vidW: 610px;
+$vidH: 410px;
+$descW: 250px;
+$descPad: 30px;
 $durShort: .1s;
 $durMed: .2s;
 $durLong: .5s;
@@ -325,7 +328,7 @@ a{
 #footer{
 	width: 100%;
 	height: $footerH;
-	margin-top: -$footerH;
+	margin-top: -$footerH - 1;
 	bottom: 0px;	
 	position: relative;
 	font-size: .838em;
@@ -529,7 +532,7 @@ a{
 				position: absolute;
 				width: $gridItemW;
 				height: $gridItemH;
-				background: green;
+				background: $grey;
 				@include opac(0);
 			}
 		}
@@ -551,6 +554,7 @@ a{
 	
 	.detail-item{
 		width: 100%;
+		padding-top: 20px;
 		
 		.detail-video-wrapper{
 			width: $w + ($arrowW + $arrowMar) * 2;
@@ -571,16 +575,12 @@ a{
 					height: $arrowH;
 					padding-bottom: $arrowH;
 					
-					canvas{
-						position: absolute;
-						@include opac(.3);
-					}
-					
 					img{
 						position: absolute;
 						// NEEDS TO BE DEFINED FOR DESATURATION SCRIPT
 						width: $arrowW;
 						height: $arrowH;
+						@include opac(0);
 					}
 				}
 			}	
@@ -596,7 +596,7 @@ a{
 			}
 		
 			.detail-video{
-				width: $w;
+				width: $vidW;
 				height: $vidH;
 				float: left;
 				background: $grey;
@@ -606,66 +606,75 @@ a{
 					height: 100%;
 				}
 			}
-		}
-		
-		.detail-content{
-			padding: 30px 10px 0 10px;
-		
-			.detail-header{
-				width: 100%;
-				display: table;
-				
-				.detail-header-txt{
-					vertical-align: middle;
-					display: table-cell;
-					font-size: 1.2em;
-					
-					.client{
-						@include lato-bold;
-						color: $darkGrey;
-					}
-					
-					.desc{
-						@include lato-light;
-						color: $midGrey;
-					}
-				}
-				
-				.detail-header-back{
-					vertical-align: middle;
-					display: table-cell;
-					font-size: 1em;
-					float: right;
-					
-					.vcenter-wrapper{
-						display: table;
-						height: 20px;
-						float: left;
 
-						.vcenter{
-							display: table-cell;
-							vertical-align: middle;
-							
-							.arrow{
-								padding-right: 5px;
-							}
-							
-							.label{
-								display: inline-block;
+			.detail-content{
+				padding: 10px 0px 0 $descPad;
+				width: $descW;
+				float: left;			
+
+				.detail-header{
+					width: 100%;
+					display: table;
+					
+					.detail-header-txt{
+						vertical-align: middle;
+						display: table-cell;
+						font-size: 1.4em;
+						
+						.client{
+							@include lato-bold;
+							color: $darkGrey;
+						}
+						
+						.desc{
+							@include lato-light;
+							color: $midGrey;
+						}
+					}
+					
+					.detail-header-back{
+						vertical-align: middle;
+						display: table-cell;
+						font-size: 1em;
+						float: right;
+						
+						.vcenter-wrapper{
+							display: table;
+							height: 20px;
+							float: left;
+	
+							.vcenter{
+								display: table-cell;
+								vertical-align: middle;
+								
+								.arrow{
+									padding-right: 5px;
+								}
+								
+								.label{
+									display: inline-block;
+								}
 							}
 						}
 					}
 				}
-			}
-			
-			.detail-tags{
-				padding: 5px 0 15px 0;
-			}
-			
-			.detail-desc{
 				
-				a{
+				.detail-tags{
+					padding: 5px 0 15px 0;
+				}
+				
+				.detail-desc{
+					font-size: 1.2em;
+					text-align: justify;
 					
+					ul{
+						padding-left: 0;
+						list-style-image:url('../img/arrow_fwd.png');
+						li{
+							color: $midGrey;
+							margin-left: 1.3em;
+						}
+					}
 				}
 			}
 		}
@@ -809,50 +818,56 @@ a{
 
 
 
-$narrowW: 300px;
-$narrowHeaderH: 100px;
-$narrowNavH: 40px;
-$narrowMarV: 10px;
 
-@media screen and (min-width: 200px) and (max-width: 400px) {
+/**
+ *
+ * 0-479 : SMARTPHONE
+ *
+ **/
+$spW: 300px;
+$spHeaderH: 100px;
+$spNavH: 40px;
+$spMarV: 10px;
+
+@media screen and (min-width: 0px) and (max-width: 479px) {
     /* Style adjustments for viewports that meet the condition */
 	#content{
-		width: $narrowW;
+		width: $spW;
 	}
 
 	#project-grid-badges{
-		width: $narrowW !important;
+		width: $spW !important;
 	}
 	
 	#wrapper{
-		width: $narrowW;
+		width: $spW;
 		margin: 0 auto;
 	}
 
 	#masthead-wrapper{
-		width: $narrowW;
-		height: $narrowHeaderH;
+		width: $spW;
+		height: $spHeaderH;
 	}
 	
 	#masthead-shadow{
 		// ADD MARGIN TO PREVENT BLEED OVER SIDES
-		width: $narrowW - 6;
-		height: $narrowHeaderH;
+		width: $spW - 6;
+		height: $spHeaderH;
 		padding-left: 3px;
 
 		.header-margins{
 			width: 100%;
-			height: $narrowHeaderH + 6px;
+			height: $spHeaderH + 6px;
 		}
 	}
 	
 	#masthead{
-		width: $narrowW;
-		height: $narrowHeaderH;
+		width: $spW;
+		height: $spHeaderH;
 		
 		.header-margins{
 			width: 100%;
-			height: $narrowHeaderH + 6px;
+			height: $spHeaderH + 6px;
 			
 			.header-inner-left{
 				position: relative;
@@ -868,7 +883,7 @@ $narrowMarV: 10px;
 
 			.header-inner-right{
 				width: 100%;
-				height: $narrowNavH;
+				height: $spNavH;
 				position: relative;
 				margin-top: 10px;
 				border-top: solid $grey 1px;
@@ -898,7 +913,7 @@ $narrowMarV: 10px;
 	#footer{
 		.footer-wrapper{
 			.footer-content{
-				width: $narrowW;
+				width: $spW;
 				padding: 0px;
 				font-size: 1.2em;
 				
@@ -916,7 +931,7 @@ $narrowMarV: 10px;
 	#project-grid{
 	
 		#project-grid-badges{
-			width: $narrowW;
+			width: $spW;
 			padding: 0 0 $marB 0;
 			text-align: center;
 		}
@@ -925,6 +940,8 @@ $narrowMarV: 10px;
 			.grid-item-overlay{
 				.grid-item-label-wrapper{
 					.grid-item-label{
+						width: 80%;
+
 						.grid-item-tags{
 							display: none;
 						}
@@ -940,13 +957,15 @@ $narrowMarV: 10px;
 	}
 	
 	#project-detail{
-		width:  $narrowW;
+		width:  $spW;
 		padding: 0;
 		margin: 0;
 		
 		.detail-item{
+			padding-top: 0px;
+
 			.detail-video-wrapper{
-				width: $narrowW;
+				width: $spW;
 				margin: 0;
 				
 				.arrow{
@@ -954,8 +973,8 @@ $narrowMarV: 10px;
 				}
 				
 				.detail-video{
-					width: $narrowW;
-					height: ($narrowW * $vidH) / $w;
+					width: $spW;
+					height: ($spW * $vidH) / $vidW;
 
 					video{
 						width: 100%;
@@ -964,19 +983,241 @@ $narrowMarV: 10px;
 			
 				}
 
-			}
-			.detail-content{
-//				width: $narrowW - 10px * 2;
-				
-				
-				.detail-header{
-
-					.detail-header-txt{
-						display: block;
-					}
+				.detail-content{
+					width: $spW;
+					padding: 20px 0 0 0;
+					clear: left;
 					
-					.detail-header-back{
-						float: left;
+					.detail-header{
+	
+						.detail-header-txt{
+							display: block;
+						}
+						
+						.detail-header-back{
+							float: left;
+						}
+					}
+				}			
+			}
+		}
+	}
+	
+	#about{
+		.resume-blurb{
+			font-size: 1.2em;
+			padding-bottom: 20px;
+		}
+		
+		.print-btn-wrapper{
+			display: none;
+		}
+		
+		.resume-columns{
+			.col{
+				width: 100%;
+				margin: 0;
+			}
+			
+			.col0{
+				float: none;
+				
+			}
+
+			.col1{
+				float: none;
+				
+				.resume-skills{
+					padding-bottom: 0;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+/**
+ *
+ * 480-767 : MINITABLET
+ *
+ **/
+$miniW: 480px;
+$miniHeaderH: 100px;
+$miniNavH: 40px;
+$miniMarV: 10px;
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+    /* Style adjustments for viewports that meet the condition */
+	#content{
+		width: $miniW;
+	}
+
+	#project-grid-badges{
+		width: $miniW !important;
+	}
+	
+	#wrapper{
+		width: $miniW;
+		margin: 0 auto;
+	}
+
+	#masthead-wrapper{
+		width: $miniW;
+		height: $miniHeaderH;
+	}
+	
+	#masthead-shadow{
+		// ADD MARGIN TO PREVENT BLEED OVER SIDES
+		width: $miniW - 6;
+		height: $miniHeaderH;
+		padding-left: 3px;
+
+		.header-margins{
+			width: 100%;
+			height: $miniHeaderH + 6px;
+		}
+	}
+	
+	#masthead{
+		width: $miniW;
+		height: $miniHeaderH;
+		
+		.header-margins{
+			width: 100%;
+			height: $miniHeaderH + 6px;
+			
+			.header-inner-left{
+				position: relative;
+
+				.header-title-block{
+
+					.header-role{
+						display: block;
+						margin-top: -10px;
+					}
+				}
+			}
+
+			.header-inner-right{
+				width: 100%;
+				height: $miniNavH;
+				position: relative;
+				margin-top: 10px;
+				border-top: solid $grey 1px;
+
+				.header-nav-block{
+					
+					ul{
+						float: none;
+						
+						li{
+							width: 50%;
+							
+							.vcenter{
+								width: 100%;
+								
+								.nav-item{
+									text-align: center;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#footer{
+		.footer-wrapper{
+			.footer-content{
+				width: $miniW;
+				padding: 0px;
+				font-size: 1.2em;
+				
+				.footer-vcenter{
+					.footer-vcenter-wrapper{
+						.footer-extra{
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	#project-grid{
+	
+		#project-grid-badges{
+			width: $miniW - 20 !important;
+			padding: 0 10px $marB 10px;
+			text-align: center;
+		}
+		
+		.grid-item{
+			// CENTER COLUMN
+			padding: 7px ($miniW - $gridItemW) / 2;
+		
+			.grid-item-overlay{
+				.grid-item-label-wrapper{
+					.grid-item-label{
+						width: 80%;
+
+						.grid-item-tags{
+							display: none;
+						}
+					}
+				}
+				.arrow-lrg-wrapper{
+					.arrow-lrg{
+						display: none;
+					}
+				}
+			}
+		}
+	}
+	
+	#project-detail{
+		width:  $miniW;
+		padding: 0;
+		margin: 0;
+		
+		.detail-item{
+			padding-top: 0px;
+
+			.detail-video-wrapper{
+				width: $miniW;
+				margin: 0;
+				
+				.arrow{
+					display: none;
+				}
+				
+				.detail-video{
+					width: $miniW;
+					height: ($miniW * $vidH) / $vidW;
+
+					video{
+						width: 100%;
+						height: 100%;
+					}
+			
+				}
+				.detail-content{
+					width: $miniW;
+					padding: 30px 0 0 0;
+					clear: left;
+					
+					.detail-header{
+	
+						.detail-header-txt{
+							display: block;
+						}
+						
+						.detail-header-back{
+							float: left;
+						}
 					}
 				}
 			}
@@ -1014,6 +1255,175 @@ $narrowMarV: 10px;
 		}
 	}
 }
+
+
+
+
+/**
+ *
+ * 768 - 950 : TABLET
+ *
+ **/
+$tabW: 768px;
+$tabMarV: 10px;
+$tabVidW: 500px;
+$tabDescW: 235px;
+
+@media screen and (min-width: 768px) and (max-width: 950px) {
+    /* Style adjustments for viewports that meet the condition */
+	#content{
+		width: $tabW;
+	}
+
+	#project-grid-badges{
+		width: $tabW !important;
+	}
+	
+	#wrapper{
+		width: $tabW;
+		margin: 0 auto;
+	}
+
+	#masthead-wrapper{
+		width: $tabW;
+	}
+	
+	#masthead-shadow{
+		// ADD MARGIN TO PREVENT BLEED OVER SIDES
+		width: $tabW - 6;
+		padding-left: 3px;
+
+		.header-margins{
+			width: 100%;
+		}
+	}
+	
+	#masthead{
+		width: $tabW;
+		
+		.header-margins{
+			width: 100%;
+			
+			.header-inner-right{
+				width: 100%;
+
+				.header-nav-block{
+					
+					ul{
+						float: right;
+						
+						li{
+							.vcenter{
+								width: 100%;
+								
+								.nav-item{
+									text-align: center;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#footer{
+		.footer-wrapper{
+			.footer-content{
+				width: $tabW;
+				padding: 0px;
+				font-size: 1.2em;
+			}
+		}
+	}
+	
+	#project-grid{
+		width: $gridItemW * 2 + 60;
+		padding: 0 ($tabW - ($gridItemW * 2 + 60)) / 2;
+	
+		#project-grid-badges{
+			width: $gridItemW * 2 + 60 - 20 !important;
+			padding: 0 10px $marB 10px;
+			text-align: center;
+		}
+		
+		.grid-item{
+			// CENTER COLUMN
+			display: inline-block;
+			padding: 15px;
+			// ($tabW - $gridItemW) / 2;
+		
+			.grid-item-overlay{
+				.grid-item-label-wrapper{
+					.grid-item-label{
+						width: 80%;
+
+						.grid-item-tags{
+							display: none;
+						}
+					}
+				}
+				.arrow-lrg-wrapper{
+					.arrow-lrg{
+						display: none;
+					}
+				}
+			}
+		}
+	}
+	
+	#project-detail{
+		width:  $tabW;
+		padding: 0;
+		margin: 0;
+		
+		.detail-item{
+			.detail-video-wrapper{
+				width: $tabW;
+				margin: 0;
+				
+				.arrow{
+					display: none;
+				}
+				
+				.detail-video{
+					width: $tabVidW;
+					height: ($tabVidW * $vidH) / $vidW;
+
+					video{
+						width: 100%;
+						height: 100%;
+					}
+			
+				}
+
+				.detail-content{
+					width: $tabDescW;
+					
+					.detail-header{
+	
+						.detail-header-txt{
+							display: block;
+							font-size: 1.2em;
+						}
+						
+						.detail-header-back{
+							float: left;
+						}
+					}
+
+					.detail-desc{
+						font-size: 1em;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
        only screen and (min-resolution: 144dpi) {

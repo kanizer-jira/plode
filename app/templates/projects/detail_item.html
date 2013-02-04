@@ -37,41 +37,34 @@
 				</video><!-- HTM5 FALLBACK -->
 			</div>
 		</div>
-		<div class="arrow arrow-r"><div class="arrow-wrapper"><img src="img/arrow_lrg.png" /></div></div>
-	</div>
-	<div class="detail-content">
-		<div class="detail-header">
-			<div class="detail-header-txt"><span class="client"><%= label %></span> <span class="desc"><%= desc %></span></div>
-			<div class="detail-header-back">
-				<div class="vcenter-wrapper">
-					<div class="vcenter">
-						<div class="arrow"><img src="img/arrow_back.png"/></div>
-					</div>
-				</div>
-				<div class="vcenter-wrapper">
-					<div class="vcenter">
-						<div class="label"><a href="#">back to projects</a></div>
-					</div>
-				</div>
+
+
+		<div class="detail-content">
+			<div class="detail-header">
+				<div class="detail-header-txt"><span class="client"><%= label %></span> <span class="desc"><%= desc %></span></div>
+			</div>
+			<div class="detail-tags">
+				<% if(tags)
+				{
+					_.each(tags, function(tag){
+						%><div class="plode-badge active"><%= tag %></div><%
+					});
+				}%>
+			</div>
+			<div class="detail-desc"><%= detail.desc %>
+				<% if(detail.links){ %>
+					<ul>
+						<% _.each(detail.links, function(link){
+							%><li><a href="<%= link.path %>"><%= link.label %></a></li><%
+						});%>
+					</ul>
+				<% } %>
 			</div>
 		</div>
-		<div class="detail-tags">
-			<% if(tags)
-			{
-				_.each(tags, function(tag){
-					%><div class="plode-badge active"><%= tag %></div><%
-				});
-			}%>
-		</div>
-		<div class="detail-desc"><%= detail.desc %>
-			<% if(detail.links)
-			{
-				%><br /><%
-				_.each(detail.links, function(link){
-					%><br /><a href="<%= link.path %>"><%= link.label %></a><%
-				});
-			}%>
-		</div>
+
+
+		<div class="arrow arrow-r"><div class="arrow-wrapper"><img src="img/arrow_lrg.png" /></div></div>
 	</div>
+
 </div>
 <!-- /.detail-item -->

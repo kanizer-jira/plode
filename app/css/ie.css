@@ -13,6 +13,14 @@
  **/
 /**
  *
+ * HEADER
+ *
+ **/
+#masthead .header-margins .header-inner-right .header-nav-block ul li {
+  height: 50px; }
+
+/**
+ *
  * GRID
  *
  **/
@@ -24,11 +32,3 @@
  * DETAIL
  *
  **/
-#project-detail .detail-item .detail-video-wrapper .arrow .arrow-wrapper span {
-  position: absolute; }
-  #project-detail .detail-item .detail-video-wrapper .arrow .arrow-wrapper span span {
-    position: absolute; }
-    #project-detail .detail-item .detail-video-wrapper .arrow .arrow-wrapper span span span {
-      position: absolute;
-      opacity: 0.3;
-      filter: alpha(opacity=30); }

@@ -36,19 +36,6 @@ function($, _, Backbone, APP, desat, ProjectsCollection, template)
 			var compiledTemplate = _.template( template, this.model);
 			this.$el.find("#project-detail").html(compiledTemplate);
 			this.$wrapper.fadeIn(200);
-
-			// SETUP DESATURATION ROLLOVER
-			this.cloneDesatImage();
-		}
-		,cloneDesatImage: function(){
-	        this.$el.find(".arrow-wrapper > img").each(function(i){
-	        	var $img = $(this);
-				var $clone = $img.clone().insertAfter($img).addClass("color").css({
-					"position": "absolute",
-					"opacity" : 0,
-				});
-				$img.desaturate();
-	        });
 		}
 		,destroyEvents: function() {
 		    //COMPLETELY UNBIND THE VIEW
@@ -71,7 +58,7 @@ function($, _, Backbone, APP, desat, ProjectsCollection, template)
 			
 			// GET NEXT PROJECT ID
 			var inc = ($(e.currentTarget).hasClass("arrow-l")) ? -1 : 1;
-			var ind = this.collection.models.indexOf(this.model) + inc;
+			var ind = $.inArray(this.model, this.collection.models) + inc;
 			if (ind < 0) ind = this.collection.models.length - 1
 			else if(ind > this.collection.models.length - 1 ) ind = 0;
 
@@ -83,14 +70,14 @@ function($, _, Backbone, APP, desat, ProjectsCollection, template)
 		,onArrowOver: function(e){
 			e.preventDefault();
 			e.stopPropagation();
-			var $clone = $(e.currentTarget).find(".arrow-wrapper > img");
-			$clone.stop().show().animate({opacity: 1}, 200);
+			var $img = $(e.currentTarget).find(".arrow-wrapper > img");
+			$img.stop().show().animate({opacity: 1}, 200);
 		}
 		,onArrowOut: function(e){
 			e.preventDefault();
 			e.stopPropagation();
-			var $clone = $(e.currentTarget).find(".arrow-wrapper > img");
-			$clone.stop().show().animate({opacity: 0}, 200);
+			var $img = $(e.currentTarget).find(".arrow-wrapper > img");
+			$img.stop().show().animate({opacity: 0}, 200);
 		}
 	});
 

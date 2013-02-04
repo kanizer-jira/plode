@@ -41,7 +41,8 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 
 	        	if(that.ids){
 		        	// FILTER RESULT SET
-		        	if(that.ids.indexOf(tag) > -1)
+//		        	if(that.ids.indexOf(tag) > -1)
+		        	if($.inArray(tag, that.ids) > -1)
 						$badge.addClass("active");
 				}
 				else $badge.addClass("active");
@@ -59,8 +60,9 @@ function($, _, Backbone, APP, ProjectsCollection, template)
         	if(this.ids){
 				_.each(that.ids, function(id){
 		        	// FILTER RESULT SET
-		        	if(thumbModel.tags.indexOf(id) > -1 // TAG MATCHES FILTER ID
-		        		&& that.thumbsIdList.indexOf(thumbModel.id) == -1 // VIEW DOESN'T ALREADY EXIST
+//		        	if(thumbModel.tags.indexOf(id) > -1 // TAG MATCHES FILTER ID
+		        	if($.inArray(id, thumbModel.tags) > -1 // TAG MATCHES FILTER ID
+		        		&& $.inArray(thumbModel.id, that.thumbsIdList) == -1 // VIEW DOESN'T ALREADY EXIST
 		        		)
 					{
 				        view = new ThumbView({model: thumbModel});
@@ -87,7 +89,7 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 		}
 
 		,onBadgeClick: function(e){
-			console.log("click: ", e.currentTarget);
+			APP.log("click: ", e.currentTarget);
 			var active = [];
 			this.$badges.find(".plode-badge.active").each(function(){
 				var tag = $(this).html();
@@ -98,7 +100,8 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 			var id = $badge.html();
 			var re = new RegExp(",", "g");
 			var s;
-			var ind = active.indexOf(id);
+			
+			var ind = $.inArray(id, active);
 			if(!$badge.hasClass("active")){
 				if(ind == -1) active.push(id);
 			}

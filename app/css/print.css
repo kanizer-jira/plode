@@ -52,3 +52,23 @@ body {
 
 #footer {
   display: none !important; }
+
+/**
+ *
+ * DETAIL
+ *
+ **/
+.arrow {
+  display: none; }
+
+/**
+ *
+ * GRID
+ *
+ **/
+#project-grid #project-grid-badges {
+  display: none; }
+#project-grid .grid-item-arrow {
+  display: none; }
+#project-grid .arrow-lrg-wrapper {
+  display: none; }
