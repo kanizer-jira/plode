@@ -108,7 +108,7 @@ function($, _, Backbone, Spinner){
 			,label: "Various"
 			,desc: "Assorted Motion Projects"
 			,img: "img/thumb_motion.jpg"
-			,tags: ["silverlight", "akqa"]
+			,tags: ["akqa", "weidenkennedy"]
 			,detail:{
 				desc: "Selected samples of motion and interactivity are showcased here."
 				,vid: "../media/motion.mp4"

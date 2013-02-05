@@ -40,6 +40,7 @@ function($, _, Backbone, APP, ProjectCollection, ProjectGridView, DetailView, Re
 				param = {ids:a};
 			}
 			
+			
 			// Call render on the module we loaded in via the dependency array
 			// 'views/projects/list'
 			var gridView = new ProjectGridView(param);
@@ -73,6 +74,7 @@ function($, _, Backbone, APP, ProjectCollection, ProjectGridView, DetailView, Re
 					var label = "#" + s.split(":")[1];
 					if(id != key) $(label).remove();
 					else if(id == "detail" && $("#project-detail") != null) $(label).remove();
+					else if(id == "projects" && $("#project-grid") != null) $(label).remove();
 				});
 		}
 	});

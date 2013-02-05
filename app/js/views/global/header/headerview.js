@@ -33,10 +33,11 @@ function($, _, Backbone, APP, template)
 		,onTitleClick: function(e){
  			APP.instances.mainRouter.navigate("projects", {trigger: true});
 		}
+		
 		,onNavClick: function(e){
 			var $li = $(e.target).parent().parent();
 			var id = $li.attr("id").split("_")[1];
-			if(!$li.find(".nav-item").hasClass("active") || id == "projects")
+			if(!$li.find(".nav-item").hasClass("active") || ( id == "projects" ))
 			{
 				// ID MUST MATCH ROUTES
 				// OR, GO BACK TO GRID VIEW FROM DETAILS VIEW
