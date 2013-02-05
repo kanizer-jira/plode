@@ -109,6 +109,11 @@ $darkGrey: #666;
  *
  **/
 
+//avoid tap highlight on mobile devices:
+*{
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 html, body{
 	width: 100%;
 	height: 100%;
