@@ -182,7 +182,7 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 		,onItemOut: function(e){
 			var hpadding = 3;
 			var vpadding = 10;
-			var w = this.$el.width() - hpadding * 2;
+			var w = this.$el.width() - hpadding * 2 - 1;
 			var h = 30;
 			var vmargin = (this.$el.height() - h - vpadding);
 			this.$bg.width(w).height(h)

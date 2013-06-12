@@ -442,9 +442,9 @@ a{
 
 			.grid-item-overlay-bg{
 				position: absolute;
-				width: $gridItemW - 6px;
+				width: $gridItemW - 7;
 				height: $gridItemLabelH;
-				margin: ($gridItemH - $gridItemLabelH - 10) 3px 0 3px;
+				margin: ($gridItemH - $gridItemLabelH - 10) 2px 0 3px;
 				background: $red;
 				@include opac(.7);
 				@include trans($durShort);
@@ -813,8 +813,10 @@ a{
 				padding-left: 10px;
 			}
 		}
+	}
 
-			
+	.resume-item{
+		padding-bottom: 40px;
 	}
 
 }
@@ -834,7 +836,7 @@ $spHeaderH: 100px;
 $spNavH: 40px;
 $spMarV: 10px;
 
-@media screen and (min-width: 0px) and (max-width: 479px) {
+@media screen and (min-width: 0px) and (max-width: 767px) {
     /* Style adjustments for viewports that meet the condition */
 	#content{
 		width: $spW;
@@ -1009,6 +1011,8 @@ $spMarV: 10px;
 	}
 	
 	#about{
+		text-align: left;
+
 		.resume-blurb{
 			font-size: 1.2em;
 			padding-bottom: 20px;
@@ -1053,7 +1057,7 @@ $miniHeaderH: 100px;
 $miniNavH: 40px;
 $miniMarV: 10px;
 
-@media screen and (min-width: 480px) and (max-width: 767px) {
+@media screen and (min-width: 480px) and (max-width: 784px) {
     /* Style adjustments for viewports that meet the condition */
 	#content{
 		width: $miniW;
@@ -1270,14 +1274,17 @@ $miniMarV: 10px;
  *
  **/
 $tabW: 768px;
+$tabWPerc: 98%;
 $tabMarV: 10px;
 $tabVidW: 500px;
 $tabDescW: 235px;
 
-@media screen and (min-width: 768px) and (max-width: 950px) {
+
+@media screen and (min-width: 785px) and (max-width: 950px) {
     /* Style adjustments for viewports that meet the condition */
 	#content{
-		width: $tabW;
+		width: 100%;
+		text-align: center;
 	}
 
 	#project-grid-badges{
@@ -1285,18 +1292,17 @@ $tabDescW: 235px;
 	}
 	
 	#wrapper{
-		width: $tabW;
+		width: $tabWPerc;
 		margin: 0 auto;
 	}
 
 	#masthead-wrapper{
-		width: $tabW;
+		width: $tabWPerc;
 	}
 	
 	#masthead-shadow{
 		// ADD MARGIN TO PREVENT BLEED OVER SIDES
-		width: $tabW - 6;
-		padding-left: 3px;
+		width: $tabWPerc;
 
 		.header-margins{
 			width: 100%;
@@ -1304,7 +1310,7 @@ $tabDescW: 235px;
 	}
 	
 	#masthead{
-		width: $tabW;
+		width: $tabWPerc;
 		
 		.header-margins{
 			width: 100%;
@@ -1335,7 +1341,7 @@ $tabDescW: 235px;
 	#footer{
 		.footer-wrapper{
 			.footer-content{
-				width: $tabW;
+				width: $tabWPerc;
 				padding: 0px;
 				font-size: 1.2em;
 			}
@@ -1344,12 +1350,15 @@ $tabDescW: 235px;
 	
 	#project-grid{
 		width: $gridItemW * 2 + 60;
-		padding: 0 ($tabW - ($gridItemW * 2 + 60)) / 2;
+//		padding: 0 ($tabW - ($gridItemW * 2 + 60)) / 2;
+		text-align: left;
+		display: inline-block;
 	
 		#project-grid-badges{
-			width: $gridItemW * 2 + 60 - 20 !important;
-			padding: 0 10px $marB 10px;
+			width: $gridItemW * 2 !important;// + 60 - 20 !important;
+//			padding: 0 10px $marB 10px;
 			text-align: center;
+			display: inline-block;
 		}
 		
 		.grid-item{
@@ -1378,9 +1387,10 @@ $tabDescW: 235px;
 	}
 	
 	#project-detail{
-		width:  $tabW;
+		width:  100%;
 		padding: 0;
 		margin: 0;
+		display: inline-block;
 		
 		.detail-item{
 			.detail-video-wrapper{
@@ -1404,6 +1414,7 @@ $tabDescW: 235px;
 
 				.detail-content{
 					width: $tabDescW;
+					text-align: left;
 					
 					.detail-header{
 	
@@ -1423,6 +1434,10 @@ $tabDescW: 235px;
 				}
 			}
 		}
+	}
+	
+	#about{
+		text-align: left;
 	}
 }
 

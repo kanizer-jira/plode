@@ -271,7 +271,7 @@ function($, _, Backbone, Spinner){
     // console fallback for IE, old firefox
     window.console = window.console || { log: function(){} };
 
-    var loggerActive = true;
+    var loggerActive = false;
 
     APP.log = function(s, l)
     {

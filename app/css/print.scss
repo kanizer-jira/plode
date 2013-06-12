@@ -4,6 +4,11 @@
  *
  **/
  
+
+
+$resume-padding: 5px;
+
+
 body{
 	color: #ff0000 !important;
 	margin: 20px !important;
@@ -11,7 +16,9 @@ body{
 }
 
 
-
+#masthead-wrapper{
+	padding: 0px 0;
+}
 
 .header-title-block{
 	font-size: 20px !important;
@@ -60,8 +67,12 @@ body{
 		}
 	}
 
+	.label{
+		padding-bottom: 5px;
+	}
+
 	.resume-job{
-		padding-top: 16px;
+		padding-top: $resume-padding;
 		
 		.resume-hdr-grp{
 			background: #ffcc00 !important;
@@ -85,7 +96,7 @@ body{
 	.resume-skills{
 		.resume-skills-item{
 			.resume-skills-hdr{
-				padding-top: 16px;
+				padding-top: $resume-padding;
 			}
 			
 			.resume-skills-list{
@@ -96,7 +107,7 @@ body{
 	}
 	
 	.resume-edu{
-		padding-top: 16px;
+		padding-top: $resume-padding;
 	}
 }
 

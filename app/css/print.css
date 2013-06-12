@@ -8,6 +8,9 @@ body {
   margin: 20px !important;
   font-size: 12px !important; }
 
+#masthead-wrapper {
+  padding: 0px 0; }
+
 .header-title-block {
   font-size: 20px !important; }
   .header-title-block .header-title {
@@ -33,8 +36,10 @@ body {
   font-weight: bold !important;
   font-size: 16px !important;
   padding-top: 20px; }
+.resume-columns .label {
+  padding-bottom: 5px; }
 .resume-columns .resume-job {
-  padding-top: 16px; }
+  padding-top: 5px; }
   .resume-columns .resume-job .resume-hdr-grp {
     background: #ffcc00 !important; }
     .resume-columns .resume-job .resume-hdr-grp .resume-hdr-role {
@@ -43,12 +48,12 @@ body {
   .resume-columns .resume-job .resume-body {
     text-decoration: none; }
 .resume-columns .resume-skills .resume-skills-item .resume-skills-hdr {
-  padding-top: 16px; }
+  padding-top: 5px; }
 .resume-columns .resume-skills .resume-skills-item .resume-skills-list {
   color: #666666 !important;
   font-style: italic; }
 .resume-columns .resume-edu {
-  padding-top: 16px; }
+  padding-top: 5px; }
 
 #footer {
   display: none !important; }

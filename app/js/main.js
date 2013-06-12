@@ -19,7 +19,7 @@ require([
 ], 
 function(App){
 
-	console.log('init');
+	// console.log('init');
 
 	// The "app" dependency is passed in as "App"
 	App.initialize();
