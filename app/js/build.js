@@ -4,7 +4,6 @@
 *
 *
 *
-**/
 ({
     baseUrl: ".",
     paths: {
@@ -24,7 +23,7 @@
 /**
 *
 * ENTIRE PROJECT - PATHS ARE RELATIVE TO LOCATION OF THIS FILE
-*
+*/
 ({
     appDir: "../",
     baseUrl: "js",
@@ -37,4 +36,4 @@
         }
     ]
 })
-**/
+/**/
