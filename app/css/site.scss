@@ -185,6 +185,9 @@ a{
 }
 
 
+.hide{
+  display: none !important;
+}
 
 
 /**
@@ -607,8 +610,8 @@ a{
 				background: $grey;
 				
 				video{
-					width: 100%;
-					height: 100%;
+					width: $vidW;
+					height: $vidH;
 				}
 			}
 
@@ -984,8 +987,8 @@ $spMarV: 10px;
 					height: ($spW * $vidH) / $vidW;
 
 					video{
-						width: 100%;
-						height: 100%;
+						width: $spW;
+						height: ($spW * $vidH) / $vidW;
 					}
 			
 				}
@@ -1208,8 +1211,8 @@ $miniMarV: 10px;
 					height: ($miniW * $vidH) / $vidW;
 
 					video{
-						width: 100%;
-						height: 100%;
+						width: $miniW;
+						height: ($miniW * $vidH) / $vidW;
 					}
 			
 				}
@@ -1406,8 +1409,8 @@ $tabDescW: 235px;
 					height: ($tabVidW * $vidH) / $vidW;
 
 					video{
-						width: 100%;
-						height: 100%;
+						width: $tabVidW;
+						height: ($tabVidW * $vidH) / $vidW;
 					}
 			
 				}
