@@ -3,3 +3,5 @@
 deploy
 app/img
 app/media
+node_modules
+
