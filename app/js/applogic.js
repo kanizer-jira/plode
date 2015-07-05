@@ -14,51 +14,62 @@ function($, _, Backbone, Spinner){
 
 	// PROJECT DATASET
 	APP.data = {
-		tags: [ // CLIENTS
-				"akqa"
-				,"weidenkennedy"
-				,"ralphlauren"
-
-				// TECH
-//				,"actionscript"
-//				,"javascript"
-				,"silverlight"
-/*
-				,"php"
-				,"mysql"
-				,"android"
-				,"ios"
-				,"css3"
-				,"html5"
-*/
+		tags: [
+			// CLIENTS
+			"akqa"
+			,"weidenkennedy"
+			,"ralphlauren"
+			,"supertouch"
+			,"adcade"
 
 /*
-				// TYPE
-				,"web"
-				,"mobile"
-				,"app"
-*/
+			// TECH
+			,"actionscript"
+			,"javascript"
+			,"silverlight"
+			,"php"
+			,"mysql"
+			,"android"
+			,"ios"
+			,"css3"
+			,"html5"
 
-				// FRAMEWORKS
-				,"flashmediaserver"
-				,"papervision3d"
-/*
-				,"backbonejs"
-				,"jquery"
-				,"jquerymobile"
-				,"phonegap"
-				,"sencha"
-				,"codeigniter"
+			// TYPE
+			,"web"
+			,"mobile"
+			,"app"
+
+			// FRAMEWORKS
+			,"flashmediaserver"
+			,"papervision3d"
+			,"backbonejs"
+			,"jquery"
+			,"jquerymobile"
+			,"phonegap"
+			,"sencha"
+			,"codeigniter"
 */
-			 ]
+		 ]
 		,projects: [
 		{
+			id: "adcade"
+			,label: "ADCADE"
+			,desc: "HTML5 Ad Platform"
+			,img: "img/thumb_adcade.jpg"
+			,tags: ["adcade"]
+			,detail:{
+				desc: "Contributor to product and process development of a proprietary, ad-serving product suite (HTML5 canvas animation framework and public-facing IDE) during the startup phase of the company."
+				,links:[{ label: "view at adcade.com", path: "http://www.adcade.com/"}]
+				,slate: "img/slate_adcade.jpg"
+			}
+		}
+		,{
 			id: "jordan"
 			,sequence: 0
 			,label: "JORDAN"
 			,desc: "Chris Paul 3 Site"
 			,img: "img/thumb_cp.jpg"
-			,tags: ["weidenkennedy", "flashmediaserver"]
+			,tags: ["weidenkennedy"]
 			,detail:{
 				desc: "Jordan wanted to showcase Chris Paul and his CP3.V shoe with a site that celebrates the on the court chaos where Chris Paul's skills shine. By immersing the viewer on the court during the final play of a game, the viewer is encouraged to explore the scene from numerous angles, speeds and scenes. <br><br>Balancing load times, FMS latency and interactivity required several integrated systems to cross-reference and track images, videos, interaction points and progress."
 				,links:[{ label: "view at thefwa.com", path: "http://www.thefwa.com/site/quick-controls-chaos?search=quick%20controls%20chaos"}]
@@ -75,7 +86,7 @@ function($, _, Backbone, Spinner){
 			,label: "VISA"
 			,desc: "go.visa.com Site"
 			,img: "img/thumb_visa.jpg"
-			,tags: ["akqa", "papervision3d"]
+			,tags: ["akqa"]
 			,detail:{
 				desc: "The Visa Go site was designed to allow users to explore the experiences available through assorted Visa Signature Card programs. <br><br>A database of offers was presented as a scrolling, 3D grid of tiles that can be sorted and deep-linked into for integration with assorted ad units. <br><br>A singular code base was dynamically re-skinned and ported to alternate iterations that ran in parallel on Yahoo and Facebook."
 				,links:[{ label: "view at akqa.com", path: "http://www.akqa.com/#/work/visa/go/awards"}]
@@ -134,22 +145,22 @@ function($, _, Backbone, Spinner){
 				,slate: "img/slate_rrl.jpg"
 			}
 		}
-		,{
-			id: "xbox"
-			,sequence: 5
-			,label: "XBOX"
-			,desc: "Carousel & Media Player"
-			,img: "img/thumb_xbox.jpg"
-			,tags: ["silverlight", "akqa"]
-			,detail:{
-				desc: "Xbox.com was redesigned to simplify and organize the extensive amount of content available into a coherent, unified system. <br><br>The home page slide show and global media player were designed to be configured per locale and property via Xbox's CMS.  Both modules are scaleable in scope and type of content."
-				,vid: "../media/xbox.mp4"
-				,vid_mp4: "media/xbox.mp4"
-				,vid_webm: "media/xbox.webm"
-				,vid_ogv: "media/xbox.ogv"
-				,slate: "img/slate_xbox.jpg"
-			}
-		}
+		// ,{
+		// 	id: "xbox"
+		// 	,sequence: 5
+		// 	,label: "XBOX"
+		// 	,desc: "Carousel & Media Player"
+		// 	,img: "img/thumb_xbox.jpg"
+		// 	,tags: ["silverlight", "akqa"]
+		// 	,detail:{
+		// 		desc: "Xbox.com was redesigned to simplify and organize the extensive amount of content available into a coherent, unified system. <br><br>The home page slide show and global media player were designed to be configured per locale and property via Xbox's CMS.  Both modules are scaleable in scope and type of content."
+		// 		,vid: "../media/xbox.mp4"
+		// 		,vid_mp4: "media/xbox.mp4"
+		// 		,vid_webm: "media/xbox.webm"
+		// 		,vid_ogv: "media/xbox.ogv"
+		// 		,slate: "img/slate_xbox.jpg"
+		// 	}
+		// }
 		,{
 			id: "flip"
 			,sequence: 6
@@ -172,7 +183,7 @@ function($, _, Backbone, Spinner){
 			,label: "Xbox"
 			,desc: "Crackdown 2 Site"
 			,img: "img/thumb_crackdown.jpg"
-			,tags: ["silverlight", "akqa"]
+			,tags: ["akqa"]
 			,detail:{
 				desc: "Xbox and Rufian Games wanted to generate some interest in this title prior to launch. Users could learn more about the game and story through video galleries, contests and other game feature highlights. <br><br>Built in Silverlight 3 and designed to be modular, this site was available in varying configurations and was localized for seven languages."
 				,vid: "../media/crackdown.mp4"
@@ -201,17 +212,12 @@ function($, _, Backbone, Spinner){
 	]};
 
 
-
-
     // BASE URL
     APP.baseApiUrl = 'testingApiUrl';
-	
-
 
 
     // PINWHEEL
-	APP.showPinwheel = function($tar)
-	{
+	APP.showPinwheel = function($tar) {
 	    var opts = {
 		  lines: 13, // The number of lines to draw
 		  length: 2, // The length of each line
@@ -229,18 +235,15 @@ function($, _, Backbone, Spinner){
 		  top: 'auto', // Top position relative to parent in px
 		  left: 'auto' // Left position relative to parent in px
 		};
-		
+
 		var spinner = new Spinner(opts).spin($tar[0]);
 
 		// INSERT BREAK FOR CENTERING
 		$tar.find(".spinner").after("<p></p>");
 	}
 
-
-
 	// POPULATE EMAILS
-    APP.riddleEmail = function(full)
-    {
+    APP.riddleEmail = function(full) {
 		var emailriddlerarray = [110,101,108,115,111,110,64,112,108,111,100,101,46,99,111,109];
 
 		/***********************************************
@@ -251,13 +254,12 @@ function($, _, Backbone, Spinner){
 		for (var i=0; i<emailriddlerarray.length; i++)
 			encryptedemail += String.fromCharCode(emailriddlerarray[i]);
 
-		var s = (full) 
+		var s = (full)
 			? "mailto:" + encryptedemail + "?subject=Mail plode.com"
 			: encryptedemail;
-			
+
 		return s;
     }
-
 
 
     //------------------------------------------------------------------
@@ -270,11 +272,9 @@ function($, _, Backbone, Spinner){
 
     // console fallback for IE, old firefox
     window.console = window.console || { log: function(){} };
-
     var loggerActive = false;
 
-    APP.log = function(s, l)
-    {
+    APP.log = function(s, l) {
         if(loggerActive){
             if(l == undefined) console.log(s);
             else console.log(l + ': ', s);
@@ -298,9 +298,6 @@ function($, _, Backbone, Spinner){
         return json;
     };
 
-
-
-
     APP.db = {}; // a place to put global references to collections / models
     APP.models = {};
     APP.collections = {};
@@ -308,7 +305,6 @@ function($, _, Backbone, Spinner){
     APP.views = {};
     APP.consts = {};
     APP.instances = {};
-    
-    
+
   	return APP;
 });

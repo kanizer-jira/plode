@@ -9,7 +9,7 @@
 			var w = "100%";
 			var h = "100%";
 			var version = "10.1.0";
-			var flashvars = { 
+			var flashvars = {
 				configPath : "xml/plode_player_config.xml",
 				video : "<%= detail.vid %>",
 				slate : "<%= detail.slate %>"
@@ -24,7 +24,7 @@
 			swfobject.embedSWF("swf/" + swfName + ".swf", "flash-container", w, h, version, "swf/expressInstall.swf", flashvars, params);
 		</script>
 		<!-- /VIDEO PLAYER EMBED-->
-		
+
 		<div class="arrow arrow-l"><div class="arrow-wrapper"><img src="img/arrow_lrg_left.png" /></div></div>
 		<div class="detail-video">
 			<div id="flash-container">

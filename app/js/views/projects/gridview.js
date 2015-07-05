@@ -8,11 +8,11 @@ define([
 
 	// Pull in the Collection module from above
 	,'collections/projects'
-  
+
   	// Using the Require.js text! plugin, we are loaded raw text
 	// which will be used as our views primary template
 	,'text!template/projects/grid_item.html'
-], 
+],
 
 function($, _, Backbone, APP, ProjectsCollection, template)
 {
@@ -26,7 +26,7 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 			this.$grid.append("<div id='project-grid-badges'></div>");
 			this.$badges = this.$el.find("#project-grid-badges");
         	this.thumbsIdList = [];
-			
+
 			this.destroyEvents();
 		}
 		,render: function(){
@@ -46,17 +46,17 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 						$badge.addClass("active");
 				}
 				else $badge.addClass("active");
-				
+
 				that.$badges.append($badge[0]);
 			});
 
 			this.$grid.fadeIn(200);
 	    }
-	    
+
         ,addOne: function(thumbModel) {
         	var that = this;
         	var view;
-        	
+
         	if(this.ids){
 				_.each(that.ids, function(id){
 		        	// FILTER RESULT SET
@@ -70,20 +70,20 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 
 			        	// CREATE LIST OF EXISTING THUMBS
 			        	that.thumbsIdList.push(thumbModel.id);
-				        
+
 				        // APPEND CORRECT GRID CLASS
 				        that.$grid.append(view.el);
-					}	        	
+					}
 				});
         	}else{
 		        view = new ThumbView({model: thumbModel});
 		        view.render();
-		        
+
 		        // APPEND CORRECT GRID CLASS
 		        this.$grid.append(view.el);
         	}
 		}
-		
+
 		,events: {
 			"click #project-grid-badges>.plode-badge" : "onBadgeClick"
 		}
@@ -100,7 +100,7 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 			var id = $badge.html();
 			var re = new RegExp(",", "g");
 			var s;
-			
+
 			var ind = $.inArray(id, active);
 			if(!$badge.hasClass("active")){
 				if(ind == -1) active.push(id);
@@ -116,11 +116,11 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 				APP.instances.mainRouter.navigate(path, {trigger: true});
 			});
 		}
-		
+
 		,destroyEvents: function() {
 		    //COMPLETELY UNBIND THE VIEW
 		    this.undelegateEvents();
-		    $(this.el).removeData().unbind(); 
+		    $(this.el).removeData().unbind();
 	    }
 	});
 
@@ -143,7 +143,7 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 			this.$tags = this.$el.find(".grid-item-tags");
 			this.$arrow = this.$el.find(".grid-item-arrow");
 			this.$arrowLrg = this.$el.find(".arrow-lrg");
-			
+
 			// ADD SPINNER
 			APP.showPinwheel(this.$el.find(".pinwheel"));
 		}
@@ -210,7 +210,7 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 				"margin-left": 50
 				,"opacity": 0
 			});
-			
+
 		}
 		,onItemClick: function(e){
 			var id = $(e.currentTarget).attr("thumb-id");
@@ -221,6 +221,6 @@ function($, _, Backbone, APP, ProjectsCollection, template)
 	});
 
 
-	// Our module now returns our view	
+	// Our module now returns our view
 	return ProjectGridView;
 });

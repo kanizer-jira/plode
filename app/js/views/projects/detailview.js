@@ -11,14 +11,15 @@ define([
 
 	// Pull in the Collection module from above
 	,'collections/projects'
-  
+
   	// Using the Require.js text! plugin, we are loaded raw text
 	// which will be used as our views primary template
 	,'text!template/projects/detail_item.html'
-], 
+	,'text!template/projects/detail_item_static.html'
+],
 
-function($, _, Backbone, APP, desat, ProjectsCollection, template)
-{
+function($, _, Backbone, APP, desat, ProjectsCollection, template, templateStatic) {
+
 	var DetailView = Backbone.View.extend({
 		el: '#content'
 		,initialize: function(id){
@@ -31,16 +32,18 @@ function($, _, Backbone, APP, desat, ProjectsCollection, template)
 		,render: function(){
 			this.collection = new ProjectsCollection();
 			this.model = this.collection.get(this.id);
-			
+
 			// Compile the template using Underscores micro-templating
-			var compiledTemplate = _.template( template, this.model);
+			var compiledTemplate = this.model.detail.vid
+				? _.template( template, this.model)
+				: _.template( templateStatic, this.model);
 			this.$el.find("#project-detail").html(compiledTemplate);
 			this.$wrapper.fadeIn(200);
 		}
 		,destroyEvents: function() {
 		    //COMPLETELY UNBIND THE VIEW
 		    this.undelegateEvents();
-		    $(this.el).removeData().unbind(); 
+		    $(this.el).removeData().unbind();
 	    }
 		,events:{
 			"click .detail-tags .plode-badge" : "onBadgeClick"
@@ -55,7 +58,7 @@ function($, _, Backbone, APP, desat, ProjectsCollection, template)
 		,onArrowClick: function(e){
 			e.preventDefault();
 			e.stopPropagation();
-			
+
 			// GET NEXT PROJECT ID
 			var inc = ($(e.currentTarget).hasClass("arrow-l")) ? -1 : 1;
 			var ind = $.inArray(this.model, this.collection.models) + inc;
@@ -81,6 +84,6 @@ function($, _, Backbone, APP, desat, ProjectsCollection, template)
 		}
 	});
 
-	// Our module now returns our view	
+	// Our module now returns our view
 	return DetailView;
 });

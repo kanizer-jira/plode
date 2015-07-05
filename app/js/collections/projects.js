@@ -11,7 +11,7 @@ function(_, Backbone, APP, ProjectModel){
 
 	var ProjectCollection = Backbone.Collection.extend({
 		model: ProjectModel
-	    ,sort_key: "sequence"
+	    // ,sort_key: "sequence"
 		,initialize: function(){
 			var that = this;
 			_.each(APP.data.projects, function(item){
@@ -19,16 +19,15 @@ function(_, Backbone, APP, ProjectModel){
 				that.add(model);
 			})
 		}
-		
-	    ,comparator: function(item){
-			return item.get(this.sort_key);
-	    }
-	    
-	    ,sortByField: function(fieldName)
-	    {
-		    this.sort_key = fieldName;
-		    this.sort();
-	    }
+
+	  //   ,comparator: function(item){
+			// return item.get(this.sort_key);
+	  //   }
+
+	  //   ,sortByField: function(fieldName) {
+		 //    this.sort_key = fieldName;
+		 //    this.sort();
+	  //   }
 	});
 
 	// You don't usually return a collection instantiated
