@@ -3,7 +3,7 @@
  * RESUME
  *
  **/
- 
+
 
 
 $resume-padding: 5px;
@@ -27,12 +27,12 @@ body{
 		color: #ff0000 !important;
 		font-weight: bold !important;
 	}
-	
+
 	.header-role{
 		color: #666666 !important;
 		font-style: italic !important;
 	}
-	
+
 	#print-contact{
 		display: block;
 		font-size: 13px;
@@ -54,6 +54,11 @@ body{
 	display: none;
 }
 
+.resume-body>ul{
+	padding: 0 0 0 10px;
+	margin: 5px 0;
+}
+
 .resume-columns{
 	.col{
 		.vcenter-wrapper{
@@ -61,7 +66,7 @@ body{
 				.label{
 					font-weight: bold !important;
 					font-size: 16px !important;
-					padding-top: 20px;
+					padding-top: 10px;
 				}
 			}
 		}
@@ -73,39 +78,39 @@ body{
 
 	.resume-job{
 		padding-top: $resume-padding;
-		
+
 		.resume-hdr-grp{
 			background: #ffcc00 !important;
-		
+
 			.resume-hdr-title{
 			}
-	
+
 			.resume-hdr-role{
 				font-style: italic;
 				color: #666666 !important;
 			}
-			
+
 		}
-	
+
 		.resume-body{
 			text-decoration: none;
 		}
-		
+
 	}
-	
+
 	.resume-skills{
 		.resume-skills-item{
 			.resume-skills-hdr{
 				padding-top: $resume-padding;
 			}
-			
+
 			.resume-skills-list{
 				color: #666666 !important;
 				font-style: italic;
 			}
 		}
 	}
-	
+
 	.resume-edu{
 		padding-top: $resume-padding;
 	}
@@ -124,7 +129,7 @@ body{
  **/
 .arrow{
 	display: none;
-}	
+}
 
 
 
@@ -136,14 +141,14 @@ body{
  *
  **/
 #project-grid{
-	
+
 	#project-grid-badges{
 		display: none;
 	}
-	
+
 	.grid-item-arrow{
 		display: none;
-	}				
+	}
 
 	.arrow-lrg-wrapper{
 		display: none;

@@ -533,7 +533,10 @@ a {
         padding-left: 10px; }
   #about .resume-item {
     padding-bottom: 40px; }
-
+    .resume-body>ul{
+      padding: 0 0 0 20px;
+      margin: 1em 0 0;
+    }
 /**
  *
  * 0-479 : SMARTPHONE

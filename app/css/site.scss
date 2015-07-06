@@ -46,7 +46,7 @@ $darkGrey: #666;
 
 @mixin lato-light{
 	@include lato;
-	font-weight: 300; 
+	font-weight: 300;
 }
 
 @mixin lato-italic{
@@ -57,7 +57,7 @@ $darkGrey: #666;
 
 @mixin lato-reg{
 	@include lato;
-	font-weight: 400; 
+	font-weight: 400;
 }
 
 @mixin lato-bold{
@@ -65,11 +65,11 @@ $darkGrey: #666;
 	font-weight: 700;
 }
 
-@mixin shadow ($xoffset:0, $yoffset:0, $blur: 25px, $spread:0, $opac: $shadowOpacity){	
+@mixin shadow ($xoffset:0, $yoffset:0, $blur: 25px, $spread:0, $opac: $shadowOpacity){
 	-moz-box-shadow: $xoffset $yoffset $blur $spread rgba(0, 0, 0, $opac);
 	-webkit-box-shadow: $xoffset $yoffset $blur $spread  rgba(0, 0, 0, $opac);
 	box-shadow: $xoffset $yoffset $blur $spread rgba(0, 0, 0, $opac);
-	
+
 	-webkit-transition: -webkit-box-shadow .3s ease-out;
 	transition: box-shadow .3s ease-out;
 }
@@ -86,7 +86,7 @@ $darkGrey: #666;
 	-o-user-select: none;
 	user-select: none;
 }
-	
+
 @mixin margins{
 	width: $w;
 	margin: 0 auto;
@@ -164,7 +164,7 @@ a{
 	cursor: hand;
 	font-size: .8em;
 	@include no-select;
-	
+
 	&:hover{
 		background: $grey;
 		color: white;
@@ -241,32 +241,32 @@ a{
 			    cursor: hand;
 			    cursor: pointer;
 				font-size: 2em;
-    				
+
 				.header-title{
 					@include lato-bold;
 					letter-spacing: -1px;
 					color: $red;
 				}
-				
+
 				.header-role{
 					@include lato-light;
 				}
-				
+
 				#print-contact{
 					display: none;
 				}
 			}
 		}
-		
+
 		.header-inner-right{
 			width: $w;
 			height: $headerH;
 			position: absolute;
-			
+
 			.header-nav-block{
 				height: 100%;
 			    @include no-select;
-				
+
 				ul{
 					height: 100%;
 					padding: 0;
@@ -278,7 +278,7 @@ a{
 						height: 100%;
 						float: left;
 						color: $grey;
-						
+
 						.vcenter{
 							height: 100%;
 							display: table;
@@ -291,18 +291,18 @@ a{
 								padding: 0 2em;
 								font-size: 1.125em;
 								@include lato-light;
-								
+
 								&:hover {
 									color: $red;
 							        text-decoration: none;
 							    }
-							}   
+							}
 						}
-	
+
 						.active{
 							cursor: default;
 							color: $red;
-							
+
 							&:hover {
 								color: $red;
 						        text-decoration: none;
@@ -337,10 +337,10 @@ a{
 	width: 100%;
 	height: $footerH;
 	margin-top: -$footerH - 1;
-	bottom: 0px;	
+	bottom: 0px;
 	position: relative;
 	font-size: .838em;
-	
+
 	.footer-wrapper{
 		width: 100%;
 		height: 100%;
@@ -352,7 +352,7 @@ a{
 			margin: 0px auto;
 			border-top: $midGrey 1px solid;
 			padding-left: $marL;
-			
+
 			.footer-vcenter{
 				display: inline-table;
 				height: 100%;
@@ -364,20 +364,20 @@ a{
 				    display:table-cell;
 				    vertical-align: middle;
 				    @include lato-light;
-				    
+
 				    a{
 						color: $midGrey;
-						text-decoration: none;    
+						text-decoration: none;
 					    cursor: pointer;
-				    
+
 						&:hover{
 							color: $red;
-							text-decoration: none;    
+							text-decoration: none;
 						}
 				    }
-				    
+
 				    .footer-label{
-				    	@include lato-bold; 
+				    	@include lato-bold;
 					    color: $darkGrey;
 				    }
 				}
@@ -395,12 +395,12 @@ a{
  *
  **/
 #project-grid{
-	
+
 	#project-grid-badges{
 		width: 500px;
 		padding: 0 0 $marB $marL;
 	}
-	
+
 	.grid-item{
 		display: inline-block;
 		cursor: hand;
@@ -408,16 +408,16 @@ a{
 		width: $gridItemW;
 		height: $gridItemH;
 		padding: 7px;
-		
+
 		&:hover{
 		}
-		
+
 		.grid-item-bg{
 			position: absolute;
 			width: $gridItemW;
 			height: $gridItemH;
 			background: $grey;
-			
+
 			.pinwheel{
 				position: absolute;
 				width: 0;
@@ -425,18 +425,18 @@ a{
 				left: $gridItemW/2;
 				top: $gridItemH/2;
 			}
-			
+
 			.des{
 				position: absolute;
 				width: $gridItemW;
 				height: $gridItemH;
 			}
-			
+
 			.des{
 				@include opac(1);
 			}
 		}
-		
+
 		.grid-item-overlay{
 			position: absolute;
 			width: $gridItemW;
@@ -451,7 +451,7 @@ a{
 				background: $red;
 				@include opac(.7);
 				@include trans($durShort);
-			}				
+			}
 
 			.grid-item-label-wrapper{
 				display: table;
@@ -467,7 +467,7 @@ a{
 					vertical-align: middle;
 					padding: 0 10px;
 					font-size: .8em;
-					
+
 					.move{
 						@include trans($durMed);
 						span{
@@ -475,7 +475,7 @@ a{
 							line-height: 1.1em;
 							@include trans($durMed);
 						}
-						
+
 						span.label{
 							@include lato-reg;
 						}
@@ -491,8 +491,8 @@ a{
 						@include opac(0);
 						@include trans($durShort);
 					}
-				}	
-							
+				}
+
 				.vcenter{
 					float: right;
 					display: table;
@@ -504,17 +504,17 @@ a{
 						vertical-align: middle;
 						padding-right: 10px;
 						color: white;
-					}				
+					}
 				}
 			}
-			
+
 			.arrow-lrg-wrapper{
 				position: absolute;
 				display: inline-block;
 				width: 100%;
 				height: 100%;
 				clip: rect(0, $gridItemW, $gridItemH, 0);
-				
+
 				.arrow-lrg{
 					width: 100%;
 					height: 100%;
@@ -524,7 +524,7 @@ a{
 					text-align: right;
 					@include opac(0);
 					@include trans($durMed);
-	
+
 					.grid-item-arrow-lrg{
 						display: table-cell;
 						vertical-align: middle;
@@ -532,10 +532,10 @@ a{
 						font-size: 6em;
 						color: $red;
 						@include trans($durMed);
-					}				
+					}
 				}
 			}
-			
+
 			.hit-area{
 				position: absolute;
 				width: $gridItemW;
@@ -559,30 +559,30 @@ a{
 	width: $w;
 	padding: 0 $arrowW;
 	margin-left: -$arrowW;
-	
+
 	.detail-item{
 		width: 100%;
 		padding-top: 20px;
-		
+
 		.detail-video-wrapper{
 			width: $w + ($arrowW + $arrowMar) * 2;
 			margin-left: -$arrowW - $arrowMar;
 			display: inline-block;
-			
+
 			.arrow{
 				width: $arrowW;
 				height: $vidH;
 				display: table;
 				cursor: hand;
 				cursor: pointer;
-				
+
 				.arrow-wrapper{
 					display: table-cell;
 					vertical-align: middle;
 					width: $arrowW;
 					height: $arrowH;
 					padding-bottom: $arrowH;
-					
+
 					img{
 						position: absolute;
 						// NEEDS TO BE DEFINED FOR DESATURATION SCRIPT
@@ -591,24 +591,24 @@ a{
 						@include opac(0);
 					}
 				}
-			}	
-					
+			}
+
 			.arrow-l{
 				float: left;
 				padding-right: $arrowMar;
 			}
-		
+
 			.arrow-r{
 				float: right;
 				margin-left: $arrowMar;
 			}
-		
+
 			.detail-video{
 				width: $vidW;
 				height: $vidH;
 				float: left;
 				background: $grey;
-				
+
 				video{
 					width: $vidW;
 					height: $vidH;
@@ -618,47 +618,47 @@ a{
 			.detail-content{
 				padding: 10px 0px 0 $descPad;
 				width: $descW;
-				float: left;			
+				float: left;
 
 				.detail-header{
 					width: 100%;
 					display: table;
-					
+
 					.detail-header-txt{
 						vertical-align: middle;
 						display: table-cell;
 						font-size: 1.4em;
-						
+
 						.client{
 							@include lato-bold;
 							color: $darkGrey;
 						}
-						
+
 						.desc{
 							@include lato-light;
 							color: $midGrey;
 						}
 					}
-					
+
 					.detail-header-back{
 						vertical-align: middle;
 						display: table-cell;
 						font-size: 1em;
 						float: right;
-						
+
 						.vcenter-wrapper{
 							display: table;
 							height: 20px;
 							float: left;
-	
+
 							.vcenter{
 								display: table-cell;
 								vertical-align: middle;
-								
+
 								.arrow{
 									padding-right: 5px;
 								}
-								
+
 								.label{
 									display: inline-block;
 								}
@@ -666,15 +666,15 @@ a{
 						}
 					}
 				}
-				
+
 				.detail-tags{
 					padding: 5px 0 15px 0;
 				}
-				
+
 				.detail-desc{
 					font-size: 1.2em;
 					text-align: justify;
-					
+
 					ul{
 						padding-left: 0;
 						list-style-image:url('../img/arrow_fwd.png');
@@ -698,23 +698,23 @@ a{
  **/
 #about{
 	padding: 0 $marL;
-	
+
 	.resume-blurb{
 		@include lato-light;
 		font-size: 1.7em;
 		text-align: justify;
 		padding-bottom: 10px;
 	}
-	
+
 	.print-btn-wrapper{
 		width: 100%;
 		display: inline-block;
 		padding-bottom: 40px;
 	}
-	
+
 	.print-btn{
 		font-size: 1em;
-		
+
 		.vcenter-wrapper{
 			display: table;
 			height: 20px;
@@ -723,29 +723,29 @@ a{
 			.vcenter{
 				display: table-cell;
 				vertical-align: middle;
-				
+
 				.icon{
 					padding-right: 5px;
 				}
-				
+
 				.label{
 					display: inline-block;
 				}
 			}
 		}
 	}
-	
+
 	.resume-columns{
 		display: inline-block;
-		
+
 		.col{
 			width: 48%;
 			margin-right: 2%;
-			
+
 			.vcenter-wrapper{
 				display: table;
 				height: 20px;
-				
+
 				.vcenter{
 					display: table-cell;
 					vertical-align: middle;
@@ -757,27 +757,31 @@ a{
 				padding-right: 5px;
 			}
 		}
-		
+
 		.col0{
 			float: left;
 
 			.resume-job{
 				padding-bottom: 20px;
 				padding-left: 10px;
-				
+
 				.resume-hdr-grp{
 					padding-bottom: 5px;
-				
+
 					.resume-hdr-title{
 					}
-			
+
 					.resume-hdr-role{
 						@include lato-italic;
 						color: $midGrey;
 					}
 				}
-			
+
 				.resume-body{
+					ul {
+						padding: 0 0 0 20px;
+						margin: 1em 0 0;
+					}
 				}
 			}
 		}
@@ -787,31 +791,31 @@ a{
 			padding-bottom: 10px;
 			font-size: 1.2em;
 		}
-		
+
 		.col1{
 			float: right;
-			
+
 			.resume-skills{
 				padding-bottom: 20px;
 				padding-left: 10px;
 
 				.resume-skills-item{
 					padding-bottom: 15px;
-					
+
 					.resume-skills-hdr{
 					}
-					
+
 					.resume-skills-list{
 						@include lato-italic;
 						color: $grey;
 					}
-					
+
 					.resume-skills-desc{
-						
+
 					}
 				}
 			}
-				
+
 			.resume-edu{
 				padding-left: 10px;
 			}
@@ -848,7 +852,7 @@ $spMarV: 10px;
 	#project-grid-badges{
 		width: $spW !important;
 	}
-	
+
 	#wrapper{
 		width: $spW;
 		margin: 0 auto;
@@ -858,7 +862,7 @@ $spMarV: 10px;
 		width: $spW;
 		height: $spHeaderH;
 	}
-	
+
 	#masthead-shadow{
 		// ADD MARGIN TO PREVENT BLEED OVER SIDES
 		width: $spW - 6;
@@ -870,15 +874,15 @@ $spMarV: 10px;
 			height: $spHeaderH + 6px;
 		}
 	}
-	
+
 	#masthead{
 		width: $spW;
 		height: $spHeaderH;
-		
+
 		.header-margins{
 			width: 100%;
 			height: $spHeaderH + 6px;
-			
+
 			.header-inner-left{
 				position: relative;
 
@@ -899,16 +903,16 @@ $spMarV: 10px;
 				border-top: solid $grey 1px;
 
 				.header-nav-block{
-					
+
 					ul{
 						float: none;
-						
+
 						li{
 							width: 50%;
-							
+
 							.vcenter{
 								width: 100%;
-								
+
 								.nav-item{
 									text-align: center;
 								}
@@ -926,7 +930,7 @@ $spMarV: 10px;
 				width: $spW;
 				padding: 0px;
 				font-size: 1.2em;
-				
+
 				.footer-vcenter{
 					.footer-vcenter-wrapper{
 						.footer-extra{
@@ -937,15 +941,15 @@ $spMarV: 10px;
 			}
 		}
 	}
-	
+
 	#project-grid{
-	
+
 		#project-grid-badges{
 			width: $spW;
 			padding: 0 0 $marB 0;
 			text-align: center;
 		}
-		
+
 		.grid-item{
 			.grid-item-overlay{
 				.grid-item-label-wrapper{
@@ -965,23 +969,23 @@ $spMarV: 10px;
 			}
 		}
 	}
-	
+
 	#project-detail{
 		width:  $spW;
 		padding: 0;
 		margin: 0;
-		
+
 		.detail-item{
 			padding-top: 0px;
 
 			.detail-video-wrapper{
 				width: $spW;
 				margin: 0;
-				
+
 				.arrow{
 					display: none;
 				}
-				
+
 				.detail-video{
 					width: $spW;
 					height: ($spW * $vidH) / $vidW;
@@ -990,29 +994,29 @@ $spMarV: 10px;
 						width: $spW;
 						height: ($spW * $vidH) / $vidW;
 					}
-			
+
 				}
 
 				.detail-content{
 					width: $spW;
 					padding: 20px 0 0 0;
 					clear: left;
-					
+
 					.detail-header{
-	
+
 						.detail-header-txt{
 							display: block;
 						}
-						
+
 						.detail-header-back{
 							float: left;
 						}
 					}
-				}			
+				}
 			}
 		}
 	}
-	
+
 	#about{
 		text-align: left;
 
@@ -1020,25 +1024,25 @@ $spMarV: 10px;
 			font-size: 1.2em;
 			padding-bottom: 20px;
 		}
-		
+
 		.print-btn-wrapper{
 			display: none;
 		}
-		
+
 		.resume-columns{
 			.col{
 				width: 100%;
 				margin: 0;
 			}
-			
+
 			.col0{
 				float: none;
-				
+
 			}
 
 			.col1{
 				float: none;
-				
+
 				.resume-skills{
 					padding-bottom: 0;
 				}
@@ -1069,7 +1073,7 @@ $miniMarV: 10px;
 	#project-grid-badges{
 		width: $miniW !important;
 	}
-	
+
 	#wrapper{
 		width: $miniW;
 		margin: 0 auto;
@@ -1079,7 +1083,7 @@ $miniMarV: 10px;
 		width: $miniW;
 		height: $miniHeaderH;
 	}
-	
+
 	#masthead-shadow{
 		// ADD MARGIN TO PREVENT BLEED OVER SIDES
 		width: $miniW - 6;
@@ -1091,15 +1095,15 @@ $miniMarV: 10px;
 			height: $miniHeaderH + 6px;
 		}
 	}
-	
+
 	#masthead{
 		width: $miniW;
 		height: $miniHeaderH;
-		
+
 		.header-margins{
 			width: 100%;
 			height: $miniHeaderH + 6px;
-			
+
 			.header-inner-left{
 				position: relative;
 
@@ -1120,16 +1124,16 @@ $miniMarV: 10px;
 				border-top: solid $grey 1px;
 
 				.header-nav-block{
-					
+
 					ul{
 						float: none;
-						
+
 						li{
 							width: 50%;
-							
+
 							.vcenter{
 								width: 100%;
-								
+
 								.nav-item{
 									text-align: center;
 								}
@@ -1147,7 +1151,7 @@ $miniMarV: 10px;
 				width: $miniW;
 				padding: 0px;
 				font-size: 1.2em;
-				
+
 				.footer-vcenter{
 					.footer-vcenter-wrapper{
 						.footer-extra{
@@ -1158,19 +1162,19 @@ $miniMarV: 10px;
 			}
 		}
 	}
-	
+
 	#project-grid{
-	
+
 		#project-grid-badges{
 			width: $miniW - 20 !important;
 			padding: 0 10px $marB 10px;
 			text-align: center;
 		}
-		
+
 		.grid-item{
 			// CENTER COLUMN
 			padding: 7px ($miniW - $gridItemW) / 2;
-		
+
 			.grid-item-overlay{
 				.grid-item-label-wrapper{
 					.grid-item-label{
@@ -1189,23 +1193,23 @@ $miniMarV: 10px;
 			}
 		}
 	}
-	
+
 	#project-detail{
 		width:  $miniW;
 		padding: 0;
 		margin: 0;
-		
+
 		.detail-item{
 			padding-top: 0px;
 
 			.detail-video-wrapper{
 				width: $miniW;
 				margin: 0;
-				
+
 				.arrow{
 					display: none;
 				}
-				
+
 				.detail-video{
 					width: $miniW;
 					height: ($miniW * $vidH) / $vidW;
@@ -1214,19 +1218,19 @@ $miniMarV: 10px;
 						width: $miniW;
 						height: ($miniW * $vidH) / $vidW;
 					}
-			
+
 				}
 				.detail-content{
 					width: $miniW;
 					padding: 30px 0 0 0;
 					clear: left;
-					
+
 					.detail-header{
-	
+
 						.detail-header-txt{
 							display: block;
 						}
-						
+
 						.detail-header-back{
 							float: left;
 						}
@@ -1235,31 +1239,31 @@ $miniMarV: 10px;
 			}
 		}
 	}
-	
+
 	#about{
 		.resume-blurb{
 			font-size: 1.2em;
 			padding-bottom: 20px;
 		}
-		
+
 		.print-btn-wrapper{
 			display: none;
 		}
-		
+
 		.resume-columns{
 			.col{
 				width: 100%;
 				margin: 0;
 			}
-			
+
 			.col0{
 				float: none;
-				
+
 			}
 
 			.col1{
 				float: none;
-				
+
 				.resume-skills{
 					padding-bottom: 0;
 				}
@@ -1293,7 +1297,7 @@ $tabDescW: 235px;
 	#project-grid-badges{
 		width: $tabW !important;
 	}
-	
+
 	#wrapper{
 		width: $tabWPerc;
 		margin: 0 auto;
@@ -1302,7 +1306,7 @@ $tabDescW: 235px;
 	#masthead-wrapper{
 		width: $tabWPerc;
 	}
-	
+
 	#masthead-shadow{
 		// ADD MARGIN TO PREVENT BLEED OVER SIDES
 		width: $tabWPerc;
@@ -1311,25 +1315,25 @@ $tabDescW: 235px;
 			width: 100%;
 		}
 	}
-	
+
 	#masthead{
 		width: $tabWPerc;
-		
+
 		.header-margins{
 			width: 100%;
-			
+
 			.header-inner-right{
 				width: 100%;
 
 				.header-nav-block{
-					
+
 					ul{
 						float: right;
-						
+
 						li{
 							.vcenter{
 								width: 100%;
-								
+
 								.nav-item{
 									text-align: center;
 								}
@@ -1350,26 +1354,26 @@ $tabDescW: 235px;
 			}
 		}
 	}
-	
+
 	#project-grid{
 		width: $gridItemW * 2 + 60;
 //		padding: 0 ($tabW - ($gridItemW * 2 + 60)) / 2;
 		text-align: left;
 		display: inline-block;
-	
+
 		#project-grid-badges{
 			width: $gridItemW * 2 !important;// + 60 - 20 !important;
 //			padding: 0 10px $marB 10px;
 			text-align: center;
 			display: inline-block;
 		}
-		
+
 		.grid-item{
 			// CENTER COLUMN
 			display: inline-block;
 			padding: 15px;
 			// ($tabW - $gridItemW) / 2;
-		
+
 			.grid-item-overlay{
 				.grid-item-label-wrapper{
 					.grid-item-label{
@@ -1388,22 +1392,22 @@ $tabDescW: 235px;
 			}
 		}
 	}
-	
+
 	#project-detail{
 		width:  100%;
 		padding: 0;
 		margin: 0;
 		display: inline-block;
-		
+
 		.detail-item{
 			.detail-video-wrapper{
 				width: $tabW;
 				margin: 0;
-				
+
 				.arrow{
 					display: none;
 				}
-				
+
 				.detail-video{
 					width: $tabVidW;
 					height: ($tabVidW * $vidH) / $vidW;
@@ -1412,20 +1416,20 @@ $tabDescW: 235px;
 						width: $tabVidW;
 						height: ($tabVidW * $vidH) / $vidW;
 					}
-			
+
 				}
 
 				.detail-content{
 					width: $tabDescW;
 					text-align: left;
-					
+
 					.detail-header{
-	
+
 						.detail-header-txt{
 							display: block;
 							font-size: 1.2em;
 						}
-						
+
 						.detail-header-back{
 							float: left;
 						}
@@ -1438,7 +1442,7 @@ $tabDescW: 235px;
 			}
 		}
 	}
-	
+
 	#about{
 		text-align: left;
 	}
