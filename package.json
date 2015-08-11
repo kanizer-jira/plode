@@ -5,7 +5,7 @@
   "main": "r.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "r.js -o app/js/build.js",
+    "build": "node r.js -o app/js/build.js",
     "start": "npm run build"
   },
   "repository": {
