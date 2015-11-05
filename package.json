@@ -5,7 +5,7 @@
   "main": "r.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node r.js -o app/js/build.js",
+    "build": "node build-tools/buildHelper.js && node r.js -o app/js/build.js",
     "start": "npm run build"
   },
   "repository": {
@@ -17,5 +17,27 @@
     "portfolio"
   ],
   "author": "Nelson Shin",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "chalk": "^1.1.1",
+    "node-sass": "^3.4.1"
+  },
+  "buildTools": {
+    "sass": {
+      "files": [
+        {
+          "src": "app/css/site.scss",
+          "dest": "app/css/site.css"
+        },
+        {
+          "src": "app/css/print.scss",
+          "dest": "app/css/prints.css"
+        },
+        {
+          "src": "app/css/ie.scss",
+          "dest": "app/css/ie.css"
+        }
+      ]
+    }
+  }
 }

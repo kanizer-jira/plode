@@ -1,34 +1,3 @@
-/**
- * PLODE.COM - IE STYLES
- */
-/**
- *
- * VARS
- *
- **/
-/**
- *
- * MIXINS
- *
- **/
-/**
- *
- * HEADER
- *
- **/
-#masthead .header-margins .header-inner-right .header-nav-block ul li {
-  height: 50px; }
+#masthead .header-margins .header-inner-right .header-nav-block ul li{height:50px}.grid-item-label-wrapper .vcenter{height:30px !important}
 
-/**
- *
- * GRID
- *
- **/
-.grid-item-label-wrapper .vcenter {
-  height: 30px !important; }
-
-/**
- *
- * DETAIL
- *
- **/
+/*# sourceMappingURL=ie.css.map */
