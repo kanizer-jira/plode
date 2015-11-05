@@ -613,6 +613,10 @@ a{
 					width: $vidW;
 					height: $vidH;
 				}
+
+				img {
+					width: 100%;
+				}
 			}
 
 			.detail-content{
