@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node build-tools/buildHelper.js && node r.js -o app/js/build.js",
-    "start": "npm run build"
+    "start": "npm run build",
+    "preview": "live-server --open=app",
+    "sass": "sass --watch app/css/site.scss:app/css/site.css"
   },
   "repository": {
     "type": "git",
