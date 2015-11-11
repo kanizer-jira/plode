@@ -1,5 +1,4 @@
 define([
-	// These are path alias that we configured in our bootstrap
 	'jquery',
 	'underscore',
 	'backbone',
@@ -13,11 +12,10 @@ define([
 ],
 function($, _, Backbone, APP, ProjectCollection, ProjectGridView, DetailView, ResumeView, HeaderView, FooterView){
 
-	var MainRouter = Backbone.Router.extend(
-	{
-		initialize: function(){
-		}
-		
+	var MainRouter = Backbone.Router.extend( {
+
+		initialize: function() {}
+
 		,routes:{
 			"" 				: "showHome"
 			,"projects"		: "showHome"
@@ -25,7 +23,7 @@ function($, _, Backbone, APP, ProjectCollection, ProjectGridView, DetailView, Re
 			,"about" 		: "showResume"
 			,"detail/:id" 	: "showDetail"
 		}
-	
+
 		,showHome: function(id){
 			APP.log("ROUTE: showHome: ", id);
 
@@ -39,8 +37,8 @@ function($, _, Backbone, APP, ProjectCollection, ProjectGridView, DetailView, Re
 				var a = id.split("+");
 				param = {ids:a};
 			}
-			
-			
+
+
 			// Call render on the module we loaded in via the dependency array
 			// 'views/projects/list'
 			var gridView = new ProjectGridView(param);
@@ -52,7 +50,7 @@ function($, _, Backbone, APP, ProjectCollection, ProjectGridView, DetailView, Re
 
  			APP.instances.headerView.setNav("about");
  			this.cleanup("about");
- 			
+
 			var resumeView = new ResumeView();
 			resumeView.render();
 		}
@@ -66,7 +64,7 @@ function($, _, Backbone, APP, ProjectCollection, ProjectGridView, DetailView, Re
 			var detailView = new DetailView({id: id});
 			detailView.render();
 		}
-		
+
 		,cleanup: function(id){
 			_.each(["about:about", "detail:project-detail", "projects:project-grid"]
 				,function(s){
@@ -84,30 +82,23 @@ function($, _, Backbone, APP, ProjectCollection, ProjectGridView, DetailView, Re
 	var header = new HeaderView();
 	header.render();
 	APP.instances.headerView = header;
-	
+
 	// DRAW FOOTER
 	var footer = new FooterView();
 	footer.render();
 	APP.instances.footerView = footer;
-	
+
 	// INIT COLLECTION
 	var col = new ProjectCollection();
 	APP.instances.projectCollection = col;
 
 
-
 	var initialize = function(){
-	
 		var app_router = new MainRouter();
-
 		Backbone.history.start();
-		//Backbone.history.start({pushState: false, root: "test.html"});
-		
 		return app_router;
 	};
 
-	return {
-		initialize: initialize
-	};
+	return { initialize: initialize };
 
 });

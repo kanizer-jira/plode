@@ -1,21 +1,14 @@
-// file: views/projects/gridview.js
-
 define([
 	'jquery'
 	,'underscore'
 	,'backbone'
 	,'applogic'
-
-	// Pull in the Collection module from above
 	,'collections/projects'
-
-  	// Using the Require.js text! plugin, we are loaded raw text
-	// which will be used as our views primary template
 	,'text!template/projects/grid_item.html'
 ],
 
-function($, _, Backbone, APP, ProjectsCollection, template)
-{
+function($, _, Backbone, APP, ProjectsCollection, template) {
+
 	var ProjectGridView = Backbone.View.extend({
 		el: '#content'
 		,initialize: function(params){

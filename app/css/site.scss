@@ -246,6 +246,7 @@ a{
 					@include lato-bold;
 					letter-spacing: -1px;
 					color: $red;
+					padding-right: 5px;
 				}
 
 				.header-role{
@@ -1064,7 +1065,7 @@ $spMarV: 10px;
  *
  **/
 $miniW: 480px;
-$miniHeaderH: 100px;
+$miniHeaderH: 105px;
 $miniNavH: 40px;
 $miniMarV: 10px;
 
@@ -1115,7 +1116,7 @@ $miniMarV: 10px;
 
 					.header-role{
 						display: block;
-						margin-top: -10px;
+						margin-top: -5px;
 					}
 				}
 			}

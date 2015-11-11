@@ -1,14 +1,9 @@
-// file: views/resume/resumeview.js
-
 define([
 	'jquery'
 	,'underscore'
 	,'backbone'
-  
-  	// Using the Require.js text! plugin, we are loaded raw text
-	// which will be used as our views primary template
 	,'text!template/resume/resume.html'
-], 
+],
 
 function($, _, Backbone, template)
 {
@@ -35,6 +30,6 @@ function($, _, Backbone, template)
 		}
 	});
 
-	// Our module now returns our view	
+	// Our module now returns our view
 	return ResumeView;
 });

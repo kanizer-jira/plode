@@ -1,5 +1,3 @@
-// file: views/projects/detailview.js
-
 define([
 	'jquery'
 	,'underscore'

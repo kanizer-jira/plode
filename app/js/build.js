@@ -30,10 +30,5 @@
     dir: "../../deploy",
     mainConfigFile: "main.js",
     removeCombined: true,
-    modules: [
-        {
-            name: "main"
-        }
-    ]
+    modules: [{ name: "main" }]
 })
-/**/

@@ -1,13 +1,10 @@
-//Filename: applogic.js
-
 define([
-	// These are path alias that we configured in our bootstrap
 	'jquery',
 	'underscore',
 	'backbone',
 	'spin'
 ],
-function($, _, Backbone, Spinner){
+function($, _, Backbone, Spinner) {
 
 	var APP = {};
 

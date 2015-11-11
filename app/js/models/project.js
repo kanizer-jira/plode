@@ -1,9 +1,8 @@
-// Filename: models/project
 define([
 	'underscore',
 	'backbone'
 ],
-function(_, Backbone){
+function(_, Backbone) {
 
 	var ProjectModel = Backbone.Model.extend({
 		initialize: function(obj){

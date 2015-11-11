@@ -1,13 +1,10 @@
-// Filename: collections/projects
 define([
 	'underscore',
 	'backbone',
 	'applogic',
-
-	// Pull in the Model module from above
 	'models/project'
 ],
-function(_, Backbone, APP, ProjectModel){
+function(_, Backbone, APP, ProjectModel) {
 
 	var ProjectCollection = Backbone.Collection.extend({
 		model: ProjectModel
