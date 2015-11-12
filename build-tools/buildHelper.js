@@ -1,5 +1,4 @@
 var Promise = require('bluebird');
-var R       = require('ramda');
 var _       = require('lodash');
 var fse     = require('fs-extra');
 var glob    = require('glob');
