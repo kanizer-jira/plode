@@ -13,8 +13,6 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" type='text/css' href="css/libs/html5boilerplate/normalize.css">
-        <link rel="stylesheet" type='text/css' href="css/libs/html5boilerplate/main.css">
 		<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic' >
 		<link rel="stylesheet" type='text/css' href="css/site.css" media="screen" />
 		<link rel="stylesheet" type='text/css' href="css/print.css" media="print" />
@@ -23,8 +21,6 @@
 		<link rel="stylesheet" type='text/css' href="css/ie.css" media="screen" />
 		<![endif]-->
 
-
-		<script type="text/javascript" src="js/libs/modernizr.js"></script>
 		<script type="text/javascript" src="js/libs/swfobject.js"></script>
 	</head>
 
@@ -35,8 +31,6 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-
-
         <!-- #WRAPPER -->
 		<div id="wrapper">
 
@@ -44,7 +38,7 @@
 	        <div id="masthead-wrapper">
                 <div id="masthead"></div>
 		        <div id="masthead-shadow"></div>
-			</div><!-- #MASTHEAD-WRAPPER -->
+			</div><!-- /#MASTHEAD-WRAPPER -->
 
 	        <!-- #CONTENT -->
 			<div id="content"></div><!-- #CONTENT -->
@@ -53,11 +47,9 @@
 
 		<!-- #FOOTER -->
 		<div id="footer"></div><!-- /#FOOTER -->
+		<!--{{STARTDEV}}--><script data-main="js/main" src="js/libs/require.2.1.2.min.js"></script><!--{{ENDDEV}}-->
+		<!--{{STARTPROD}}<script src="js/main.js"></script>{{ENDPROD}}-->
 
-
-
-		<script data-main="js/main" src="js/libs/require.2.1.2.min.js"></script>
-        <!-- Google Analytics -->
         <script>
             var _gaq=[['_setAccount','UA-38316986-1'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

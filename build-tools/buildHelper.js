@@ -1,37 +1,160 @@
-var fs = require('fs');
-var chalk = require('chalk');
-var sass = require('node-sass');
-var conf = require('../package.json').buildTools.sass;
+var Promise = require('bluebird');
+var R       = require('ramda');
+var _       = require('lodash');
+var fse     = require('fs-extra');
+var glob    = require('glob');
+var chalk   = require('chalk');
+var sass    = require('node-sass');
+var conf    = require('../package.json').buildTools.sass;
 
-var completed = 0;
-for(var i = 0; i < conf.files.length; i++) {
-	(function(ind) {
-		var src = conf.files[ind].src;
-		var dest = conf.files[ind].dest;
-		sass.render({
-			file: src,
-			outputStyle: 'compressed',
-			outFile: dest,
-			sourceMap: true, // or an absolute or relative (to outFile) path
-		}, function(err, result) {
-			// console.log('result.stats', ind, result.stats);
-			if(!err) {
-				// No errors during the compilation, write this result on the disk
-				fs.writeFile(dest, result.css, function(writeErr) {
-					if(!writeErr) {
-						// file written on disk
-						console.log(chalk.cyan(src, 'compiled to:', dest));
-						completed++;
-						if(completed === conf.files.length) {
-							console.log(chalk.bgGreen('All sass files successfully compiled!'));
-						}
-					} else {
-						console.log(chalk.red('writeErr', writeErr));
+//----------------------------------------------------------------------
+//
+// transpile sass
+//
+//----------------------------------------------------------------------
+
+// promisify methods
+var sassRender = Promise.promisify(sass.render);
+var globbers = Promise.promisify(glob);
+
+var count = conf.files.length; // re-used in copyFiles()!
+// _.forEach(conf.files, compileSass);
+
+function compileSass(file) {
+	sassRender({
+		file: file.src,
+		outputStyle: 'compressed',
+		outFile: file.dest,
+		sourceMap: true, // or an absolute or relative (to outFile) path
+	})
+	.catch(function(err) {
+		console.log(chalk.red('sass render error', err));
+	})
+	.then(function(result) {
+		// No errors during the compilation, write this result on the disk
+		if(result) {
+			fse.writeFile(file.dest, result.css, function(writeErr) {
+				if(!writeErr) {
+					// file written on disk
+					count--;
+					if(count === 0) {
+						console.log(chalk.bgGreen('All sass files successfully compiled!'));
+						copyBuilt(); // lame-o
 					}
-				});
-			} else {
-				console.log(chalk.red('err', err));
-			}
+				} else {
+					console.log(chalk.red(file.src, 'sass compilation writeErr', writeErr));
+				}
+			});
+		}
+	});
+}
+
+
+//----------------------------------------------------------------------
+//
+// copy files to deploy directory;
+// aka spend all day re-writing a gulp task that already exists
+//
+//----------------------------------------------------------------------
+
+// copyBuilt();
+
+var cwd = 'app/css/';
+var dest = 'deploy/css/';
+function copyBuilt() {
+	// remove old deploy
+	fse.remove('deploy', function(err) {
+		if(err) console.log(chalk.red('error cleaning deploy folder', err));
+
+		// copy to deploy
+		globbers('*.css', {cwd: cwd})
+			.catch(function(err) {
+				console.log(chalk.red('css glob failure', err));
+			})
+			.then(function(files) {
+				cwd = 'app/css/';
+				dest = 'deploy/css/';
+				return copyFiles(files, 'css');
+			})
+			.then(function(label) {
+				console.log(chalk.bgGreen(label, 'copied to deploy'));
+				cwd = 'app/';
+				dest = 'deploy/';
+				return globbers('*.html', {cwd: cwd, ignore: 'index.html'})
+			})
+			.then(function(files) {
+				return copyFiles(files, 'html')
+			})
+			.then(function(label) {
+				console.log(chalk.bgGreen(label, 'copied to deploy'));
+				cwd = 'app/';
+				dest = 'deploy/';
+				return globbers('*.txt', {cwd: cwd})
+			})
+			.then(function(files) {
+				return copyFiles(files, 'txt')
+			})
+			.then(function() {
+				cwd = 'app/js/libs/';
+				dest = 'deploy/js/libs/';
+				return copyFiles(['swfobject.js'], 'js');
+			})
+			.then(function(label) {
+				console.log(chalk.bgGreen(label, 'copied to deploy'));
+				return copyFolder('app/img', 'deploy/img', 'images');
+			})
+			.then(function(label) {
+				return copyFolder('app/swf', 'deploy/swf', 'swf');
+			})
+			.then(function(label) {
+				return copyFolder('app/xml', 'deploy/xml', 'xml');
+			})
+
+			// update index for prod
+			.then(updateIndex);
+	});
+}
+
+updateIndex();
+function updateIndex() {
+	fse.readFile('app/index.html', {encoding: 'UTF-8'}, function(err, data) {
+		data = data
+		    .replace(/<!--\{\{STARTPROD\}\}/g, '')
+		    .replace(/\{\{ENDPROD\}\}-->/g, '')
+		    .replace(/<!--\{\{STARTDEV\}\}[\s\S]*\{\{ENDDEV\}\}-->/g, '');
+		fse.writeFile('deploy/index.html', data, function(res) {
+			console.log('buildHelper.js: res:', res);
 		});
-	})(i);
+	});
+}
+
+function copyFiles(files, label) {
+	count = files.length;
+	return new Promise(function(resolve, reject) {
+		_.forEach(files, function(file) {
+			fse.copy(cwd + file, dest + file, function (err) {
+				if (err) {
+					reject(err);
+					return console.log(chalk.red(file, 'copy failure:', err));
+				}
+				count--;
+				if(count === 0) {
+					resolve(label);
+				}
+			});
+		})
+	});
+}
+
+function copyFolder(src, dest, label) {
+	return new Promise(function(resolve, reject) {
+		fse.copy(src, dest, function (err) {
+			if (err) {
+				reject(err);
+				return console.log(chalk.red(label, 'copy failure:', err));
+			}
+			console.log(chalk.bgGreen(label, 'copied to deploy'));
+			resolve(label);
+		});
+	});
 }

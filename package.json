@@ -8,7 +8,7 @@
     "build": "node build-tools/buildHelper.js && node r.js -o app/js/build.js",
     "start": "npm run build",
     "preview": "live-server --open=app",
-    "sass": "sass --watch app/css/site.scss:app/css/site.css"
+    "sass": "sass --watch app/css/scss/site.scss:app/css/site.css"
   },
   "repository": {
     "type": "git",
@@ -21,23 +21,32 @@
   "author": "Nelson Shin",
   "license": "ISC",
   "devDependencies": {
+    "bluebird": "^3.0.5",
     "chalk": "^1.1.1",
-    "node-sass": "^3.4.1"
+    "fs-extra": "^0.26.2",
+    "glob": "^5.0.15",
+    "lodash": "^3.10.1",
+    "node-sass": "^3.4.1",
+    "ramda": "^0.18.0"
   },
   "buildTools": {
     "sass": {
       "files": [
         {
-          "src": "app/css/site.scss",
+          "src": "app/css/scss/site.scss",
           "dest": "app/css/site.css"
         },
         {
-          "src": "app/css/print.scss",
-          "dest": "app/css/prints.css"
+          "src": "app/css/scss/print.scss",
+          "dest": "app/css/print.css"
         },
         {
-          "src": "app/css/ie.scss",
+          "src": "app/css/scss/ie.scss",
           "dest": "app/css/ie.css"
+        },
+        {
+          "src": "app/css/scss/plode-player-styles.scss",
+          "dest": "app/css/plode-player-styles.css"
         }
       ]
     }

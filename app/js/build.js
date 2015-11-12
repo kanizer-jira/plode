@@ -1,9 +1,10 @@
 /**
-*
-* SINGLE FILE
-*
-*
-*
+ *
+ * SINGLE FILE
+ * sample config:
+ * https://github.com/jrburke/r.js/blob/master/build/example.build.js
+ *
+ */
 ({
     baseUrl: ".",
     paths: {
@@ -18,17 +19,19 @@
     name: "main",
     out: "../../deploy/js/main.js"
 })
-/***/
 
 /**
-*
-* ENTIRE PROJECT - PATHS ARE RELATIVE TO LOCATION OF THIS FILE
-*/
+ *
+ * ENTIRE PROJECT - PATHS ARE RELATIVE TO LOCATION OF THIS FILE
+ *
 ({
     appDir: "../",
     baseUrl: "js",
     dir: "../../deploy",
     mainConfigFile: "main.js",
+    keepBuildDir: false,
+    optimizeCss: "standard",
     removeCombined: true,
     modules: [{ name: "main" }]
 })
+ */
