@@ -1,0 +1,136 @@
+/**
+ *
+ * ABOUT
+ *
+ **/
+#about {
+  padding: 0 $marL;
+
+  .resume-blurb {
+    @include lato-light;
+    font-size: 1.7em;
+    text-align: justify;
+    padding-bottom: 10px;
+  }
+
+  .print-btn-wrapper {
+    width: 100%;
+    display: inline-block;
+    padding-bottom: 40px;
+  }
+
+  .print-btn {
+    font-size: 1em;
+
+    .vcenter-wrapper {
+      display: table;
+      height: 20px;
+      float: left;
+
+      .vcenter {
+        display: table-cell;
+        vertical-align: middle;
+
+        .icon {
+          padding-right: 5px;
+        }
+
+        .label {
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .resume-columns {
+    display: inline-block;
+
+    .col {
+      width: 48%;
+      margin-right: 2%;
+
+      .vcenter-wrapper {
+        display: table;
+        height: 20px;
+
+        .vcenter {
+          display: table-cell;
+          vertical-align: middle;
+        }
+      }
+
+      .vcenter-wrapper.bullet {
+        float: left;
+        padding-right: 5px;
+      }
+    }
+
+    .col0 {
+      float: left;
+
+      .resume-job {
+        padding-bottom: 20px;
+        padding-left: 10px;
+
+        .resume-hdr-grp {
+          padding-bottom: 5px;
+
+          .resume-hdr-title {
+          }
+
+          .resume-hdr-role {
+            @include lato-italic;
+            color: $color-mid-grey;
+          }
+        }
+
+        .resume-body {
+          ul  {
+            padding: 0 0 0 20px;
+            margin: 1em 0 0;
+          }
+        }
+      }
+    }
+
+    .label {
+      @include lato-bold;
+      padding-bottom: 10px;
+      font-size: 1.2em;
+    }
+
+    .col1 {
+      float: right;
+
+      .resume-skills {
+        padding-bottom: 20px;
+        padding-left: 10px;
+
+        .resume-skills-item {
+          padding-bottom: 15px;
+
+          .resume-skills-hdr {
+          }
+
+          .resume-skills-list {
+            @include lato-italic;
+            color: $color-grey;
+          }
+
+          .resume-skills-desc {
+
+          }
+        }
+      }
+
+      .resume-edu {
+        padding-left: 10px;
+      }
+    }
+  }
+
+  .resume-item {
+    padding-bottom: 40px;
+  }
+
+}

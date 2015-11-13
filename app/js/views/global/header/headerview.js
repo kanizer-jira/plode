@@ -18,11 +18,14 @@ function($, _, Backbone, APP, template) {
 			// Compile the template using Underscores micro-templating
 			var compiledTemplate = _.template( template, { email: email });
 			this.$el.html(compiledTemplate);
+
+			this.$nav = $('.header-nav-block');
 		}
 
 		,events: {
 			"click .header-title-block" : "onTitleClick"
 			,"click .nav-item" : "onNavClick"
+			,"click .hamburger" : "onNavShow"
 		}
 
 		,onTitleClick: function(e){
@@ -32,27 +35,35 @@ function($, _, Backbone, APP, template) {
 		,onNavClick: function(e){
 			var $li = $(e.target).parent().parent();
 			var id = $li.attr("id").split("_")[1];
-			if(!$li.find(".nav-item").hasClass("active") || ( id == "projects" ))
-			{
+			if(!$li.find(".nav-item").hasClass("active") || ( id == "projects" )) {
 				// ID MUST MATCH ROUTES
 				// OR, GO BACK TO GRID VIEW FROM DETAILS VIEW
 	 			APP.instances.mainRouter.navigate(id, {trigger: true});
 			}
+			var ref = this;
+			this.$nav.animate({opacity: 0}, 200, function() {
+				ref.$nav.removeClass('show')
+				.css('opacity', 1); // for breakpoint change
+
+			});
 		}
 
-		,setNav: function(key){
-			this.$el.find("li").each(function(index){
+		,onNavShow: function() {
+			var ref = this;
+			ref.$nav.addClass('show').css('opacity', 0);
+			this.$nav.animate({opacity: 1}, 200);
+		}
+
+		,setNav: function(key) {
+			this.$el.find("li").each(function(index) {
 				var id = $(this).attr("id").split("_")[1];
 				var $hl = $(this).find(".header-nav-highlight-bar");
 
 				// SET NAV STATE
-				if(key == id)
-				{
+				if(key == id) {
 					$(this).find(".nav-item").addClass("active");
 					$hl.height(2).css("margin-top", -2);
-				}
-				else
-				{
+				} else {
 					$(this).find(".nav-item").removeClass("active");
 					$hl.height(0).css("margin-top", 0);
 				}

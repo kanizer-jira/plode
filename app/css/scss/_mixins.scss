@@ -1,0 +1,67 @@
+@mixin lato {
+  font-family: 'Lato', Arial, sans-serif;
+}
+
+@mixin lato-light {
+  @include lato;
+  font-weight: 300;
+}
+
+@mixin lato-italic {
+  @include lato;
+  font-weight: 300;
+  font-style: italic;
+}
+
+@mixin lato-reg {
+  @include lato;
+  font-weight: 400;
+}
+
+@mixin lato-bold {
+  @include lato;
+  font-weight: 700;
+}
+
+@mixin shadow ($xoffset:0, $yoffset:0, $blur: 25px, $spread:0, $opac: $shadowOpacity) {
+  -moz-box-shadow: $xoffset $yoffset $blur $spread rgba(0, 0, 0, $opac);
+  -webkit-box-shadow: $xoffset $yoffset $blur $spread  rgba(0, 0, 0, $opac);
+  box-shadow: $xoffset $yoffset $blur $spread rgba(0, 0, 0, $opac);
+
+  -webkit-transition: -webkit-box-shadow .3s ease-out;
+  transition: box-shadow .3s ease-out;
+}
+
+@mixin trans($dur: $durShort) {
+  -webkit-transition: all $dur ease-out;
+  transition: all $dur ease-out;
+}
+
+@mixin no-select {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+@mixin margins {
+  width: $w;
+  margin: 0 auto;
+}
+
+@mixin opac($val) {
+  opacity: $val;
+  filter: alpha(opacity = $val * 100);
+}
+
+@mixin hide {
+  display: none;
+}
+
+@mixin viewport($size: small) {
+  $selected-break: if($size == medium, $break-tablet, $break-phone);
+  @media only screen and (max-width: $selected-break) {
+    @content;
+  }
+}

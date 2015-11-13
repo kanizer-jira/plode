@@ -1,81 +1,13 @@
-/**
- * PLODE.COM - IE STYLES
- */
- 
- 
- 
- 
-/**
- *
- * VARS
- *
- **/
-$w: 900px;
-$arrowW: 41px;
-$arrowH: 75px;
-$arrowMar: 4px;
-$vidH: 350px;
-$gridItemLabelH: 30px;
-$headerH: 50px;
+//----------------------------------------------------------------------
+//
+// ie
+//
+//----------------------------------------------------------------------
 
-
-
-/**
- *
- * MIXINS
- *
- **/
-@mixin opac($val){
-	opacity: $val;
-	filter: alpha(opacity= $val * 100);
+#masthead li {
+  height: 50px;
 }
 
-
-
-
-/**
- *
- * HEADER
- *
- **/
-#masthead{
-
-	.header-margins{
-		
-		.header-inner-right{
-			
-			.header-nav-block{
-				
-				ul{
-
-					li{
-						height: $headerH;
-					}
-				}
-			}
-		}
-	}
+.grid-item-label-wrapper .vcenter {
+  height: 30px;
 }
-
-
-
-/**
- *
- * GRID
- *
- **/
-.grid-item-label-wrapper{
-
-	.vcenter{
-		height: $gridItemLabelH !important;
-	}
-}
-
-
-
-
-/**
- *
- * DETAIL
- *
- **/

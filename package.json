@@ -5,10 +5,10 @@
   "main": "r.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node build-tools/buildHelper.js && node r.js -o app/js/build.js",
-    "start": "npm run build",
+    "sass": "sass --watch app/css/scss/site.scss:app/css/site.css",
     "preview": "live-server --open=app",
-    "sass": "sass --watch app/css/scss/site.scss:app/css/site.css"
+    "start": "npm run preview & npm run sass",
+    "build": "node build-tools/buildHelper.js && node r.js -o app/js/build.js"
   },
   "repository": {
     "type": "git",

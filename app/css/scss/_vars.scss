@@ -1,0 +1,51 @@
+$w: 900px;
+$width-small: 320px;
+$mar-main: 60px;
+$arrowW: 41px;
+$arrowH: 75px;
+$arrowMar: 4px;
+$marL: 10px;
+$marB: 20px;
+$hdr-top-mar: 30px;
+$hdr-h: 50px;
+$hdr-h-med: 70px;
+$footer-h: 30px;
+$gridMargin: 20px;
+$gridItemW: 285px;
+$gridItemH: 180px;
+$gridItemLabelH: 30px;
+$vidW: 610px;
+$vidH: 410px;
+$descW: 250px;
+$descPad: 30px;
+$durShort: .1s;
+$durMed: .2s;
+$durLong: .5s;
+$shadowOpacity: 1;
+
+
+//----------------------------------------------------------------------
+//
+// breakpoints
+//
+//----------------------------------------------------------------------
+
+$break-tablet: 950px;
+$break-mini-tablet: 768px;
+$break-phone: 480px;
+
+
+//----------------------------------------------------------------------
+//
+// colors
+//
+//----------------------------------------------------------------------
+
+$color-trans: rgba(0, 0, 0, 0);
+$color-white: #fff;
+$color-red: #f00;
+$color-grey: #bbb;
+$color-light-grey: #ddd;
+$color-mid-grey: #aaa;
+$color-dark-grey: #666;
+$color-nav-bg: #f2f2f2;
