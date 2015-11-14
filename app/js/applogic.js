@@ -69,7 +69,16 @@ function($, _, Backbone, Spinner) {
 			,tags: ["weidenkennedy"]
 			,detail:{
 				desc: "Jordan wanted to showcase Chris Paul and his CP3.V shoe with a site that celebrates the on the court chaos where Chris Paul's skills shine. By immersing the viewer on the court during the final play of a game, the viewer is encouraged to explore the scene from numerous angles, speeds and scenes. <br><br>Balancing load times, FMS latency and interactivity required several integrated systems to cross-reference and track images, videos, interaction points and progress."
-				,links:[{ label: "view at thefwa.com", path: "http://www.thefwa.com/site/quick-controls-chaos?search=quick%20controls%20chaos"}]
+				,links:[
+					{
+						label: "view at thefwa.com",
+						path: "http://www.thefwa.com/site/quick-controls-chaos?search=quick%20controls%20chaos"
+					},
+					{
+						label: "view the case study",
+						path: "https://vimeo.com/47536635"
+					}
+				]
 				,vid: "../media/cp.mp4"
 				,vid_mp4: "media/cp.mp4"
 				,vid_webm: "media/cp.webm"

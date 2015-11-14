@@ -831,7 +831,7 @@ table {
             list-style-image: url("../img/arrow_fwd.png"); }
             #project-detail .detail-item .detail-video-wrapper .detail-content .detail-desc ul li {
               color: #aaa;
-              margin-left: 1.3em; }
+              margin: 5px 0 0 1.3em; }
 
 /**
  *
