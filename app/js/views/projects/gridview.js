@@ -118,7 +118,7 @@ function($, _, Backbone, APP, ProjectsCollection, template) {
 	});
 
 	var ThumbView = Backbone.View.extend({
-		className: "grid-item"
+		className: "grid-item-column"
 		,initialize:  function(model){
 			this.model = model.model;
 		}

@@ -1,58 +1,53 @@
-
-
-/**
- *
- * GRID
- *
- **/
+//----------------------------------------------------------------------
+//
+// grid
+//
+//----------------------------------------------------------------------
 #project-grid {
+  text-align: center;
 
   #project-grid-badges {
     padding-bottom: $marB;
-    text-align: center;
+  }
+
+  .grid-item-column {
+    border-bottom: 1px solid $color-white;
+    border-right: 1px solid $color-white;
+    display: inline-block;
+    width: 49%;
+    text-align: left;
   }
 
   .grid-item {
-    display: inline-block;
+    @include aspect-ratio($gridItemW, $gridItemH);
     cursor: hand;
     cursor: pointer;
-    width: $gridItemW;
-    height: $gridItemH;
-    padding: 7px;
 
-    &:hover {
+    .pinwheel {
+      margin-left: 50%;
+      margin-top: -30%;
+      position: absolute;
     }
 
     .grid-item-bg {
-      position: absolute;
-      width: $gridItemW;
-      height: $gridItemH;
+      @include aspect-ratio-offset($gridItemW, $gridItemH);
       background: $color-grey;
 
-      .pinwheel {
-        position: absolute;
-        width: 0;
-        height: 0;
-        left: $gridItemW/2;
-        top: $gridItemH/2;
-      }
-
-      .des {
-        position: absolute;
-        width: $gridItemW;
-        height: $gridItemH;
-      }
-
-      .des {
+      .thumb-image {
         @include opac(1);
+        height: auto;
+        width: 100%;
       }
     }
 
     .grid-item-overlay {
+      // will fill container
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
       position: absolute;
-      width: $gridItemW;
-      height: $gridItemH;
-      clip: rect(0, $gridItemW, $gridItemH, 0);
+      // clip: rect(0, $gridItemW, $gridItemH, 0);
 
       .grid-item-overlay-bg {
         position: absolute;
@@ -147,13 +142,13 @@
         }
       }
 
-      .hit-area {
-        position: absolute;
-        width: $gridItemW;
-        height: $gridItemH;
-        background: $color-grey;
-        @include opac(0);
-      }
+      // .hit-area {
+      //   position: absolute;
+      //   width: $gridItemW;
+      //   height: $gridItemH;
+      //   background: $color-grey;
+      //   @include opac(0);
+      // }
     }
   }
 }
