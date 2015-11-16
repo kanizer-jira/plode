@@ -619,6 +619,10 @@ table {
     display: inline-block;
     width: 49%;
     text-align: left; }
+    @media only screen and (max-width: 480px) {
+      #project-grid .grid-item-column {
+        width: 100%;
+        border-right: none; } }
   #project-grid .grid-item {
     position: relative;
     cursor: hand;
@@ -647,11 +651,11 @@ table {
       left: 0;
       position: absolute; }
       #project-grid .grid-item .grid-item-overlay .grid-item-overlay-bg {
-        position: absolute;
-        width: 278px;
-        height: 30px;
-        margin: 140px 2px 0 3px;
         background: #f00;
+        bottom: 5px;
+        height: 30px;
+        position: absolute;
+        width: 100%;
         opacity: 0.7;
         filter: alpha(opacity=70);
         -webkit-transition: all 0.1s ease-out;
@@ -659,9 +663,10 @@ table {
       #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper {
         display: table;
         position: absolute;
-        width: 285px;
+        bottom: 5px;
+        position: absolute;
         height: 30px;
-        margin-top: 140px;
+        width: 100%;
         -webkit-transition: all 0.2s ease-out;
         transition: all 0.2s ease-out; }
         #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label {
@@ -691,6 +696,9 @@ table {
             filter: alpha(opacity=0);
             -webkit-transition: all 0.1s ease-out;
             transition: all 0.1s ease-out; }
+            @media only screen and (max-width: 950px) {
+              #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .grid-item-tags {
+                display: none; } }
         #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .vcenter {
           float: right;
           display: table;
@@ -719,6 +727,9 @@ table {
           filter: alpha(opacity=0);
           -webkit-transition: all 0.2s ease-out;
           transition: all 0.2s ease-out; }
+          @media only screen and (max-width: 950px) {
+            #project-grid .grid-item .grid-item-overlay .arrow-lrg-wrapper .arrow-lrg {
+              display: none; } }
           #project-grid .grid-item .grid-item-overlay .arrow-lrg-wrapper .arrow-lrg .grid-item-arrow-lrg {
             display: table-cell;
             vertical-align: middle;
@@ -984,13 +995,6 @@ a {
  *
  **/
 @media screen and (min-width: 0px) and (max-width: 767px) {
-  #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label {
-    width: 80%; }
-    #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .grid-item-tags {
-      display: none; }
-  #project-grid .grid-item .grid-item-overlay .arrow-lrg-wrapper .arrow-lrg {
-    display: none; }
-
   #project-detail {
     width: 300px;
     padding: 0;
@@ -1040,15 +1044,6 @@ a {
  **/
 @media screen and (min-width: 480px) and (max-width: 784px) {
   /* Style adjustments for viewports that meet the condition */
-  #project-grid .grid-item {
-    padding: 7px 97.5px; }
-    #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label {
-      width: 80%; }
-      #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .grid-item-tags {
-        display: none; }
-    #project-grid .grid-item .grid-item-overlay .arrow-lrg-wrapper .arrow-lrg {
-      display: none; }
-
   #project-detail {
     width: 480px;
     padding: 0;
@@ -1095,19 +1090,6 @@ a {
  *
  **/
 @media screen and (max-width: 950px) {
-  #project-grid {
-    text-align: left;
-    display: inline-block; }
-    #project-grid .grid-item {
-      display: inline-block;
-      padding: 15px; }
-      #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label {
-        width: 80%; }
-        #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .grid-item-tags {
-          display: none; }
-      #project-grid .grid-item .grid-item-overlay .arrow-lrg-wrapper .arrow-lrg {
-        display: none; }
-
   #project-detail {
     width: 100%;
     padding: 0;

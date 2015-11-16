@@ -16,6 +16,10 @@
     display: inline-block;
     width: 49%;
     text-align: left;
+    @include viewport(small) {
+      width: 100%;
+      border-right: none;
+    }
   }
 
   .grid-item {
@@ -49,12 +53,14 @@
       position: absolute;
       // clip: rect(0, $gridItemW, $gridItemH, 0);
 
+      // red band with label
       .grid-item-overlay-bg {
-        position: absolute;
-        width: $gridItemW - 7;
-        height: $gridItemLabelH;
-        margin: ($gridItemH - $gridItemLabelH - 10) 2px 0 3px;
         background: $color-red;
+        bottom: 5px;
+        height: $gridItemLabelH;
+        position: absolute;
+        width: 100%;
+        // margin: ($gridItemH - $gridItemLabelH - 10) 2px 0 3px;
         @include opac(.7);
         @include trans($durShort);
       }
@@ -62,9 +68,11 @@
       .grid-item-label-wrapper {
         display: table;
         position: absolute;
-        width: $gridItemW;
+        bottom: 5px;
+        position: absolute;
         height: $gridItemLabelH;
-        margin-top: ($gridItemH - $gridItemLabelH - 10);
+        width: 100%;
+        // margin-top: ($gridItemH - $gridItemLabelH - 10);
         @include trans($durMed);
 
         .grid-item-label {
@@ -96,6 +104,9 @@
             width: $gridItemW - 100px;
             @include opac(0);
             @include trans($durShort);
+            @include viewport(medium) {
+              display: none;
+            }
           }
         }
 
@@ -130,6 +141,9 @@
           text-align: right;
           @include opac(0);
           @include trans($durMed);
+          @include viewport(medium) {
+            display: none;
+          }
 
           .grid-item-arrow-lrg {
             display: table-cell;

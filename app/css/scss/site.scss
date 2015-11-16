@@ -117,27 +117,27 @@ $spMarV: 10px;
 
 @media screen and (min-width: 0px) and (max-width: 767px)  {
 
-  #project-grid {
+  // #project-grid {
 
-    .grid-item {
-      .grid-item-overlay {
-        .grid-item-label-wrapper {
-          .grid-item-label {
-            width: 80%;
+  //   .grid-item {
+  //     .grid-item-overlay {
+  //       .grid-item-label-wrapper {
+  //         .grid-item-label {
+  //           width: 80%;
 
-            .grid-item-tags {
-              display: none;
-            }
-          }
-        }
-        .arrow-lrg-wrapper {
-          .arrow-lrg {
-            display: none;
-          }
-        }
-      }
-    }
-  }
+  //           .grid-item-tags {
+  //             display: none;
+  //           }
+  //         }
+  //       }
+  //       .arrow-lrg-wrapper {
+  //         .arrow-lrg {
+  //           display: none;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
   #project-detail {
     width:  $spW;
@@ -237,30 +237,30 @@ $miniMarV: 10px;
   /* Style adjustments for viewports that meet the condition */
 
 
-  #project-grid {
+  // #project-grid {
 
-    .grid-item {
+  //   .grid-item {
       // CENTER COLUMN
-      padding: 7px ($miniW - $gridItemW) / 2;
+      // padding: 7px ($miniW - $gridItemW) / 2;
 
-      .grid-item-overlay {
-        .grid-item-label-wrapper {
-          .grid-item-label {
-            width: 80%;
+      // .grid-item-overlay {
+      //   .grid-item-label-wrapper {
+      //     .grid-item-label {
+      //       // width: 80%;
 
-            .grid-item-tags {
-              display: none;
-            }
-          }
-        }
-        .arrow-lrg-wrapper {
-          .arrow-lrg {
-            display: none;
-          }
-        }
-      }
-    }
-  }
+      //       .grid-item-tags {
+      //         display: none;
+      //       }
+      //     }
+      //   }
+      //   .arrow-lrg-wrapper {
+      //     .arrow-lrg {
+      //       display: none;
+      //     }
+      //   }
+      // }
+    // }
+  // }
 
   #project-detail {
     width:  $miniW;
@@ -357,36 +357,36 @@ $tabDescW: 235px;
 
 @media screen and (max-width: $break-tablet) {
 
-  #project-grid {
-    // width: $gridItemW * 2 + 60;
-//    padding: 0 ($tabW - ($gridItemW * 2 + 60)) / 2;
-    text-align: left;
-    display: inline-block;
+//   #project-grid {
+//     // width: $gridItemW * 2 + 60;
+// //    padding: 0 ($tabW - ($gridItemW * 2 + 60)) / 2;
+//     // text-align: left;
+//     // display: inline-block;
 
-    .grid-item {
-      // CENTER COLUMN
-      display: inline-block;
-      padding: 15px;
-      // ($tabW - $gridItemW) / 2;
+//     .grid-item {
+//       // // CENTER COLUMN
+//       // display: inline-block;
+//       // padding: 15px;
+//       // // ($tabW - $gridItemW) / 2;
 
-      .grid-item-overlay {
-        .grid-item-label-wrapper {
-          .grid-item-label {
-            width: 80%;
+//       .grid-item-overlay {
+//         .grid-item-label-wrapper {
+//           .grid-item-label {
+//             // width: 80%;
 
-            .grid-item-tags {
-              display: none;
-            }
-          }
-        }
-        .arrow-lrg-wrapper {
-          .arrow-lrg {
-            display: none;
-          }
-        }
-      }
-    }
-  }
+//             .grid-item-tags {
+//               display: none;
+//             }
+//           }
+//         }
+//         .arrow-lrg-wrapper {
+//           .arrow-lrg {
+//             display: none;
+//           }
+//         }
+//       }
+//     }
+//   }
 
   #project-detail {
     width:  100%;
