@@ -24,20 +24,28 @@
 }
 
 @mixin shadow ($xoffset:0, $yoffset:0, $blur: 25px, $spread:0, $opac: $shadowOpacity) {
+  // TODO - REPLACE WITH AUTO-PREFIX
   -moz-box-shadow: $xoffset $yoffset $blur $spread rgba(0, 0, 0, $opac);
   -webkit-box-shadow: $xoffset $yoffset $blur $spread  rgba(0, 0, 0, $opac);
   box-shadow: $xoffset $yoffset $blur $spread rgba(0, 0, 0, $opac);
 
+  // TODO - REPLACE WITH AUTO-PREFIX
   -webkit-transition: -webkit-box-shadow .3s ease-out;
   transition: box-shadow .3s ease-out;
 }
 
-@mixin trans($dur: $durShort) {
+@mixin trans($dur: $durShort, $del: 0) {
+  // TODO - REPLACE WITH AUTO-PREFIX
   -webkit-transition: all $dur ease-out;
   transition: all $dur ease-out;
+  -webkit-transition-delay: $del;
+  -moz-transition-delay: $del;
+  -o-transition-delay: $del;
+  transition-delay: $del;
 }
 
 @mixin no-select {
+  // TODO - REPLACE WITH AUTO-PREFIX
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
@@ -61,6 +69,11 @@
 
 @mixin viewport($size: small) {
   $selected-break: if($size == medium, $break-tablet, $break-phone);
+
+  @if $size == column {
+    $selected-break: $break-column;
+  }
+
   @media only screen and (max-width: $selected-break) {
     @content;
   }
@@ -68,11 +81,12 @@
 
 @mixin aspect-ratio($width, $height) {
   position: relative;
+
   &:before {
     display: block;
-    content: "";
     width: 100%;
     padding-top: ($height / $width) * 100%;
+    content: '';
   }
 }
 

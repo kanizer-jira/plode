@@ -129,6 +129,7 @@ function($, _, Backbone, APP, ProjectsCollection, template) {
 			this.$el.attr("thumb-id", this.model.id);
 
 //			this.$img = this.$el.find(".grid-item-bg");
+			this.$overlayWrapper = this.$el.find(".grid-item-overlay");
 			this.$bg = this.$el.find(".grid-item-overlay-bg");
 			this.$label = this.$el.find(".grid-item-label-wrapper");
 			this.$move = this.$el.find(".move");
@@ -139,71 +140,113 @@ function($, _, Backbone, APP, ProjectsCollection, template) {
 
 			// ADD SPINNER
 			APP.showPinwheel(this.$el.find(".pinwheel"));
+
+			this.onRollout = _.debounce(this.animateRollout, 100);
 		}
-		,events:{
-			"mouseover" 	: "onItemOver"
-			,"mouseout" 	: "onItemOut"
+		,events: {
+			"mouseenter" 	: "onItemOver"
+			,"mouseleave" 	: "onItemOut"
 			,"click"	  	: "onItemClick"
 		}
-		,onItemOver: function(e){
-			var w = this.$el.width();
-			var h = this.$el.height();
-			this.$bg.width(w).height(h)
-			   .css({
-			   		"background": "#000"
-				    ,"margin-top": 0
-				    ,"margin-left": 0
-				    ,"margin-right": 0
-		   		});
-			this.$label.width(w).height(h)
-			   	  .css({
-					    "margin-top": 0
-					    ,"margin-left": 10
-				  });
-			this.$text.find("span").css("font-size", "2em");
-			this.$tags.css({
-				"height": "auto"
-				,"padding-top": 10
-				,"opacity": 1
-			});
-			this.$arrow.css({"display": "none"});
-			this.$arrowLrg.css({
-				"margin-left": 0
-				,"opacity": 1
+		,onItemOver: function(e) {
+			var cnt = 0;
+			clearTimeout(this.animTimer);
+
+			// hide label & arrow
+			this.$label.css({ opacity: 0 });
+			this.$arrow.css({ display: "none" });
+
+			// hide band
+			cnt += 50;
+			this.animTimer = setTimeout(function() {
+				this.$bg.css({
+					height: 0,
+					bottom: ThumbView.redbandHeight/2,
+					opacity: 0,
+					background: 'red'
 				});
+			}.bind(this), cnt);
+
+			// fade in vignette
+			cnt += 80;
+			this.animTimer = setTimeout(function() {
+				this.$overlayWrapper.css({ margin: 0 });
+				this.$bg.css({
+					width: '100%',
+					height: '100%',
+					bottom: 0,
+					background: 'black'
+				});
+			}.bind(this), cnt);
+
+			// show large label
+			cnt += 50;
+			this.animTimer = setTimeout(function() {
+				this.$label.css({
+					opacity: 1,
+					top: 20
+				});
+				this.$text
+					.css({ padding: '0 20px'})
+					.find("span").css("font-size", "2em");
+				this.$tags.css({
+					height: 'auto',
+					paddingTop: 5,
+					opacity: 1
+				});
+				this.$bg.css({ opacity: 0.6 });
+			}.bind(this), cnt);
 		}
-		,onItemOut: function(e){
-			var hpadding = 3;
-			var vpadding = 10;
-			var w = this.$el.width() - hpadding * 2 - 1;
-			var h = 30;
-			var vmargin = (this.$el.height() - h - vpadding);
-			this.$bg.width(w).height(h)
-				   .css({
-				   		"background": "#ff0000" // MATCH WITH RED CSS VAL
-					    ,"margin-top": vmargin
-					    ,"margin-left": hpadding
-					    ,"margin-right": hpadding
-			   		});
-			this.$label.width(w).height(h)
-			   	  .css({
-					    "margin-top": vmargin
-					    ,"margin-left": 0
-				  });
-			this.$text.find("span").css({
-				"font-size": "1em"
-			});
+		,onItemOut: function() {
+			return this.onRollout();
+		}
+
+		,animateRollout: function() {
+			var cnt = 0;
+			clearTimeout(this.animTimer);
+
+			// hide label and bg
+			this.$bg.css({ opacity: 0 });
+			this.$label.css({ opacity: 0 });
 			this.$tags.css({
-				"height": 0
-				,"opacity": 0
-				,"padding-top": 0
-			});
-			this.$arrow.fadeIn(200);
-			this.$arrowLrg.css({
-				"margin-left": 50
-				,"opacity": 0
+				paddingTop: 0,
+				opacity: 0
 			});
 
+			// reposition label strip
+			cnt += 50;
+			this.animTimer = setTimeout(function() {
+				this.$overlayWrapper.css({ margin: 5 });
+				this.$bg.css({
+					height: 0,
+					bottom: 0,
+					background: 'red'
+				});
+				this.$tags.css({ height: 0 });
+				this.$arrow.css({ display: 'table-cell' });
+				this.$text
+					.css({ padding: '0 10px'})
+					.find("span").css("font-size", "1em");
+
+			}.bind(this), cnt);
+
+			// fade red bar
+			cnt += 100;
+			this.animTimer = setTimeout(function() {
+				this.$bg.css({
+					height: ThumbView.redbandHeight,
+					opacity: 0.7,
+				});
+			}.bind(this), cnt);
+
+			// show small label
+			cnt += 50;
+			this.animTimer = setTimeout(function() {
+				this.$label.css({
+					opacity: 1,
+					top: 'auto'
+				});
+			}.bind(this), cnt);
 		}
 		,onItemClick: function(e){
 			var id = $(e.currentTarget).attr("thumb-id");
@@ -211,6 +254,10 @@ function($, _, Backbone, APP, ProjectsCollection, template) {
 				APP.instances.mainRouter.navigate("detail/" + id, {trigger: true});
 			});
 		}
+	},
+	{
+		// Set class level constants
+		redbandHeight: 30 // match with css static height attr
 	});
 
 

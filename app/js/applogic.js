@@ -226,8 +226,8 @@ function($, _, Backbone, Spinner) {
 	APP.showPinwheel = function($tar) {
 	    var opts = {
 		  lines: 13, // The number of lines to draw
-		  length: 2, // The length of each line
-		  width: 2, // The line thickness
+		  length: 6, // The length of each line
+		  width: 3, // The line thickness
 		  radius: 7, // The radius of the inner circle
 		  corners: 1, // Corner roundness (0..1)
 		  rotate: 0, // The rotation offset

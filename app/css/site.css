@@ -609,135 +609,127 @@ table {
     .footer-wrapper .footer-extra {
       display: none; } }
 
-#project-grid {
-  text-align: center; }
-  #project-grid #project-grid-badges {
-    padding-bottom: 20px; }
-  #project-grid .grid-item-column {
-    border-bottom: 1px solid #fff;
-    border-right: 1px solid #fff;
-    display: inline-block;
-    width: 49%;
-    text-align: left; }
-    @media only screen and (max-width: 480px) {
-      #project-grid .grid-item-column {
-        width: 100%;
-        border-right: none; } }
-  #project-grid .grid-item {
-    position: relative;
-    cursor: hand;
-    cursor: pointer; }
-    #project-grid .grid-item:before {
-      display: block;
-      content: "";
+#project-grid #project-grid-badges {
+  padding-bottom: 20px; }
+#project-grid .grid-item-column {
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+  display: inline-block;
+  width: 49.8%; }
+  @media only screen and (max-width: 615px) {
+    #project-grid .grid-item-column {
       width: 100%;
-      padding-top: 63.15789%; }
-    #project-grid .grid-item .pinwheel {
-      margin-left: 50%;
-      margin-top: -30%;
-      position: absolute; }
-    #project-grid .grid-item .grid-item-bg {
-      margin-top: -63.15789%;
-      background: #bbb; }
-      #project-grid .grid-item .grid-item-bg .thumb-image {
-        opacity: 1;
-        filter: alpha(opacity=100);
-        height: auto;
-        width: 100%; }
-    #project-grid .grid-item .grid-item-overlay {
-      top: 0;
-      right: 0;
+      border-right: none; } }
+#project-grid .grid-item {
+  position: relative;
+  cursor: hand;
+  cursor: pointer; }
+  #project-grid .grid-item:before {
+    display: block;
+    width: 100%;
+    padding-top: 63.15789%;
+    content: ''; }
+  #project-grid .grid-item .pinwheel {
+    position: absolute;
+    margin-top: -30%;
+    margin-left: 50%; }
+  #project-grid .grid-item .grid-item-bg {
+    margin-top: -63.15789%;
+    background: #bbb; }
+    #project-grid .grid-item .grid-item-bg .thumb-image {
+      opacity: 1;
+      filter: alpha(opacity=100);
+      width: 100%;
+      height: auto; }
+  #project-grid .grid-item .grid-item-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 5px 5px; }
+    #project-grid .grid-item .grid-item-overlay .grid-item-overlay-bg {
+      position: absolute;
       bottom: 0;
-      left: 0;
-      position: absolute; }
-      #project-grid .grid-item .grid-item-overlay .grid-item-overlay-bg {
-        background: #f00;
-        bottom: 5px;
-        height: 30px;
-        position: absolute;
-        width: 100%;
-        opacity: 0.7;
-        filter: alpha(opacity=70);
-        -webkit-transition: all 0.1s ease-out;
-        transition: all 0.1s ease-out; }
-      #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper {
-        display: table;
-        position: absolute;
-        bottom: 5px;
-        position: absolute;
-        height: 30px;
-        width: 100%;
-        -webkit-transition: all 0.2s ease-out;
-        transition: all 0.2s ease-out; }
-        #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label {
-          width: 50%;
-          display: table-cell;
-          vertical-align: middle;
-          padding: 0 10px;
-          font-size: .8em; }
-          #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .move {
-            -webkit-transition: all 0.2s ease-out;
-            transition: all 0.2s ease-out; }
-            #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .move span {
-              color: white;
-              line-height: 1.1em;
-              -webkit-transition: all 0.2s ease-out;
-              transition: all 0.2s ease-out; }
-            #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .move span.label {
-              font-family: 'Lato', Arial, sans-serif;
-              font-weight: 400; }
-            #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .move span.desc {
-              font-family: 'Lato', Arial, sans-serif;
-              font-weight: 300; }
-          #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .grid-item-tags {
-            height: 0;
-            width: 185px;
-            opacity: 0;
-            filter: alpha(opacity=0);
-            -webkit-transition: all 0.1s ease-out;
-            transition: all 0.1s ease-out; }
-            @media only screen and (max-width: 950px) {
-              #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .grid-item-tags {
-                display: none; } }
-        #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .vcenter {
-          float: right;
-          display: table;
-          height: 100%;
+      width: 100%;
+      height: 30px;
+      background: #f00;
+      opacity: 0.7;
+      filter: alpha(opacity=70);
+      -webkit-transition: all 0.1s ease-out;
+      transition: all 0.1s ease-out;
+      -webkit-transition-delay: 0;
+      -moz-transition-delay: 0;
+      -o-transition-delay: 0;
+      transition-delay: 0; }
+    #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper {
+      position: absolute;
+      bottom: 0;
+      display: table;
+      width: 100%;
+      height: 30px;
+      -webkit-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out;
+      -webkit-transition-delay: 0;
+      -moz-transition-delay: 0;
+      -o-transition-delay: 0;
+      transition-delay: 0; }
+      #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label {
+        display: table-cell;
+        padding: 0 10px;
+        font-size: .8em;
+        vertical-align: middle; }
+        #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .move {
           -webkit-transition: all 0.2s ease-out;
-          transition: all 0.2s ease-out; }
-          #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .vcenter .grid-item-arrow {
-            display: table-cell;
-            vertical-align: middle;
-            padding-right: 10px;
-            color: white; }
-      #project-grid .grid-item .grid-item-overlay .arrow-lrg-wrapper {
-        position: absolute;
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-        clip: rect(0, 285px, 180px, 0); }
-        #project-grid .grid-item .grid-item-overlay .arrow-lrg-wrapper .arrow-lrg {
-          width: 100%;
-          height: 100%;
-          display: table;
-          padding-right: 10px;
-          margin-left: 50px;
-          text-align: right;
+          transition: all 0.2s ease-out;
+          -webkit-transition-delay: 0;
+          -moz-transition-delay: 0;
+          -o-transition-delay: 0;
+          transition-delay: 0; }
+          #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .move span {
+            color: white;
+            line-height: 1.1em;
+            -webkit-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+            -webkit-transition-delay: 0;
+            -moz-transition-delay: 0;
+            -o-transition-delay: 0;
+            transition-delay: 0; }
+          #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .move span.label {
+            font-family: 'Lato', Arial, sans-serif;
+            font-weight: 400; }
+          #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .move span.desc {
+            font-family: 'Lato', Arial, sans-serif;
+            font-weight: 300; }
+        #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .grid-item-tags {
+          width: 185px;
+          height: 0;
           opacity: 0;
           filter: alpha(opacity=0);
-          -webkit-transition: all 0.2s ease-out;
-          transition: all 0.2s ease-out; }
+          -webkit-transition: all 0.1s ease-out;
+          transition: all 0.1s ease-out;
+          -webkit-transition-delay: 0;
+          -moz-transition-delay: 0;
+          -o-transition-delay: 0;
+          transition-delay: 0; }
           @media only screen and (max-width: 950px) {
-            #project-grid .grid-item .grid-item-overlay .arrow-lrg-wrapper .arrow-lrg {
+            #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .grid-item-label .grid-item-tags {
               display: none; } }
-          #project-grid .grid-item .grid-item-overlay .arrow-lrg-wrapper .arrow-lrg .grid-item-arrow-lrg {
-            display: table-cell;
-            vertical-align: middle;
-            padding-right: 0px;
-            font-size: 6em;
-            color: #f00;
-            -webkit-transition: all 0.2s ease-out;
-            transition: all 0.2s ease-out; }
+      #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .vcenter {
+        float: right;
+        display: table;
+        height: 100%;
+        -webkit-transition: all 0.2s ease-out;
+        transition: all 0.2s ease-out;
+        -webkit-transition-delay: 0;
+        -moz-transition-delay: 0;
+        -o-transition-delay: 0;
+        transition-delay: 0; }
+        #project-grid .grid-item .grid-item-overlay .grid-item-label-wrapper .vcenter .grid-item-arrow {
+          display: table-cell;
+          vertical-align: middle;
+          padding-right: 10px;
+          color: white; }
 
 /**
  *

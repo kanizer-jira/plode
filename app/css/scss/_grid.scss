@@ -4,7 +4,6 @@
 //
 //----------------------------------------------------------------------
 #project-grid {
-  text-align: center;
 
   #project-grid-badges {
     padding-bottom: $marB;
@@ -14,9 +13,8 @@
     border-bottom: 1px solid $color-white;
     border-right: 1px solid $color-white;
     display: inline-block;
-    width: 49%;
-    text-align: left;
-    @include viewport(small) {
+    width: 49.8%;
+    @include viewport(column) {
       width: 100%;
       border-right: none;
     }
@@ -28,9 +26,9 @@
     cursor: pointer;
 
     .pinwheel {
-      margin-left: 50%;
-      margin-top: -30%;
       position: absolute;
+      margin-top: -30%;
+      margin-left: 50%;
     }
 
     .grid-item-bg {
@@ -39,48 +37,46 @@
 
       .thumb-image {
         @include opac(1);
-        height: auto;
         width: 100%;
+        height: auto;
       }
     }
 
-    .grid-item-overlay {
-      // will fill container
+    .grid-item-overlay { // will fill container
+      position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
-      position: absolute;
+      margin: 0 5px 5px;
       // clip: rect(0, $gridItemW, $gridItemH, 0);
 
-      // red band with label
-      .grid-item-overlay-bg {
-        background: $color-red;
-        bottom: 5px;
-        height: $gridItemLabelH;
+      .grid-item-overlay-bg { // red band with label
         position: absolute;
+        bottom: 0;
         width: 100%;
-        // margin: ($gridItemH - $gridItemLabelH - 10) 2px 0 3px;
+        height: $gridItemLabelH;
+        background: $color-red;
+
         @include opac(.7);
         @include trans($durShort);
       }
 
       .grid-item-label-wrapper {
+        position: absolute;
+        bottom: 0;
         display: table;
-        position: absolute;
-        bottom: 5px;
-        position: absolute;
-        height: $gridItemLabelH;
         width: 100%;
-        // margin-top: ($gridItemH - $gridItemLabelH - 10);
+        height: $gridItemLabelH;
+
         @include trans($durMed);
 
         .grid-item-label {
-          width: 50%;
           display: table-cell;
-          vertical-align: middle;
+          // width: 50%;
           padding: 0 10px;
           font-size: .8em;
+          vertical-align: middle;
 
           .move {
             @include trans($durMed);
@@ -100,8 +96,8 @@
           }
 
           .grid-item-tags {
-            height: 0;
             width: $gridItemW - 100px;
+            height: 0;
             @include opac(0);
             @include trans($durShort);
             @include viewport(medium) {
@@ -125,36 +121,36 @@
         }
       }
 
-      .arrow-lrg-wrapper {
-        position: absolute;
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-        clip: rect(0, $gridItemW, $gridItemH, 0);
+      // .arrow-lrg-wrapper {
+      //   position: absolute;
+      //   display: inline-block;
+      //   width: 100%;
+      //   height: 100%;
+      //   clip: rect(0, $gridItemW, $gridItemH, 0);
 
-        .arrow-lrg {
-          width: 100%;
-          height: 100%;
-          display: table;
-          padding-right: 10px;
-          margin-left: 50px;
-          text-align: right;
-          @include opac(0);
-          @include trans($durMed);
-          @include viewport(medium) {
-            display: none;
-          }
+      //   .arrow-lrg {
+      //     width: 100%;
+      //     height: 100%;
+      //     display: table;
+      //     padding-right: 10px;
+      //     margin-left: 50px;
+      //     text-align: right;
+      //     @include opac(0);
+      //     @include trans($durMed);
+      //     @include viewport(medium) {
+      //       display: none;
+      //     }
 
-          .grid-item-arrow-lrg {
-            display: table-cell;
-            vertical-align: middle;
-            padding-right: 0px;
-            font-size: 6em;
-            color: $color-red;
-            @include trans($durMed);
-          }
-        }
-      }
+      //     .grid-item-arrow-lrg {
+      //       display: table-cell;
+      //       vertical-align: middle;
+      //       padding-right: 0px;
+      //       font-size: 6em;
+      //       color: $color-red;
+      //       @include trans($durMed);
+      //     }
+      //   }
+      // }
 
       // .hit-area {
       //   position: absolute;
