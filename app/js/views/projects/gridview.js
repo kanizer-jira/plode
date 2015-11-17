@@ -55,9 +55,7 @@ function($, _, Backbone, APP, ProjectsCollection, template) {
 		        	// FILTER RESULT SET
 //		        	if(thumbModel.tags.indexOf(id) > -1 // TAG MATCHES FILTER ID
 		        	if($.inArray(id, thumbModel.tags) > -1 // TAG MATCHES FILTER ID
-		        		&& $.inArray(thumbModel.id, that.thumbsIdList) == -1 // VIEW DOESN'T ALREADY EXIST
-		        		)
-					{
+		        		&& $.inArray(thumbModel.id, that.thumbsIdList) == -1) { // VIEW DOESN'T ALREADY EXIST
 				        view = new ThumbView({model: thumbModel});
 				        view.render();
 
@@ -128,18 +126,21 @@ function($, _, Backbone, APP, ProjectsCollection, template) {
 			this.$el.html(compiledTemplate);
 			this.$el.attr("thumb-id", this.model.id);
 
-//			this.$img = this.$el.find(".grid-item-bg");
+			this.$img = this.$el.find(".thumb-image")
+				.load(this.onImageLoaded.bind(this));
 			this.$overlayWrapper = this.$el.find(".grid-item-overlay");
 			this.$bg = this.$el.find(".grid-item-overlay-bg");
 			this.$label = this.$el.find(".grid-item-label-wrapper");
 			this.$move = this.$el.find(".move");
 			this.$text = this.$el.find(".grid-item-label");
+			this.$longDesc = this.$el.find(".long-description");
 			this.$tags = this.$el.find(".grid-item-tags");
-			this.$arrow = this.$el.find(".grid-item-arrow");
-			this.$arrowLrg = this.$el.find(".arrow-lrg");
+			this.$arrow = this.$el.find('.grid-item-arrow');
+			this.$arrowLrg = this.$el.find('.arrow-lrg');
 
 			// ADD SPINNER
-			APP.showPinwheel(this.$el.find(".pinwheel"));
+			this.$pinwheel = this.$el.find(".pinwheel");
+			this.pinwheelObj = APP.showPinwheel(this.$pinwheel);
 
 			this.onRollout = _.debounce(this.animateRollout, 100);
 		}
@@ -148,30 +149,35 @@ function($, _, Backbone, APP, ProjectsCollection, template) {
 			,"mouseleave" 	: "onItemOut"
 			,"click"	  	: "onItemClick"
 		}
+		,onImageLoaded: function() {
+			this.pinwheelObj.stop();
+			// TODO - ADD SOME KIND OF FADE IN FROM A GREY BG
+		}
 		,onItemOver: function(e) {
 			var cnt = 0;
 			clearTimeout(this.animTimer);
 
 			// hide label & arrow
 			this.$label.css({ opacity: 0 });
-			this.$arrow.css({ display: "none" });
+			this.$arrow.css({ display: 'none' });
 
 			// hide band
-			cnt += 50;
+			cnt += 80;
 			this.animTimer = setTimeout(function() {
 				this.$bg.css({
 					height: 0,
 					bottom: ThumbView.redbandHeight/2,
-					opacity: 0,
 					background: 'red'
 				});
 			}.bind(this), cnt);
 
 			// fade in vignette
-			cnt += 80;
+			cnt += 50;
 			this.animTimer = setTimeout(function() {
 				this.$overlayWrapper.css({ margin: 0 });
 				this.$bg.css({
+					display: 'none',
+					opacity: 0,
 					width: '100%',
 					height: '100%',
 					bottom: 0,
@@ -187,14 +193,18 @@ function($, _, Backbone, APP, ProjectsCollection, template) {
 					top: 20
 				});
 				this.$text
-					.css({ padding: '0 20px'})
-					.find("span").css("font-size", "2em");
+					.css({ padding: '5% 10%'})
+					.find('span').css('font-size', '2em');
+				this.$longDesc.css('display', 'block');
 				this.$tags.css({
 					height: 'auto',
 					paddingTop: 5,
 					opacity: 1
 				});
-				this.$bg.css({ opacity: 0.6 });
+				this.$bg.css({
+					display: 'block',
+					opacity: 0.6
+				});
 			}.bind(this), cnt);
 		}
 		,onItemOut: function() {
@@ -223,19 +233,20 @@ function($, _, Backbone, APP, ProjectsCollection, template) {
 					background: 'red'
 				});
 				this.$tags.css({ height: 0 });
-				this.$arrow.css({ display: 'table-cell' });
 				this.$text
 					.css({ padding: '0 10px'})
-					.find("span").css("font-size", "1em");
-
+					.find('span').css('font-size', '1em');
+				this.$longDesc.css('display', 'none');
 			}.bind(this), cnt);
 
 			// fade red bar
 			cnt += 100;
 			this.animTimer = setTimeout(function() {
+				this.$arrow.css({ display: 'table-cell' });
 				this.$bg.css({
+					display: 'block',
 					height: ThumbView.redbandHeight,
-					opacity: 0.7,
+					opacity: 0.7
 				});
 			}.bind(this), cnt);
 

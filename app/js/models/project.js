@@ -10,6 +10,7 @@ function(_, Backbone) {
 			this.sequence = obj.sequence;
 			this.label = obj.label.toUpperCase();
 			this.desc = obj.desc.toUpperCase();
+			this.longDesc = obj.longDesc || obj.detail.desc;
 			this.img = obj.img;
 			this.tags = obj.tags;
 			this.detail = obj.detail;

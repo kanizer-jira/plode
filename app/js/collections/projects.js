@@ -17,14 +17,14 @@ function(_, Backbone, APP, ProjectModel) {
 			})
 		}
 
-	  //   ,comparator: function(item){
-			// return item.get(this.sort_key);
-	  //   }
+		// ,comparator: function(item){
+		// 	return item.get(this.sort_key);
+		// }
 
-	  //   ,sortByField: function(fieldName) {
-		 //    this.sort_key = fieldName;
-		 //    this.sort();
-	  //   }
+		// ,sortByField: function(fieldName) {
+		// 	this.sort_key = fieldName;
+		// 	this.sort();
+		// }
 	});
 
 	// You don't usually return a collection instantiated

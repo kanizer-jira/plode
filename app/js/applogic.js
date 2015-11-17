@@ -16,7 +16,7 @@ function($, _, Backbone, Spinner) {
 			"akqa"
 			,"weidenkennedy"
 			,"ralphlauren"
-			,"supertouch"
+			// ,"supertouch"
 			,"adcade"
 
 /*
@@ -246,6 +246,7 @@ function($, _, Backbone, Spinner) {
 
 		// INSERT BREAK FOR CENTERING
 		$tar.find(".spinner").after("<p></p>");
+		return spinner;
 	}
 
 	// POPULATE EMAILS

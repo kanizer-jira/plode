@@ -100,9 +100,6 @@
             height: 0;
             @include opac(0);
             @include trans($durShort);
-            @include viewport(medium) {
-              display: none;
-            }
           }
         }
 
@@ -121,44 +118,17 @@
         }
       }
 
-      // .arrow-lrg-wrapper {
-      //   position: absolute;
-      //   display: inline-block;
-      //   width: 100%;
-      //   height: 100%;
-      //   clip: rect(0, $gridItemW, $gridItemH, 0);
+      .long-description {
+        @include lato-light;
+        @include opac(0.8);
+        color: $color-white;
+        font-size: 1.4em;
+        display: none;
 
-      //   .arrow-lrg {
-      //     width: 100%;
-      //     height: 100%;
-      //     display: table;
-      //     padding-right: 10px;
-      //     margin-left: 50px;
-      //     text-align: right;
-      //     @include opac(0);
-      //     @include trans($durMed);
-      //     @include viewport(medium) {
-      //       display: none;
-      //     }
-
-      //     .grid-item-arrow-lrg {
-      //       display: table-cell;
-      //       vertical-align: middle;
-      //       padding-right: 0px;
-      //       font-size: 6em;
-      //       color: $color-red;
-      //       @include trans($durMed);
-      //     }
-      //   }
-      // }
-
-      // .hit-area {
-      //   position: absolute;
-      //   width: $gridItemW;
-      //   height: $gridItemH;
-      //   background: $color-grey;
-      //   @include opac(0);
-      // }
+        @media only screen and (min-width: $break-column) and (max-width: 830px) {
+          display: none !important;
+        }
+      }
     }
   }
 }
