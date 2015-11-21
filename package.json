@@ -44,8 +44,8 @@
           "dest": "app/css/ie.css"
         },
         {
-          "src": "app/css/scss/plode-player-styles.scss",
-          "dest": "app/css/plode-player-styles.css"
+          "src": "app/css/scss/plode_player_styles.scss",
+          "dest": "app/css/plode_player_styles.css"
         }
       ]
     }

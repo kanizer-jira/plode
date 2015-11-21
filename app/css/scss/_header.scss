@@ -5,7 +5,7 @@
 //----------------------------------------------------------------------
 
 #masthead-wrapper {
-  @include viewport(medium) {
+  @include viewport($break-nav - 200) {
     height: $hdr-h-med;
   }
 
@@ -15,18 +15,27 @@
 
 #masthead-shadow {
   @include shadow(0, 5px, 9px, -7px, .9);
+  @include viewport($break-nav - 200) {
+    margin-top: 0;
+  }
+  @include viewport(navmedium) {
+    margin-top: 0;
+  }
+
   height: $hdr-h;
   margin-top: -$hdr-h;
 }
 
 #masthead {
-  @include viewport(medium) {
+  @include viewport(navmedium) {
+    border-bottom: 1px solid $color-light-grey;
+  }
+  @include viewport($break-nav - 200) {
     height: $hdr-h-med;
   }
 
   height: $hdr-h;
-  border-bottom: 1px $color-mid-grey;
-  border-bottom-style: solid;
+  border-bottom: 1px solid $color-mid-grey;
 
   .header-inner-left {
     height: $hdr-h;
@@ -51,7 +60,7 @@
 
       .header-role {
         @include lato-light;
-        @include viewport(medium) {
+        @include viewport($break-nav - 200) {
           display: block;
         }
       }
@@ -66,28 +75,18 @@
     float: right;
     height: $hdr-h;
 
-    .hamburger {
-      @include viewport(medium) {
-        display: block;
-      }
+    @include viewport(navmedium) {
+      float: none;
+    }
 
-      display: none;
-      width: 50px;
-      height: 50px;
-      background: red;
-      cursor: hand;
-      cursor: pointer;
+    @include viewport($break-nav - 200) {
+      padding-top: $hdr-h-med;
     }
 
     .header-nav-block {
       @include no-select;
-      @include viewport(medium) {
-        position: absolute;
-        z-index: 100;
-        height: 50px;
-        margin-left: -70px;
-        display: none;
-        border-top: 1px solid $color-light-grey;
+      @include viewport(navmedium) {
+        width: 100%;
       }
 
       height: 100%;
@@ -98,6 +97,11 @@
     }
 
     ul {
+      @include viewport(navmedium) {
+        float: none;
+        clear: left;
+      }
+
       float: right;
       height: 100%;
       margin: 0;
@@ -106,12 +110,9 @@
     }
 
     li {
-      @include viewport(medium) {
-        float: none;
-        width: 120px;
-        border-bottom: 1px solid $color-light-grey;
-        color: $color-dark-grey;
-        background: $color-nav-bg;
+      @include viewport(navmedium) {
+        width: 50%;
+        border-bottom: 1px solid $color-grey;
       }
 
       float: left;
@@ -119,7 +120,7 @@
       color: $color-grey;
 
       .vcenter {
-        @include viewport(medium) {
+        @include viewport(navmedium) {
           width: 100%;
           text-align: center;
         }

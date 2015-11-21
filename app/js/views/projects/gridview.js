@@ -1,277 +1,323 @@
 define([
-	'jquery'
-	,'underscore'
-	,'backbone'
-	,'applogic'
-	,'collections/projects'
-	,'text!template/projects/grid_item.html'
+    'jquery'
+    ,'underscore'
+    ,'backbone'
+    ,'velocity'
+    ,'applogic'
+    ,'collections/projects'
+    ,'text!template/projects/grid_item.html'
 ],
+function($, _, Backbone, Velocity, APP, ProjectsCollection, template) {
 
-function($, _, Backbone, APP, ProjectsCollection, template) {
+    var ProjectGridView = Backbone.View.extend({
 
-	var ProjectGridView = Backbone.View.extend({
-		el: '#content'
-		,initialize: function(params){
-			if(params) this.ids = params.ids;
-			this.$el.append("<div id='project-grid'></div>");
-			this.$grid = this.$el.find("#project-grid");
-			this.$grid.css({ "display": "none" });
-			this.$grid.append("<div id='project-grid-badges'></div>");
-			this.$badges = this.$el.find("#project-grid-badges");
-        	this.thumbsIdList = [];
+        el: '#content'
 
-			this.destroyEvents();
-		}
-		,render: function(){
-			this.collection = new ProjectsCollection();
-	        this.collection.forEach(this.addOne, this);
+        ,initialize: function(params) {
+            if(params) this.ids = params.ids;
+            this.$el.append("<div id='project-grid'></div>");
+            this.$grid = this.$el.find("#project-grid");
+            this.$grid.css({ "display": "none" });
+            this.$grid.append("<div id='project-grid-badges'></div>");
+            this.$badges = this.$el.find("#project-grid-badges");
+            this.thumbsIdList = [];
 
-	        // DRAW TAGS
-	        var tags = APP.data.tags;
-	        var that = this;
-			_.each(tags, function(tag){
-				var $badge = $("<div class='plode-badge'>" + tag + "</div>");
+            this.destroyEvents();
+        }
 
-	        	if(that.ids){
-		        	// FILTER RESULT SET
-//		        	if(that.ids.indexOf(tag) > -1)
-		        	if($.inArray(tag, that.ids) > -1)
-						$badge.addClass("active");
-				}
-				else $badge.addClass("active");
+        ,render: function() {
+            this.collection = new ProjectsCollection();
+            this.thumbSequence = 0;
+            this.collection.forEach(this.addOne, this);
 
-				that.$badges.append($badge[0]);
-			});
+            // DRAW TAGS
+            var tags = APP.data.tags;
+            var that = this;
+            _.each(tags, function(tag) {
+                var $badge = $("<div class='plode-badge'>" + tag + "</div>");
 
-			this.$grid.fadeIn(200);
-	    }
+                if(that.ids) {
+                    // FILTER RESULT SET
+                    if($.inArray(tag, that.ids) > -1) $badge.addClass("active");
+                } else {
+                    $badge.addClass("active");
+                }
+                that.$badges.append($badge[0]);
+            });
 
-        ,addOne: function(thumbModel) {
-        	var that = this;
-        	var view;
+            this.$grid.fadeIn(200);
+        }
 
-        	if(this.ids){
-				_.each(that.ids, function(id){
-		        	// FILTER RESULT SET
-//		        	if(thumbModel.tags.indexOf(id) > -1 // TAG MATCHES FILTER ID
-		        	if($.inArray(id, thumbModel.tags) > -1 // TAG MATCHES FILTER ID
-		        		&& $.inArray(thumbModel.id, that.thumbsIdList) == -1) { // VIEW DOESN'T ALREADY EXIST
-				        view = new ThumbView({model: thumbModel});
-				        view.render();
+        ,addOne: function(thumbModel, ind) {
+            var that = this;
+            var view;
 
-			        	// CREATE LIST OF EXISTING THUMBS
-			        	that.thumbsIdList.push(thumbModel.id);
+            if(this.ids){
+                _.each(that.ids, function(id) {
+                    // FILTER RESULT SET
+                    if($.inArray(id, thumbModel.tags) > -1 // TAG MATCHES FILTER ID
+                        && $.inArray(thumbModel.id, that.thumbsIdList) == -1) { // VIEW DOESN'T ALREADY EXIST
+                        view = new ThumbView({model: thumbModel, ind: that.thumbSequence});
+                        view.render();
+                        that.thumbSequence++;
 
-				        // APPEND CORRECT GRID CLASS
-				        that.$grid.append(view.el);
-					}
-				});
-        	}else{
-		        view = new ThumbView({model: thumbModel});
-		        view.render();
+                        // CREATE LIST OF EXISTING THUMBS
+                        that.thumbsIdList.push(thumbModel.id);
 
-		        // APPEND CORRECT GRID CLASS
-		        this.$grid.append(view.el);
-        	}
-		}
+                        // APPEND CORRECT GRID CLASS
+                        that.$grid.append(view.el);
+                    }
+                });
+            } else {
+                view = new ThumbView({model: thumbModel, ind: that.thumbSequence});
+                view.render();
+                that.thumbSequence++;
 
-		,events: {
-			"click #project-grid-badges>.plode-badge" : "onBadgeClick"
-		}
+                // APPEND CORRECT GRID CLASS
+                this.$grid.append(view.el);
+            }
+        }
 
-		,onBadgeClick: function(e){
-			APP.log("click: ", e.currentTarget);
-			var active = [];
-			this.$badges.find(".plode-badge.active").each(function(){
-				var tag = $(this).html();
-				active.push(tag);
-			});
+        ,events: {
+            "click #project-grid-badges>.plode-badge" : "onBadgeClick"
+        }
 
-			var $badge = $(e.currentTarget);
-			var id = $badge.html();
-			var re = new RegExp(",", "g");
-			var s;
+        ,onBadgeClick: function(e){
+            APP.log("click: ", e.currentTarget);
+            var active = [];
+            this.$badges.find(".plode-badge.active").each(function(){
+                var tag = $(this).html();
+                active.push(tag);
+            });
 
-			var ind = $.inArray(id, active);
-			if(!$badge.hasClass("active")){
-				if(ind == -1) active.push(id);
-			}
-			else{
-				if(ind > -1) active.splice(ind, 1);
-			}
+            var $badge = $(e.currentTarget);
+            var id = $badge.html();
+            var re = new RegExp(",", "g");
+            var s;
+            var ind = $.inArray(id, active);
 
-			var	s = active.toString().replace(re, "+");
-			this.$grid.fadeOut(100, function(){
-				$(this).remove();
-				var path = (s == "") ? "projects" : "projects/" + s;
-				APP.instances.mainRouter.navigate(path, {trigger: true});
-			});
-		}
+            if(!$badge.hasClass("active")) {
+                if(ind == -1) active.push(id);
+            } else {
+                if(ind > -1) active.splice(ind, 1);
+            }
 
-		,destroyEvents: function() {
-		    //COMPLETELY UNBIND THE VIEW
-		    this.undelegateEvents();
-		    $(this.el).removeData().unbind();
-	    }
-	});
+            var s = active.toString().replace(re, "+");
+            this.$grid.fadeOut(100, function() {
+                $(this).remove();
+                var path = (s == "") ? "projects" : "projects/" + s;
+                APP.instances.mainRouter.navigate(path, {trigger: true});
+            });
+        }
 
-	var ThumbView = Backbone.View.extend({
-		className: "grid-item-column"
-		,initialize:  function(model){
-			this.model = model.model;
-		}
-		,render: function(){
-			// Compile the template using Underscores micro-templating
-			var compiledTemplate = _.template( template, this.model);
-			this.$el.html(compiledTemplate);
-			this.$el.attr("thumb-id", this.model.id);
+        ,destroyEvents: function() {
+            //COMPLETELY UNBIND THE VIEW
+            this.undelegateEvents();
+            $(this.el).removeData().unbind();
+        }
 
-			this.$img = this.$el.find(".thumb-image")
-				.load(this.onImageLoaded.bind(this));
-			this.$overlayWrapper = this.$el.find(".grid-item-overlay");
-			this.$bg = this.$el.find(".grid-item-overlay-bg");
-			this.$label = this.$el.find(".grid-item-label-wrapper");
-			this.$move = this.$el.find(".move");
-			this.$text = this.$el.find(".grid-item-label");
-			this.$longDesc = this.$el.find(".long-description");
-			this.$tags = this.$el.find(".grid-item-tags");
-			this.$arrow = this.$el.find('.grid-item-arrow');
-			this.$arrowLrg = this.$el.find('.arrow-lrg');
+    });
 
-			// ADD SPINNER
-			this.$pinwheel = this.$el.find(".pinwheel");
-			this.pinwheelObj = APP.showPinwheel(this.$pinwheel);
+    var ThumbView = Backbone.View.extend({
 
-			this.onRollout = _.debounce(this.animateRollout, 100);
-		}
-		,events: {
-			"mouseenter" 	: "onItemOver"
-			,"mouseleave" 	: "onItemOut"
-			,"click"	  	: "onItemClick"
-		}
-		,onImageLoaded: function() {
-			this.pinwheelObj.stop();
-			// TODO - ADD SOME KIND OF FADE IN FROM A GREY BG
-		}
-		,onItemOver: function(e) {
-			var cnt = 0;
-			clearTimeout(this.animTimer);
+        className: "grid-item-column"
 
-			// hide label & arrow
-			this.$label.css({ opacity: 0 });
-			this.$arrow.css({ display: 'none' });
+        ,initialize:  function(options) {
+            this.model = options.model;
+            this.ind = options.ind;
+        }
 
-			// hide band
-			cnt += 80;
-			this.animTimer = setTimeout(function() {
-				this.$bg.css({
-					height: 0,
-					bottom: ThumbView.redbandHeight/2,
-					background: 'red'
-				});
-			}.bind(this), cnt);
+        ,render: function() {
+            // Compile the template using Underscores micro-templating
+            var compiledTemplate = _.template( template, this.model);
+            this.$el.html(compiledTemplate);
+            this.$el.attr("thumb-id", this.model.id);
 
-			// fade in vignette
-			cnt += 50;
-			this.animTimer = setTimeout(function() {
-				this.$overlayWrapper.css({ margin: 0 });
-				this.$bg.css({
-					display: 'none',
-					opacity: 0,
-					width: '100%',
-					height: '100%',
-					bottom: 0,
-					background: 'black'
-				});
-			}.bind(this), cnt);
+            this.$img = this.$el.find(".thumb-image")
+                .load(this.onImageLoaded.bind(this));
+            this.$overlayWrapper = this.$el.find(".grid-item-overlay");
+            this.$bg = this.$el.find(".grid-item-overlay-bg");
+            this.$label = this.$el.find(".grid-item-label-wrapper");
+            this.$move = this.$el.find(".move");
+            this.$text = this.$el.find(".grid-item-label");
+            this.$longDesc = this.$el.find(".long-description");
+            this.$tags = this.$el.find(".grid-item-tags");
+            this.$arrow = this.$el.find('.grid-item-arrow');
+            this.$arrowLrg = this.$el.find('.arrow-lrg');
 
-			// show large label
-			cnt += 50;
-			this.animTimer = setTimeout(function() {
-				this.$label.css({
-					opacity: 1,
-					top: 20
-				});
-				this.$text
-					.css({ padding: '5% 10%'})
-					.find('span').css('font-size', '2em');
-				this.$longDesc.css('display', 'block');
-				this.$tags.css({
-					height: 'auto',
-					paddingTop: 5,
-					opacity: 1
-				});
-				this.$bg.css({
-					display: 'block',
-					opacity: 0.6
-				});
-			}.bind(this), cnt);
-		}
-		,onItemOut: function() {
-			return this.onRollout();
-		}
+            // ADD SPINNER
+            this.$pinwheel = this.$el.find(".pinwheel");
+            this.pinwheelObj = APP.showPinwheel(this.$pinwheel);
 
-		,animateRollout: function() {
-			var cnt = 0;
-			clearTimeout(this.animTimer);
+            // reference for animation queue
+            this.$allEls = [
+                this.$bg,
+                this.$label,
+                this.$tags
+            ];
 
-			// hide label and bg
-			this.$bg.css({ opacity: 0 });
-			this.$label.css({ opacity: 0 });
-			this.$tags.css({
-				paddingTop: 0,
-				opacity: 0
-			});
+            // animate in
+            var delay = this.ind * 100;
+            this.$el.css({ opacity: 0 })
+            .velocity({ opacity: 1 }, {
+                duration: 300,
+                delay: delay,
+                easing: 'easeOutQuad'
+            });
 
-			// reposition label strip
-			cnt += 50;
-			this.animTimer = setTimeout(function() {
-				this.$overlayWrapper.css({ margin: 5 });
-				this.$bg.css({
-					height: 0,
-					bottom: 0,
-					background: 'red'
-				});
-				this.$tags.css({ height: 0 });
-				this.$text
-					.css({ padding: '0 10px'})
-					.find('span').css('font-size', '1em');
-				this.$longDesc.css('display', 'none');
-			}.bind(this), cnt);
+            delay += 200;
+            this.$bg.css({
+                height: 0,
+                bottom: ThumbView.redbandHeight/2,
+            })
+            .velocity({
+                height: ThumbView.redbandHeight,
+                bottom: 0
+            }, {
+                duration: 150,
+                delay: delay
+            });
 
-			// fade red bar
-			cnt += 100;
-			this.animTimer = setTimeout(function() {
-				this.$arrow.css({ display: 'table-cell' });
-				this.$bg.css({
-					display: 'block',
-					height: ThumbView.redbandHeight,
-					opacity: 0.7
-				});
-			}.bind(this), cnt);
-
-			// show small label
-			cnt += 50;
-			this.animTimer = setTimeout(function() {
-				this.$label.css({
-					opacity: 1,
-					top: 'auto'
-				});
-			}.bind(this), cnt);
-		}
-		,onItemClick: function(e){
-			var id = $(e.currentTarget).attr("thumb-id");
-			this.$el.fadeOut(100, function(){
-				APP.instances.mainRouter.navigate("detail/" + id, {trigger: true});
-			});
-		}
-	},
-	{
-		// Set class level constants
-		redbandHeight: 30 // match with css static height attr
-	});
+            this.$label.css('opacity', 0).velocity({ opacity: 1 }, {
+                duration: 100,
+                delay: delay + 50
+            });
 
 
-	// Our module now returns our view
-	return ProjectGridView;
+        }
+
+        ,events: {
+            "mouseenter"  : "onItemOver"
+            ,"mouseleave" : "onItemOut"
+            ,"click"      : "onItemClick"
+        }
+
+        ,onImageLoaded: function() {
+            this.pinwheelObj.stop();
+            // TODO - ADD SOME KIND OF FADE IN FROM A GREY BG
+        }
+
+        ,onItemOver: function() {
+            this.stopAnimation();
+
+            // hide label & arrow
+            this.$arrow.css({ display: 'none' });
+            this.$label.velocity({ opacity: 0 }, { duration: 50 });
+
+            // hide band
+            this.$bg.velocity({
+                height: 0,
+                bottom: ThumbView.redbandHeight/2,
+                backgroundColor: 'red'
+            }, {
+                duration: 100,
+                complete: function() {
+                    this.$bg.css({
+                        width: '100%',
+                        height: '100%',
+                        bottom: 0,
+                        opacity: 0,
+                        backgroundColor: '#000'
+                    });
+
+                    this.$overlayWrapper.css({ margin: 0 });
+
+                    // show large label
+                    this.$text
+                        .css({ padding: '5% 10%'})
+                        .find('span').css('font-size', '2em');
+
+                    this.$longDesc.css('display', 'block');
+
+                    this.$label.css({ top: 20 });;
+
+                    this.$tags.css({
+                        height: 'auto',
+                        paddingTop: 5,
+                    });
+
+                }.bind(this)
+            });
+
+            this.$label.velocity({ opacity: 1 }, {
+                duration: 200,
+                delay: 50
+            });
+            this.$tags.velocity({ opacity: 1 }, {
+                duration: 200,
+                delay: 50
+            });
+            this.$bg.velocity({ opacity: 0.6 }, {
+                duration: 200,
+                delay: 50
+            });
+        }
+
+        ,onItemOut: function() {
+            this.stopAnimation();
+
+            // hide label and bg
+            if(this.$bg.css('opacity') !== '0.7') {
+                this.$bg.velocity({ opacity: 0 }, 100);
+                this.$label.velocity({ opacity: 0 }, 100);
+            }
+            this.$tags.velocity({
+                paddingTop: 0,
+                opacity: 0
+            }, {
+                duration: 100,
+                complete: function() {
+                    // reposition label strip
+                    this.$bg.css({
+                        height: 0,
+                        bottom: ThumbView.redbandHeight/2,
+                        backgroundColor: '#ff0000'
+                    });
+                    this.$text
+                        .css({ padding: '0 10px'})
+                        .find('span').css('font-size', '1em');
+                    this.$overlayWrapper.css({ margin: 5 });
+                    this.$tags.css({ height: 0 });
+                    this.$longDesc.css('display', 'none');
+                    this.$label.css('top', 'auto');
+                    this.$arrow.css({ display: 'table-cell' });
+                }.bind(this)
+            });
+
+            // fade red bar
+            this.$bg.velocity({
+                display: 'block',
+                height: ThumbView.redbandHeight,
+                bottom: 0,
+                opacity: 0.7
+            }, {
+                duration: 100,
+                delay: 50
+            });
+
+            this.$label.velocity({ opacity: 1 }, {
+                duration: 100,
+                delay: 100
+            });
+        }
+
+        ,onItemClick: function(e) {
+            var id = $(e.currentTarget).attr("thumb-id");
+            this.$el.fadeOut(100, function(){
+                APP.instances.mainRouter.navigate("detail/" + id, {trigger: true});
+            });
+        }
+
+        ,stopAnimation: function() {
+            _.each(this.$allEls, function(el) { el.velocity('stop'); });
+        }
+
+    }, {
+        // Set class level constants
+        redbandHeight: 30 // match with css static height attr
+    });
+
+
+    // Our module now returns our view
+    return ProjectGridView;
 });

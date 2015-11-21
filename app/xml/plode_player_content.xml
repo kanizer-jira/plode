@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
-	
+
 	<copies>
 
 		<copy id='buffering' styleId='player-buffering'>
@@ -12,5 +12,5 @@
 		</copy>
 
 	</copies>
-	
+
 </data>

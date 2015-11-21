@@ -5,7 +5,7 @@ define([
 function(_, Backbone) {
 
 	var ProjectModel = Backbone.Model.extend({
-		initialize: function(obj){
+		initialize: function(obj) {
 			this.id = obj.id;
 			this.sequence = obj.sequence;
 			this.label = obj.label.toUpperCase();

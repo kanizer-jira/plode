@@ -85,6 +85,7 @@ function($, _, Backbone, Spinner) {
 				,vid_ogv: "media/cp.ogv"
 				,slate: "img/slate_cp.jpg"
 			}
+			,longDesc: "Jordan wanted to showcase Chris Paul and his CP3.V shoe with a site that celebrates the on the court chaos where Chris Paul's skills shine."
 		}
 		,{
 			id: "visa"
@@ -102,6 +103,7 @@ function($, _, Backbone, Spinner) {
 				,vid_ogv: "media/visa.ogv"
 				,slate: "img/slate_visa.jpg"
 			}
+			,longDesc: "The Visa Go site was designed to allow users to explore the experiences available through assorted Visa Signature Card programs."
 		}
 		,{
 			id: "kobe"
@@ -118,6 +120,7 @@ function($, _, Backbone, Spinner) {
 				,vid_ogv: "media/kobe.ogv"
 				,slate: "img/slate_kobe.jpg"
 			}
+			,longDesc: "The Zoom site explored the R&D processes and concepts that contributed to the creation of this shoe."
 		}
 		,{
 			id: "motion"
@@ -150,6 +153,7 @@ function($, _, Backbone, Spinner) {
 				,vid_ogv: "media/rrl.ogv"
 				,slate: "img/slate_rrl.jpg"
 			}
+			,longDesc: "Ralph Lauren launched the RRL line of clothing and retail outlets with a site centered around photo shoots that reflected the vintage style of the brand."
 		}
 		// ,{
 		// 	id: "xbox"
@@ -182,6 +186,7 @@ function($, _, Backbone, Spinner) {
 				,vid_ogv: "media/flip.ogv"
 				,slate: "img/slate_flip.jpg"
 			}
+			,longDesc: "Flip's site served to educate users about Flip products and features."
 		}
 		,{
 			id: "crackdown"
@@ -198,6 +203,7 @@ function($, _, Backbone, Spinner) {
 				,vid_ogv: "media/crackdown.ogv"
 				,slate: "img/slate_crackdown.jpg"
 			}
+			,longDesc: "Xbox and Rufian Games wanted to generate some interest in this title prior to launch. Users could learn more about the game and story through video galleries, contests and other game feature highlights."
 		}
 		,{
 			id: "target"
@@ -214,6 +220,7 @@ function($, _, Backbone, Spinner) {
 				,vid_ogv: "media/target.ogv"
 				,slate: "img/slate_target.jpg"
 			}
+			,longDesc: "Target wanted to bring their long-standing, offline marketing tool to the web. Users can browse weekly deals in an extremely configurable, shareable format."
 		}
 	]};
 

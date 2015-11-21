@@ -68,10 +68,24 @@
 }
 
 @mixin viewport($size: small) {
-  $selected-break: if($size == medium, $break-tablet, $break-phone);
+  $selected-break: $size;
+
+  // if($size == medium, $break-tablet, $break-phone);
+
+  @if $size == medium {
+    $selected-break: $break-tablet;
+  }
+
+  @if $size == small {
+    $selected-break: $break-phone;
+  }
 
   @if $size == column {
     $selected-break: $break-column;
+  }
+
+  @if $size == navmedium {
+    $selected-break: $break-nav;
   }
 
   @media only screen and (max-width: $selected-break) {
