@@ -123,52 +123,7 @@ $spMarV: 10px;
 
 
 
-  #project-detail {
-    width:  $spW;
-    padding: 0;
-    margin: 0;
 
-    .detail-item {
-      padding-top: 0px;
-
-      .detail-video-wrapper {
-        width: $spW;
-        margin: 0;
-
-        .arrow {
-          display: none;
-        }
-
-        .detail-video {
-          width: $spW;
-          height: ($spW * $vidH) / $vidW;
-
-          video {
-            width: $spW;
-            height: ($spW * $vidH) / $vidW;
-          }
-
-        }
-
-        .detail-content {
-          width: $spW;
-          padding: 20px 0 0 0;
-          clear: left;
-
-          .detail-header {
-
-            .detail-header-txt {
-              display: block;
-            }
-
-            .detail-header-back {
-              float: left;
-            }
-          }
-        }
-      }
-    }
-  }
 
   #about {
     text-align: left;
@@ -222,51 +177,7 @@ $miniMarV: 10px;
 
 
 
-  #project-detail {
-    width:  $miniW;
-    padding: 0;
-    margin: 0;
 
-    .detail-item {
-      padding-top: 0px;
-
-      .detail-video-wrapper {
-        width: $miniW;
-        margin: 0;
-
-        .arrow {
-          display: none;
-        }
-
-        .detail-video {
-          width: $miniW;
-          height: ($miniW * $vidH) / $vidW;
-
-          video {
-            width: $miniW;
-            height: ($miniW * $vidH) / $vidW;
-          }
-
-        }
-        .detail-content {
-          width: $miniW;
-          padding: 30px 0 0 0;
-          clear: left;
-
-          .detail-header {
-
-            .detail-header-txt {
-              display: block;
-            }
-
-            .detail-header-back {
-              float: left;
-            }
-          }
-        }
-      }
-    }
-  }
 
   #about {
     .resume-blurb {
@@ -316,56 +227,6 @@ $tabDescW: 235px;
 
 
 @media screen and (max-width: $break-tablet) {
-
-  #project-detail {
-    width:  100%;
-    padding: 0;
-    margin: 0;
-    display: inline-block;
-
-    .detail-item {
-      .detail-video-wrapper {
-        width: $tabW;
-        margin: 0;
-
-        .arrow {
-          display: none;
-        }
-
-        .detail-video {
-          width: $tabVidW;
-          height: ($tabVidW * $vidH) / $vidW;
-
-          video {
-            width: $tabVidW;
-            height: ($tabVidW * $vidH) / $vidW;
-          }
-
-        }
-
-        .detail-content {
-          width: $tabDescW;
-          text-align: left;
-
-          .detail-header {
-
-            .detail-header-txt {
-              display: block;
-              font-size: 1.2em;
-            }
-
-            .detail-header-back {
-              float: left;
-            }
-          }
-
-          .detail-desc {
-            font-size: 1em;
-          }
-        }
-      }
-    }
-  }
 
   #about {
     text-align: left;

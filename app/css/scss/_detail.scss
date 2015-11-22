@@ -1,144 +1,113 @@
+//----------------------------------------------------------------------
+//
+// DETAIL
+//
+//----------------------------------------------------------------------
 
-
-/**
- *
- * DETAIL
- *
- **/
 #project-detail {
-  width: $w;
-  padding: 0 $arrowW;
-  margin-left: -$arrowW;
+  display: inline-block;
 
   .detail-item {
     width: 100%;
-    padding-top: 20px;
+  }
 
-    .detail-video-wrapper {
-      width: $w + ($arrowW + $arrowMar) * 2;
-      margin-left: -$arrowW - $arrowMar;
-      display: inline-block;
+  .detail-video {
+    @include aspect-ratio($vidW, $vidH);
+    @include viewport(medium) {
+      width: 100%;
+    }
 
-      .arrow {
-        width: $arrowW;
-        height: $vidH;
-        display: table;
-        cursor: hand;
-        cursor: pointer;
+    float: left;
+    width: 65%;
+    background: $color-grey;
 
-        .arrow-wrapper {
-          display: table-cell;
-          vertical-align: middle;
-          width: $arrowW;
-          height: $arrowH;
-          padding-bottom: $arrowH;
+    video,
+    img,
+    object {
+      @include fill-absolute;
+      width: 100%;
+    }
+  }
 
-          img {
-            position: absolute;
-            // NEEDS TO BE DEFINED FOR DESATURATION SCRIPT
-            width: $arrowW;
-            height: $arrowH;
-            @include opac(0);
-          }
-        }
+  .detail-content {
+    @include viewport(medium) {
+      width: 100%;
+      padding-top: 30px;
+    }
+
+    float: right;
+    width: 30%;
+    padding: 10px 0 0 $descPad;
+  }
+
+  .detail-header {
+    display: table;
+    width: 100%;
+
+    .detail-header-txt {
+      display: table-cell;
+      font-size: 1.4em;
+      vertical-align: middle;
+    }
+
+    .client {
+      @include lato-bold;
+      color: $color-dark-grey;
+    }
+
+    .desc {
+      @include lato-light;
+      @include viewport(medium) {
+        display: inline;
       }
 
-      .arrow-l {
-        float: left;
-        padding-right: $arrowMar;
-      }
+      display: block;
+      color: $color-mid-grey;
+    }
+  }
 
-      .arrow-r {
-        float: right;
-        margin-left: $arrowMar;
-      }
+  .detail-header-back {
+    display: table-cell;
+    float: right;
+    font-size: 1em;
+    vertical-align: middle;
 
-      .detail-video {
-        width: $vidW;
-        height: $vidH;
-        float: left;
-        background: $color-grey;
+    .vcenter-wrapper {
+      display: table;
+      float: left;
+      height: 20px;
 
-        video {
-          width: $vidW;
-          height: $vidH;
+      .vcenter {
+        display: table-cell;
+        vertical-align: middle;
+
+        .arrow {
+          padding-right: 5px;
         }
 
-        img  {
-          width: 100%;
-        }
-      }
-
-      .detail-content {
-        padding: 10px 0px 0 $descPad;
-        width: $descW;
-        float: left;
-
-        .detail-header {
-          width: 100%;
-          display: table;
-
-          .detail-header-txt {
-            vertical-align: middle;
-            display: table-cell;
-            font-size: 1.4em;
-
-            .client {
-              @include lato-bold;
-              color: $color-dark-grey;
-            }
-
-            .desc {
-              @include lato-light;
-              color: $color-mid-grey;
-            }
-          }
-
-          .detail-header-back {
-            vertical-align: middle;
-            display: table-cell;
-            font-size: 1em;
-            float: right;
-
-            .vcenter-wrapper {
-              display: table;
-              height: 20px;
-              float: left;
-
-              .vcenter {
-                display: table-cell;
-                vertical-align: middle;
-
-                .arrow {
-                  padding-right: 5px;
-                }
-
-                .label {
-                  display: inline-block;
-                }
-              }
-            }
-          }
-        }
-
-        .detail-tags {
-          padding: 5px 0 15px 0;
-        }
-
-        .detail-desc {
-          font-size: 1.2em;
-          text-align: justify;
-
-          ul {
-            padding-left: 0;
-            list-style-image:url('../img/arrow_fwd.png');
-            li {
-              color: $color-mid-grey;
-              margin: 5px 0 0 1.3em;
-            }
-          }
+        .label {
+          display: inline-block;
         }
       }
+    }
+  }
+
+  .detail-tags {
+    padding: 5px 0 15px;
+  }
+
+  .detail-desc {
+    font-size: 1.2em;
+    text-align: justify;
+
+    ul {
+      padding-left: 0;
+      list-style-image: url('../img/arrow_fwd.png');
+    }
+
+    li {
+      margin: 5px 0 0 1.3em;
+      color: $color-mid-grey;
     }
   }
 }
