@@ -440,8 +440,10 @@ table {
   box-shadow: 0 5px 9px -7px rgba(0, 0, 0, 0.9);
   -webkit-transition: -webkit-box-shadow .3s ease-out;
   transition: box-shadow .3s ease-out;
+  width: 98%;
   height: 50px;
-  margin-top: -50px; }
+  margin-top: -50px;
+  margin-left: 1%; }
   @media only screen and (max-width: 530px) {
     #masthead-shadow {
       margin-top: 0; } }
@@ -459,31 +461,32 @@ table {
     #masthead {
       height: 70px; } }
   #masthead .header-inner-left {
-    height: 50px;
-    float: left;
-    display: table;
     z-index: 20;
-    padding-left: 10px; }
+    display: table;
+    float: left;
+    height: 50px;
+    padding-left: 10px;
+    background: #fff; }
     #masthead .header-inner-left .header-title-block {
       display: table-cell;
+      font-size: 2em;
       vertical-align: middle;
       cursor: hand;
-      cursor: pointer;
-      font-size: 2em; }
-      #masthead .header-inner-left .header-title-block .header-title {
-        font-family: 'Lato', Arial, sans-serif;
-        font-weight: 700;
-        letter-spacing: -1px;
-        color: #f00;
-        padding-right: 5px; }
-      #masthead .header-inner-left .header-title-block .header-role {
-        font-family: 'Lato', Arial, sans-serif;
-        font-weight: 300; }
-        @media only screen and (max-width: 530px) {
-          #masthead .header-inner-left .header-title-block .header-role {
-            display: block; } }
-      #masthead .header-inner-left .header-title-block #print-contact {
-        display: none; }
+      cursor: pointer; }
+    #masthead .header-inner-left .header-title {
+      font-family: 'Lato', Arial, sans-serif;
+      font-weight: 700;
+      padding-right: 5px;
+      color: #f00;
+      letter-spacing: -1px; }
+    #masthead .header-inner-left .header-role {
+      font-family: 'Lato', Arial, sans-serif;
+      font-weight: 300; }
+      @media only screen and (max-width: 530px) {
+        #masthead .header-inner-left .header-role {
+          display: block; } }
+    #masthead .header-inner-left #print-contact {
+      display: none; }
   #masthead .header-inner-right {
     float: right;
     height: 50px; }
@@ -518,11 +521,13 @@ table {
     #masthead .header-inner-right li {
       float: left;
       height: 100%;
-      color: #bbb; }
+      color: #bbb;
+      background: #fff; }
       @media only screen and (max-width: 730px) {
         #masthead .header-inner-right li {
           width: 50%;
-          border-bottom: 1px solid #bbb; } }
+          border-bottom: 1px solid #bbb;
+          border-top: 1px solid #ddd; } }
       #masthead .header-inner-right li .vcenter {
         display: table;
         height: 100%; }
@@ -550,11 +555,9 @@ table {
           text-decoration: none; }
       #masthead .header-inner-right li .header-nav-highlight-bar {
         width: 100%;
-        height: 0px;
-        margin-top: 0px;
-        background: red;
-        -webkit-transition: all .1s ease-out;
-        transition: all .1s ease-out; }
+        height: 2px;
+        margin: -2px auto 0;
+        background: red; }
 
 #footer {
   position: relative;
@@ -783,29 +786,34 @@ table {
       margin: 5px 0 0 1.3em;
       color: #aaa; }
 
-/**
- *
- * ABOUT
- *
- **/
 #about {
   padding: 0 10px; }
+  @media only screen and (max-width: 950px) {
+    #about {
+      text-align: left; } }
   #about .resume-blurb {
     font-family: 'Lato', Arial, sans-serif;
     font-weight: 300;
+    padding-bottom: 10px;
     font-size: 1.7em;
-    text-align: justify;
-    padding-bottom: 10px; }
+    text-align: justify; }
+    @media only screen and (max-width: 768px) {
+      #about .resume-blurb {
+        padding-bottom: 20px;
+        font-size: 1.2em; } }
   #about .print-btn-wrapper {
-    width: 100%;
     display: inline-block;
+    width: 100%;
     padding-bottom: 40px; }
+    @media only screen and (max-width: 768px) {
+      #about .print-btn-wrapper {
+        display: none; } }
   #about .print-btn {
     font-size: 1em; }
     #about .print-btn .vcenter-wrapper {
       display: table;
-      height: 20px;
-      float: left; }
+      float: left;
+      height: 20px; }
       #about .print-btn .vcenter-wrapper .vcenter {
         display: table-cell;
         vertical-align: middle; }
@@ -818,6 +826,10 @@ table {
     #about .resume-columns .col {
       width: 48%;
       margin-right: 2%; }
+      @media only screen and (max-width: 768px) {
+        #about .resume-columns .col {
+          width: 100%;
+          margin: 0; } }
       #about .resume-columns .col .vcenter-wrapper {
         display: table;
         height: 20px; }
@@ -827,40 +839,46 @@ table {
       #about .resume-columns .col .vcenter-wrapper.bullet {
         float: left;
         padding-right: 5px; }
-    #about .resume-columns .col0 {
+    #about .resume-columns .col0,
+    #about .resume-columns .col1 {
       float: left; }
-      #about .resume-columns .col0 .resume-job {
-        padding-bottom: 20px;
-        padding-left: 10px; }
-        #about .resume-columns .col0 .resume-job .resume-hdr-grp {
-          padding-bottom: 5px; }
-          #about .resume-columns .col0 .resume-job .resume-hdr-grp .resume-hdr-role {
-            font-family: 'Lato', Arial, sans-serif;
-            font-weight: 300;
-            font-style: italic;
-            color: #aaa; }
-        #about .resume-columns .col0 .resume-job .resume-body ul {
-          padding: 0 0 0 20px;
-          margin: 1em 0 0; }
+      @media only screen and (max-width: 768px) {
+        #about .resume-columns .col0,
+        #about .resume-columns .col1 {
+          float: none; } }
+    #about .resume-columns .resume-job {
+      padding-bottom: 20px;
+      padding-left: 10px; }
+    #about .resume-columns .resume-hdr-grp {
+      padding-bottom: 5px; }
+    #about .resume-columns .resume-hdr-role {
+      font-family: 'Lato', Arial, sans-serif;
+      font-weight: 300;
+      font-style: italic;
+      color: #aaa; }
+    #about .resume-columns .resume-body ul {
+      margin: 1em 0 0;
+      padding: 0 0 0 20px; }
     #about .resume-columns .label {
       font-family: 'Lato', Arial, sans-serif;
       font-weight: 700;
       padding-bottom: 10px;
       font-size: 1.2em; }
-    #about .resume-columns .col1 {
-      float: right; }
-      #about .resume-columns .col1 .resume-skills {
-        padding-bottom: 20px;
-        padding-left: 10px; }
-        #about .resume-columns .col1 .resume-skills .resume-skills-item {
-          padding-bottom: 15px; }
-          #about .resume-columns .col1 .resume-skills .resume-skills-item .resume-skills-list {
-            font-family: 'Lato', Arial, sans-serif;
-            font-weight: 300;
-            font-style: italic;
-            color: #bbb; }
-      #about .resume-columns .col1 .resume-edu {
-        padding-left: 10px; }
+    #about .resume-columns .resume-skills {
+      padding-bottom: 20px;
+      padding-left: 10px; }
+      @media only screen and (max-width: 768px) {
+        #about .resume-columns .resume-skills {
+          padding-bottom: 0; } }
+    #about .resume-columns .resume-skills-item {
+      padding-bottom: 15px; }
+    #about .resume-columns .resume-skills-list {
+      font-family: 'Lato', Arial, sans-serif;
+      font-weight: 300;
+      font-style: italic;
+      color: #bbb; }
+    #about .resume-columns .resume-edu {
+      padding-left: 10px; }
   #about .resume-item {
     padding-bottom: 40px; }
 
@@ -939,57 +957,6 @@ a {
   height: 4px;
   background: #f00; }
 
-/**
- *
- * 0-479 : SMARTPHONE
- *
- **/
-@media screen and (min-width: 0px) and (max-width: 767px) {
-  #about {
-    text-align: left; }
-    #about .resume-blurb {
-      font-size: 1.2em;
-      padding-bottom: 20px; }
-    #about .print-btn-wrapper {
-      display: none; }
-    #about .resume-columns .col {
-      width: 100%;
-      margin: 0; }
-    #about .resume-columns .col0 {
-      float: none; }
-    #about .resume-columns .col1 {
-      float: none; }
-      #about .resume-columns .col1 .resume-skills {
-        padding-bottom: 0; } }
-/**
- *
- * 480-767 : MINITABLET
- *
- **/
-@media screen and (min-width: 480px) and (max-width: 784px) {
-  /* Style adjustments for viewports that meet the condition */
-  #about .resume-blurb {
-    font-size: 1.2em;
-    padding-bottom: 20px; }
-  #about .print-btn-wrapper {
-    display: none; }
-  #about .resume-columns .col {
-    width: 100%;
-    margin: 0; }
-  #about .resume-columns .col0 {
-    float: none; }
-  #about .resume-columns .col1 {
-    float: none; }
-    #about .resume-columns .col1 .resume-skills {
-      padding-bottom: 0; } }
-/**
- *
- * 768 - 950 : TABLET
- *
- **/
-@media screen and (max-width: 950px) {
-  #about {
-    text-align: left; } }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
   /* Style adjustments for high resolution devices */ }
 

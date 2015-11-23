@@ -1,161 +1,111 @@
-/**
- *
- * RESUME
- *
- **/
-
-
+//----------------------------------------------------------------------
+//
+// PRINT
+//
+//----------------------------------------------------------------------
 
 $resume-padding: 5px;
 
-
-body{
-	color: #ff0000 !important;
-	margin: 20px !important;
-	font-size: 12px !important;
+body {
+  margin: 20px !important;
+  color: #f00 !important;
+  font-size: 12px !important;
 }
 
-
-#masthead-wrapper{
-	padding: 0px 0;
+#masthead-wrapper {
+  padding: 0;
 }
 
-.header-title-block{
-	font-size: 20px !important;
+.header-title-block {
+  font-size: 20px !important;
 
-	.header-title{
-		color: #ff0000 !important;
-		font-weight: bold !important;
-	}
+  .header-title {
+    color: #f00 !important;
+    font-weight: bold !important;
+  }
 
-	.header-role{
-		color: #666666 !important;
-		font-style: italic !important;
-	}
+  .header-role {
+    color: #666 !important;
+    font-style: italic !important;
+  }
 
-	#print-contact{
-		display: block;
-		font-size: 13px;
-	}
+  #print-contact {
+    display: block;
+    font-size: 13px;
+  }
+
 }
 
-.header-inner-right{
-	display: none !important;
+.header-inner-right {
+  display: none !important;
 }
 
-
-
-
-.resume-blurb{
-	display: none !important;
+.resume-blurb {
+  display: none !important;
 }
 
-.print-btn-wrapper{
-	display: none;
+.print-btn-wrapper {
+  display: none;
 }
 
-.resume-body>ul{
-	padding: 0 0 0 10px;
-	margin: 5px 0;
+.resume-body>ul {
+  margin: 5px 0;
+  padding: 0 0 0 10px;
 }
 
-.resume-columns{
-	.col{
-		.vcenter-wrapper{
-			.vcenter{
-				.label{
-					font-weight: bold !important;
-					font-size: 16px !important;
-					padding-top: 10px;
-				}
-			}
-		}
-	}
+.resume-columns {
+  .col {
+    .vcenter-wrapper {
+      .vcenter {
+        .label {
+          font-weight: bold !important;
+          font-size: 16px !important;
+          padding-top: 10px;
+        }
+      }
+    }
+  }
 
-	.label{
-		padding-bottom: 5px;
-	}
+  .label {
+    padding-bottom: 5px;
+  }
 
-	.resume-job{
-		padding-top: $resume-padding;
+  .resume-job {
+    padding-top: $resume-padding;
 
-		.resume-hdr-grp{
-			background: #ffcc00 !important;
+    .resume-hdr-grp {
+      background: #ffcc00 !important;
+    }
 
-			.resume-hdr-title{
-			}
+    .resume-hdr-role {
+      color: #666 !important;
+      font-style: italic;
+    }
 
-			.resume-hdr-role{
-				font-style: italic;
-				color: #666666 !important;
-			}
+    .resume-body {
+      text-decoration: none;
+    }
 
-		}
+  }
 
-		.resume-body{
-			text-decoration: none;
-		}
+  .resume-skills-hdr {
+    padding-top: $resume-padding;
+  }
 
-	}
+  .resume-skills-list {
+    color: #666 !important;
+    font-style: italic;
+  }
 
-	.resume-skills{
-		.resume-skills-item{
-			.resume-skills-hdr{
-				padding-top: $resume-padding;
-			}
-
-			.resume-skills-list{
-				color: #666666 !important;
-				font-style: italic;
-			}
-		}
-	}
-
-	.resume-edu{
-		padding-top: $resume-padding;
-	}
+  .resume-edu {
+    padding-top: $resume-padding;
+  }
 }
 
-#footer{
-	display: none !important;
+#footer {
+  display: none !important;
 }
 
-
-
-/**
- *
- * DETAIL
- *
- **/
-.arrow{
-	display: none;
+#project-grid-badges {
+  display: none;
 }
-
-
-
-
-
-/**
- *
- * GRID
- *
- **/
-#project-grid{
-
-	#project-grid-badges{
-		display: none;
-	}
-
-	.grid-item-arrow{
-		display: none;
-	}
-
-	.arrow-lrg-wrapper{
-		display: none;
-	}
-}
-
-
-
-
-//@import "bootstrap/bootstrap.min";

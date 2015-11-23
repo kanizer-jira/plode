@@ -18,7 +18,7 @@ function($, _, Backbone, template)
 			// Compile the template using Underscores micro-templating
 			var compiledTemplate = _.template( template);
 			this.$about.html(compiledTemplate);
-			this.$about.fadeIn(200);
+			this.$about.fadeIn(400);
 		}
 		,events:{
 			"click .print a" : "onClickPrint"

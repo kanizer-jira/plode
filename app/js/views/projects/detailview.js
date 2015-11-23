@@ -36,7 +36,7 @@ function($, _, Backbone, APP, desat, ProjectsCollection, template, templateStati
 				? _.template( template, this.model)
 				: _.template( templateStatic, this.model);
 			this.$el.find("#project-detail").html(compiledTemplate);
-			this.$wrapper.fadeIn(200);
+			this.$wrapper.fadeIn(400);
 		}
 		,destroyEvents: function() {
 		    //COMPLETELY UNBIND THE VIEW
