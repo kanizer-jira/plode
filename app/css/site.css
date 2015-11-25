@@ -731,6 +731,22 @@ table {
       bottom: 0;
       left: 0;
       width: 100%; }
+  #project-detail .detail-dotnav {
+    position: absolute;
+    right: 0;
+    margin-top: 50px; }
+    #project-detail .detail-dotnav .container {
+      float: left; }
+    #project-detail .detail-dotnav .inner {
+      width: 5px;
+      height: 5px;
+      background: red; }
+    #project-detail .detail-dotnav .outer {
+      width: 10px;
+      height: 10px;
+      background: red;
+      opacity: 0.5;
+      filter: alpha(opacity=50); }
   #project-detail .detail-content {
     float: right;
     width: 30%;
@@ -781,10 +797,21 @@ table {
     text-align: justify; }
     #project-detail .detail-desc ul {
       padding-left: 0;
-      list-style-image: url("../img/arrow_fwd.png"); }
+      list-style: none; }
     #project-detail .detail-desc li {
       margin: 5px 0 0 1.3em;
       color: #aaa; }
+      #project-detail .detail-desc li:before {
+        position: relative;
+        top: 0.8em;
+        left: -0.8em;
+        display: block;
+        width: 0;
+        height: 0;
+        border-width: 0.25em 0 0.25em 0.35em;
+        border-style: solid;
+        border-color: transparent #f00;
+        content: ''; }
 
 #about {
   padding: 0 10px; }

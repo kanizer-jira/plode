@@ -70,8 +70,6 @@
 @mixin viewport($size: small) {
   $selected-break: $size;
 
-  // if($size == medium, $break-tablet, $break-phone);
-
   @if $size == medium {
     $selected-break: $break-tablet;
   }
@@ -114,4 +112,28 @@
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+@mixin arrow($direction, $color: $color-red, $radius: 3px) {
+  width: 0;
+  height: 0;
+
+  @if $direction == up {
+    border-right: $radius solid transparent;
+    border-bottom: $radius solid $color;
+    border-left: $radius solid transparent;
+  } @else if $direction == down {
+    border-top: $radius solid $color;
+    border-right: $radius solid transparent;
+    border-left: $radius solid transparent;
+  } @else if $direction == right {
+    border-top: $radius solid transparent;
+    border-bottom: $radius solid transparent;
+    border-left: $radius solid $color;
+  } @else {
+    border-top: $radius solid transparent;
+    border-right: $radius solid $color;
+    border-bottom: $radius solid transparent;
+  }
+
 }

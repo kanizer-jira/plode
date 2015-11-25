@@ -3,6 +3,7 @@ define([
 	,'underscore'
 	,'backbone'
 	,'applogic'
+	,'views/nav/DotNav'
 
 	// DESATURATE PLUGIN
 	,'libs/jquery.desaturate'
@@ -16,12 +17,12 @@ define([
 	,'text!template/projects/detail_item_static.html'
 ],
 
-function($, _, Backbone, APP, desat, ProjectsCollection, template, templateStatic) {
+function($, _, Backbone, APP, DotNav, desat, ProjectsCollection, template, templateStatic) {
 
 	var DetailView = Backbone.View.extend({
 		el: '#content'
-		,initialize: function(id){
-			this.id = id;
+		,initialize: function(options){
+			this.id = options.id;
 			this.$el.append("<div id='project-detail'></div>");
 			this.$wrapper = this.$el.find("#project-detail");
 			this.$wrapper.css("display", "none");
@@ -36,6 +37,15 @@ function($, _, Backbone, APP, desat, ProjectsCollection, template, templateStati
 				? _.template( template, this.model)
 				: _.template( templateStatic, this.model);
 			this.$el.find("#project-detail").html(compiledTemplate);
+			// this.$badges = this.$el.find(".plode-badge");
+			// this.$badges.css({ backgroundColor: this.model.color });
+
+			// setup dotnav
+			this.dotnavContainer = this.$el.find('.detail-dotnav')[0];
+			this.dotnav = new DotNav(this.dotnavContainer, this.collection, this.id);
+			this.dotnav.render();
+
+			// transition in
 			this.$wrapper.fadeIn(400);
 		}
 		,destroyEvents: function() {

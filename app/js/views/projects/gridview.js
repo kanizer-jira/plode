@@ -141,7 +141,8 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, template) {
             this.$move = this.$el.find(".move");
             this.$text = this.$el.find(".grid-item-label");
             this.$longDesc = this.$el.find(".long-description");
-            this.$tags = this.$el.find(".grid-item-tags");
+            this.$tagsWrapper = this.$el.find(".grid-item-tags");
+            // this.$badges = this.$el.find(".plode-badge");
             this.$arrow = this.$el.find('.grid-item-arrow');
             this.$arrowLrg = this.$el.find('.arrow-lrg');
 
@@ -153,8 +154,12 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, template) {
             this.$allEls = [
                 this.$bg,
                 this.$label,
-                this.$tags
+                this.$tagsWrapper
             ];
+
+            // // set band color
+            // this.$bg.css({ backgroundColor: this.model.color });
+            // this.$badges.css({ backgroundColor: this.model.color });
 
             // animate in
             var delay = this.ind * 100;
@@ -182,8 +187,6 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, template) {
                 duration: 100,
                 delay: delay + 50
             });
-
-
         }
 
         ,events: {
@@ -207,8 +210,7 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, template) {
             // hide band
             this.$bg.velocity({
                 height: 0,
-                bottom: ThumbView.redbandHeight/2,
-                backgroundColor: 'red'
+                bottom: ThumbView.redbandHeight/2
             }, {
                 duration: 100,
                 complete: function() {
@@ -231,7 +233,7 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, template) {
 
                     this.$label.css({ top: 20 });;
 
-                    this.$tags.css({
+                    this.$tagsWrapper.css({
                         height: 'auto',
                         paddingTop: 5,
                     });
@@ -243,7 +245,7 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, template) {
                 duration: 200,
                 delay: 50
             });
-            this.$tags.velocity({ opacity: 1 }, {
+            this.$tagsWrapper.velocity({ opacity: 1 }, {
                 duration: 200,
                 delay: 50
             });
@@ -261,7 +263,7 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, template) {
                 this.$bg.velocity({ opacity: 0 }, 100);
                 this.$label.velocity({ opacity: 0 }, 100);
             }
-            this.$tags.velocity({
+            this.$tagsWrapper.velocity({
                 paddingTop: 0,
                 opacity: 0
             }, {
@@ -271,13 +273,13 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, template) {
                     this.$bg.css({
                         height: 0,
                         bottom: ThumbView.redbandHeight/2,
-                        backgroundColor: '#ff0000'
+                        backgroundColor: 'red'
                     });
                     this.$text
                         .css({ padding: '0 10px'})
                         .find('span').css('font-size', '1em');
                     this.$overlayWrapper.css({ margin: 5 });
-                    this.$tags.css({ height: 0 });
+                    this.$tagsWrapper.css({ height: 0 });
                     this.$longDesc.css('display', 'none');
                     this.$label.css('top', 'auto');
                     this.$arrow.css({ display: 'table-cell' });

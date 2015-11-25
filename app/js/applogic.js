@@ -303,7 +303,7 @@ function($, _, Backbone, Spinner) {
     //----------------------------------------------------------
 
     // CONVERT ARRAY OF OBJECTS INTO JSON OBJECT
-    APP.serializeJSON=function(a) {
+    APP.serializeJSON = function(a) {
         var json = {};
         for(var i = 0; i < a.length; i++){
             var o = a[i];
@@ -311,6 +311,7 @@ function($, _, Backbone, Spinner) {
         }
         return json;
     };
+
 
     APP.db = {}; // a place to put global references to collections / models
     APP.models = {};
