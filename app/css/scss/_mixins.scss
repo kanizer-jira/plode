@@ -1,3 +1,9 @@
+//----------------------------------------------------------------------
+//
+// Lato faces
+//
+//----------------------------------------------------------------------
+
 @mixin lato {
   font-family: 'Lato', Arial, sans-serif;
 }
@@ -23,7 +29,14 @@
   font-weight: 700;
 }
 
-@mixin shadow ($xoffset:0, $yoffset:0, $blur: 25px, $spread:0, $opac: $shadowOpacity) {
+
+//----------------------------------------------------------------------
+//
+// effects
+//
+//----------------------------------------------------------------------
+
+@mixin shadow ($xoffset:0, $yoffset:0, $blur: 25px, $spread:0, $opac: 1) {
   // TODO - REPLACE WITH AUTO-PREFIX
   -moz-box-shadow: $xoffset $yoffset $blur $spread rgba(0, 0, 0, $opac);
   -webkit-box-shadow: $xoffset $yoffset $blur $spread  rgba(0, 0, 0, $opac);
@@ -34,14 +47,13 @@
   transition: box-shadow .3s ease-out;
 }
 
-@mixin trans($dur: $durShort, $del: 0) {
-  // TODO - REPLACE WITH AUTO-PREFIX
-  -webkit-transition: all $dur ease-out;
-  transition: all $dur ease-out;
-  -webkit-transition-delay: $del;
-  -moz-transition-delay: $del;
-  -o-transition-delay: $del;
-  transition-delay: $del;
+@mixin opac($val) {
+  opacity: $val;
+  filter: alpha(opacity = $val * 100);
+}
+
+@mixin hide {
+  display: none;
 }
 
 @mixin no-select {
@@ -53,19 +65,91 @@
   user-select: none;
 }
 
-@mixin margins {
-  width: $w;
-  margin: 0 auto;
+@mixin hand {
+  cursor: hand;
+  cursor: pointer;
 }
 
-@mixin opac($val) {
-  opacity: $val;
-  filter: alpha(opacity = $val * 100);
+
+//----------------------------------------------------------------------
+//
+// animation
+//
+//----------------------------------------------------------------------
+
+@mixin trans($dur: .1s, $del: 0) {
+  // TODO - REPLACE WITH AUTO-PREFIX
+  -webkit-transition: all $dur ease-out;
+  transition: all $dur ease-out;
+  -webkit-transition-delay: $del;
+  -moz-transition-delay: $del;
+  -o-transition-delay: $del;
+  transition-delay: $del;
 }
 
-@mixin hide {
-  display: none;
+
+//----------------------------------------------------------------------
+//
+// position
+//
+//----------------------------------------------------------------------
+
+@mixin v-center-parent {
+  // set this attribute to avoid blurry vcenter items using vertical-align mixin
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
+
+// TODO - FALLBACK FOR IE8?
+@mixin v-center($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin v-center-table {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+@mixin h-center-margin {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &:before {
+    display: block;
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+    content: '';
+  }
+}
+
+@mixin aspect-ratio-offset($width, $height) {
+  margin-top: -($height / $width) * 100%;
+}
+
+@mixin fill-absolute {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+
+//----------------------------------------------------------------------
+//
+// media queries
+//
+//----------------------------------------------------------------------
 
 @mixin viewport($size: small) {
   $selected-break: $size;
@@ -91,28 +175,12 @@
   }
 }
 
-@mixin aspect-ratio($width, $height) {
-  position: relative;
 
-  &:before {
-    display: block;
-    width: 100%;
-    padding-top: ($height / $width) * 100%;
-    content: '';
-  }
-}
-
-@mixin aspect-ratio-offset($width, $height) {
-  margin-top: -($height / $width) * 100%;
-}
-
-@mixin fill-absolute {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
+//----------------------------------------------------------------------
+//
+// components
+//
+//----------------------------------------------------------------------
 
 @mixin arrow($direction, $color: $color-red, $radius: 3px) {
   width: 0;

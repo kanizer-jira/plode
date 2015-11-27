@@ -19,8 +19,8 @@ define(['backbone', 'views/nav/DotNavItem'], function(Backbone, DotNavItem) {
 		,render: function() {
 			this.collection.models.forEach(function(item, ind) {
 				var navItem = new DotNavItem(this.el, item.id);
-				navItem.setActive(item.id === this.selectedId);
 				navItem.render(); // TODO - WHY DO I HAVE TO EXPLICITLY CALL?
+				navItem.setActive(item.id === this.selectedId);
 			}.bind(this));
 
 			// // Compile the template using Underscores micro-templating

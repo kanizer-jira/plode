@@ -56,6 +56,7 @@ function($, _, Backbone, APP, DotNav, desat, ProjectsCollection, template, templ
 		,events:{
 			"click .detail-tags .plode-badge" : "onBadgeClick"
 			,"click .arrow" : "onArrowClick"
+			,"click .detail-grid-icon" : "onGridIconClick"
 			,"mouseenter .arrow" : "onArrowOver"
 			,"mouseleave .arrow" : "onArrowOut"
 		}
@@ -77,6 +78,9 @@ function($, _, Backbone, APP, DotNav, desat, ProjectsCollection, template, templ
 			var path =  "detail/" + id;
 
 			APP.instances.mainRouter.navigate(path, {trigger: true});
+		}
+		,onGridIconClick: function(e) {
+			APP.instances.mainRouter.navigate("projects", {trigger: true});
 		}
 		,onArrowOver: function(e){
 			e.preventDefault();

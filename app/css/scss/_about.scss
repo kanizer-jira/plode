@@ -8,7 +8,7 @@
     text-align: left;
   }
 
-  padding: 0 $marL;
+  padding: 0 $padding-global-left;
 
   .resume-blurb {
     @include lato-light;

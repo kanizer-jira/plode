@@ -1,27 +1,19 @@
-$w: 900px;
-$width-small: 320px;
-$mar-main: 60px;
-$arrowW: 41px;
-$arrowH: 75px;
-$arrowMar: 4px;
-$marL: 10px;
-$marB: 20px;
-$hdr-top-mar: 30px;
-$hdr-h: 50px;
-$hdr-h-med: 70px;
-$footer-h: 30px;
-$gridMargin: 20px;
-$gridItemW: 285px;
-$gridItemH: 180px;
-$gridItemLabelH: 30px;
-$vidW: 610px;
-$vidH: 410px;
-$descW: 250px;
-$descPad: 30px;
-$durShort: .1s;
-$durMed: .2s;
-$durLong: .5s;
-$shadowOpacity: 1;
+//----------------------------------------------------------------------
+//
+// components
+//
+//----------------------------------------------------------------------
+
+$width-small         : 320px;
+$mar-main            : 60px;
+$padding-global-left : 10px;
+$hdr-top-mar         : 30px;
+$hdr-h               : 50px;
+$hdr-h-med           : 70px;
+$footer-h            : 30px;
+$thumb-width         : 285px;
+$thumb-height        : 180px;
+$thumb-label-height  : 30px;
 
 
 //----------------------------------------------------------------------
@@ -30,11 +22,11 @@ $shadowOpacity: 1;
 //
 //----------------------------------------------------------------------
 
-$break-tablet: 950px;
-$break-mini-tablet: 768px;
-$break-phone: 480px;
-$break-column: 615px;
-$break-nav: 730px;
+$break-tablet      : 950px;
+$break-mini-tablet : 768px;
+$break-nav         : 730px;
+$break-column      : 615px;
+$break-phone       : 480px;
 
 
 //----------------------------------------------------------------------
@@ -43,11 +35,17 @@ $break-nav: 730px;
 //
 //----------------------------------------------------------------------
 
-$color-trans: rgba(0, 0, 0, 0);
-$color-white: #fff;
-$color-red: #f00;
-$color-grey: #bbb;
-$color-light-grey: #ddd;
-$color-mid-grey: #aaa;
-$color-dark-grey: #666;
-$color-nav-bg: #f2f2f2;
+$color-kuler-01    : #1eb7cc;
+$color-kuler-02    : #3a8e99;
+$color-kuler-03    : #00ff8f;
+$color-kuler-04    : #ff4041;
+$color-kuler-05    : #cc0b6d;
+$color-trans       : rgba(0, 0, 0, 0);
+$color-white       : #fff;
+$color-red         : #f00;
+$color-grey        : #bbb;
+$color-light-grey  : #ddd;
+$color-mid-grey    : #aaa;
+$color-dark-grey   : #666;
+$color-player-grey : #999;
+$color-nav-bg      : #f2f2f2;

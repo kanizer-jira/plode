@@ -178,7 +178,7 @@ linters:
     enabled: true
 
   SpaceAfterVariableName:
-    enabled: true
+    enabled: false
 
   SpaceAroundOperator:
     enabled: true
