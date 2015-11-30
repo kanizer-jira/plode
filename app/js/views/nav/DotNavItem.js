@@ -67,13 +67,16 @@ function(Backbone, Velocity, APP) {
 
 		,setActive: function(isActive) {
 			this.active = isActive;
-			Velocity(this.inner, { backgroundColor: this.active ? '#f00' : '#bbb' }, { duration: 100 });
+			Velocity(this.inner, { backgroundColor: this.active ? DotNavItem.colorActive : DotNavItem.colorInactive }, { duration: 100 });
 			Velocity(this.outer, {
 				width: this.active ? 26 : 0,
 				height: this.active ? 26 : 0
 			}, { duration: 100 });
 		}
 
+	}, {
+		colorActive: '#000',
+		colorInactive: '#aaa'
 	});
 
 	return DotNavItem;

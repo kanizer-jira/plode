@@ -161,7 +161,7 @@
 //
 //----------------------------------------------------------------------
 
-@mixin arrow($direction, $color: $color-red, $radius: 3px) {
+@mixin arrow($direction, $color: $color-highlight, $radius: 3px) {
   width: 0;
   height: 0;
 

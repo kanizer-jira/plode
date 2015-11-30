@@ -46,12 +46,12 @@
       @include fill-absolute;
       margin: 0 5px 5px;
 
-      .grid-item-overlay-bg { // red band with label
+      .grid-item-overlay-bg { // band with label
         position: absolute;
         bottom: 0;
         width: 100%;
         height: $thumb-label-height;
-        background: $color-red;
+        background: $color-overlay;
 
         @include opac(.7);
       }
@@ -66,7 +66,6 @@
 
         .grid-item-label {
           display: table-cell;
-          // width: 50%;
           padding: 0 10px;
           font-size: .8em;
           vertical-align: middle;
@@ -79,6 +78,7 @@
 
             span.label {
               @include lato-reg;
+              color: $color-highlight;
             }
 
             span.desc {
@@ -109,7 +109,6 @@
 
       .long-description {
         @include lato-reg;
-        @include opac(0.8);
         color: $color-white;
         font-size: 1.4em;
         display: none;

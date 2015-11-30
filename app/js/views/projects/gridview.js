@@ -144,6 +144,7 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, blurb, template) {
             this.$label = this.$el.find(".grid-item-label-wrapper");
             this.$move = this.$el.find(".move");
             this.$text = this.$el.find(".grid-item-label");
+            this.$title = this.$text.find(".label");
             this.$longDesc = this.$el.find(".long-description");
             this.$tagsWrapper = this.$el.find(".grid-item-tags");
             // this.$badges = this.$el.find(".plode-badge");
@@ -219,8 +220,10 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, blurb, template) {
                         height: '100%',
                         bottom: 0,
                         opacity: 0,
-                        backgroundColor: ThumbView.colorOff
+                        backgroundColor: ThumbView.colorHighlight
                     });
+
+                    this.$title.css('color', ThumbView.colorText);
 
                     this.$overlayWrapper.css({ margin: 0 });
 
@@ -273,11 +276,12 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, blurb, template) {
                     this.$bg.css({
                         height: 0,
                         bottom: ThumbView.redbandHeight/2,
-                        backgroundColor: ThumbView.colorHighlight
+                        backgroundColor: ThumbView.colorOff
                     });
                     this.$text
                         .css({ padding: '0 10px'})
                         .find('span').css('font-size', '1em');
+                    this.$title.css('color', ThumbView.colorHighlight);
                     this.$overlayWrapper.css({ margin: 5 });
                     this.$tagsWrapper.css({ height: 0 });
                     this.$longDesc.css('display', 'none');
@@ -317,8 +321,9 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, blurb, template) {
     }, {
         // Set class level constants
         redbandHeight: 30, // match with css static height attr
-        colorHighlight: 'red',
-        colorOff: 'black'
+        colorOff: '#666',
+        colorHighlight: '#00b2af',
+        colorText: 'white'
     });
 
 

@@ -46,7 +46,6 @@
     display: table;
     float: left;
     height: $hdr-h;
-    padding-left: $padding-global-left;
     background: $color-white;
 
     .header-title-block {
@@ -60,7 +59,7 @@
     .header-title {
       @include lato-bold;
       padding-right: 5px;
-      color: $color-red;
+      color: $color-highlight;
       letter-spacing: -1px;
     }
 
@@ -116,6 +115,7 @@
     }
 
     li {
+      @include hand;
       @include viewport(navmedium) {
         width: 50%;
         border-bottom: 1px solid $color-grey;
@@ -124,10 +124,14 @@
 
       float: left;
       height: 100%;
-      color: $color-grey;
+      color: $color-nav;
       background: $color-white;
 
-      .vcenter {
+      &:hover {
+        color: $color-highlight;
+      }
+
+      .nav-item-container {
         @include viewport(navmedium) {
           width: 100%;
           text-align: center;
@@ -137,36 +141,23 @@
         height: 100%;
 
         .nav-item {
-          display:table-cell;
-          vertical-align: middle;
-          cursor: hand;
-          cursor: pointer;
+          @include v-center-table;
+          @include lato-light;
           padding: 0 2em;
           font-size: 1.125em;
-          @include lato-light;
-
-          &:hover {
-            color: $color-red;
-            text-decoration: none;
-          }
         }
       }
 
       .active {
-        cursor: default;
-        color: $color-red;
-
-        &:hover {
-          color: $color-red;
-          text-decoration: none;
-        }
+        @include no-select;
+        color: $color-nav-selected;
       }
 
       .header-nav-highlight-bar {
         width: 100%;
         height: 2px;
         margin: -2px auto 0;
-        background: red;
+        background: $color-highlight;
       }
     }
   }

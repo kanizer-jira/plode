@@ -35,18 +35,24 @@ $break-phone       : 480px;
 //
 //----------------------------------------------------------------------
 
-$color-kuler-red         : #dc0c43;
-$color-kuler-pink        : #f2157a;
-$color-kuler-grey        : #ecf1f4;
-$color-kuler-light-green : #92a493;
-$color-kuler-green       : #5c734c;
+$color-kuler-01    : #ffcbae;
+$color-kuler-02    : #ff6c29;
+$color-kuler-03    : #ff5c00;
+$color-kuler-04    : #00b2af;
+$color-kuler-05    : #00fffb;
 
-$color-trans             : rgba(0, 0, 0, 0);
-$color-white             : #fff;
-$color-red               : #f00;
-$color-grey              : #bbb;
-$color-light-grey        : #ddd;
-$color-mid-grey          : #aaa;
-$color-dark-grey         : #444;
-$color-player-grey       : #999;
-$color-nav-bg            : #f2f2f2;
+$color-trans       : rgba(0, 0, 0, 0);
+$color-white       : #fff;
+$color-red         : #f00;
+$color-grey        : #666;
+$color-dark-grey   : #444;
+$color-mid-grey    : #aaa;
+$color-light-grey  : #ddd;
+
+$color-highlight           : $color-kuler-04;
+$color-highlight-secondary : $color-kuler-03;
+$color-overlay             : $color-grey;
+$color-deselected          : $color-light-grey;
+$color-neutral             : $color-mid-grey;
+$color-nav                 : $color-mid-grey;
+$color-nav-selected        : $color-grey;

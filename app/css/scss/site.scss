@@ -34,7 +34,7 @@ a {
   text-decoration: none;
 
   &:hover {
-    color: $color-red;
+    color: $color-highlight;
     text-decoration: none;
   }
 }
@@ -76,7 +76,7 @@ a {
   margin: 1px;
   padding: 1px 5px 2px;
   border-radius: 15px;
-  background: $color-light-grey;
+  background: $color-deselected;
   font-size: .8em;
   text-align: center;
   cursor: pointer;
@@ -84,21 +84,25 @@ a {
 
   &:hover {
     color: $color-white;
-    background: $color-grey;
+    background: $color-neutral;
   }
 }
 
 .plode-badge.active {
   @extend .plode-badge;
   color: $color-white;
-  background: $color-red;
+  background: $color-overlay;
+
+  &:hover {
+    background: $color-neutral;
+  }
 }
 
 .bullet-square {
   float: left;
   width: 4px;
   height: 4px;
-  background: $color-red;
+  background: $color-highlight;
 }
 
 .resume-blurb {

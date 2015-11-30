@@ -63,7 +63,7 @@
       width: 0;
       height: 0;
       border-radius: 50%;
-      background: $color-red;
+      background: $color-highlight;
     }
 
   }
@@ -73,7 +73,7 @@
     right: 5px;
 
     &:hover .copy {
-      color: $color-red;
+      color: $color-highlight;
     }
 
     .container {
@@ -166,17 +166,17 @@
       &:before {
         position: relative;
         top: 0.8em;
-        left: -0.8em;
+        left: -0.6em;
         display: block;
         width: 0;
         height: 0;
-        border-width: 0.25em 0 0.25em 0.35em;
+        border-width: 0.25em 0 0.25em 0.30em;
         border-style: solid;
-        border-color: transparent $color-red;
+        border-color: transparent $color-highlight;
         content: '';
       }
 
-      margin-left: 0.8em;
+      margin-left: 0.6em;
       color: $color-mid-grey;
     }
   }
