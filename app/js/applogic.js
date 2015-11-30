@@ -130,7 +130,7 @@ function($, _, Backbone, Spinner) {
 			,img: "img/thumb_motion.jpg"
 			,tags: ["akqa", "weidenkennedy"]
 			,detail:{
-				desc: "Selected samples of motion and interactivity are showcased here."
+				desc: "Selected samples of motion and interactivity for various clients (Nike, Visa, Target, ESPN, HP, Xbox and Flip) are showcased here."
 				,vid: "../media/motion.mp4"
 				,vid_mp4: "media/motion.mp4"
 				,vid_webm: "media/motion.webm"

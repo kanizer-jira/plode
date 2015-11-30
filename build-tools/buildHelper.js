@@ -103,10 +103,8 @@ function copyBuilt() {
 				return copyFolder('app/img', 'deploy/img', 'images');
 			})
 			.then(function(label) {
-				return copyFolder('app/swf', 'deploy/swf', 'swf');
-			})
-			.then(function(label) {
-				return copyFolder('app/xml', 'deploy/xml', 'xml');
+				console.log(chalk.bgGreen(label, 'copied to deploy'));
+				return copyFolder('app/media', 'deploy/media', 'media');
 			})
 
 			// update index for prod

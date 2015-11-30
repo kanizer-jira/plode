@@ -59,7 +59,7 @@ function($, _, Backbone, Velocity, APP, template) {
 
 		,events: {
 			'click .header-title-block' : 'onTitleClick'
-			,'click .nav-item' : 'onNavClick'
+			,'click .header-nav-block li' : 'onNavClick'
 		}
 
 		,onTitleClick: function(e){

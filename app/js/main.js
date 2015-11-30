@@ -1,8 +1,8 @@
 require.config({
 	paths: {
-		jquery     : 'libs/jquery-1.8.3.min',
 		underscore : 'libs/amd-enabled/underscore-min',
 		backbone   : 'libs/amd-enabled/backbone-min',
+		jquery     : 'libs/jquery-1.8.3.min',
 		spin       : 'libs/spin.min',
 		velocity   : 'libs/velocity.min',
 		applogic   : 'applogic',

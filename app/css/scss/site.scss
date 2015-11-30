@@ -61,7 +61,7 @@ a {
 #content {
   @include lato-reg;
   @include viewport(navmedium) {
-    padding-top: 50px;
+    margin-top: 50px;
   }
 
   position: relative;
