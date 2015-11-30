@@ -10,18 +10,6 @@
 
   padding: 0 $padding-global-left;
 
-  .resume-blurb {
-    @include lato-light;
-    @include viewport($break-mini-tablet) {
-      padding-bottom: 20px;
-      font-size: 1.2em;
-    }
-
-    padding-bottom: 10px;
-    font-size: 1.7em;
-    text-align: justify;
-  }
-
   .print-btn-wrapper {
     @include viewport($break-mini-tablet) {
       display: none;

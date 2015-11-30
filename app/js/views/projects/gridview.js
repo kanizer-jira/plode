@@ -5,9 +5,10 @@ define([
     ,'velocity'
     ,'applogic'
     ,'collections/projects'
+    ,'text!template/global/blurb.html'
     ,'text!template/projects/grid_item.html'
 ],
-function($, _, Backbone, Velocity, APP, ProjectsCollection, template) {
+function($, _, Backbone, Velocity, APP, ProjectsCollection, blurb, template) {
 
     var ProjectGridView = Backbone.View.extend({
 
@@ -15,9 +16,12 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, template) {
 
         ,initialize: function(params) {
             if(params) this.ids = params.ids;
+
+            var blurbTemplate = _.template(blurb);
             this.$el.append("<div id='project-grid'></div>");
             this.$grid = this.$el.find("#project-grid");
             this.$grid.css({ "display": "none" });
+            this.$grid.append(blurbTemplate);
             this.$grid.append("<div id='project-grid-badges'></div>");
             this.$badges = this.$el.find("#project-grid-badges");
             this.thumbsIdList = [];
@@ -157,10 +161,6 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, template) {
                 this.$tagsWrapper
             ];
 
-            // // set band color
-            // this.$bg.css({ backgroundColor: this.model.color });
-            // this.$badges.css({ backgroundColor: this.model.color });
-
             // animate in
             var delay = this.ind * 100;
             this.$el.css({ opacity: 0 })
@@ -219,7 +219,7 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, template) {
                         height: '100%',
                         bottom: 0,
                         opacity: 0,
-                        backgroundColor: '#000'
+                        backgroundColor: ThumbView.colorOff
                     });
 
                     this.$overlayWrapper.css({ margin: 0 });
@@ -273,7 +273,7 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, template) {
                     this.$bg.css({
                         height: 0,
                         bottom: ThumbView.redbandHeight/2,
-                        backgroundColor: 'red'
+                        backgroundColor: ThumbView.colorHighlight
                     });
                     this.$text
                         .css({ padding: '0 10px'})
@@ -316,7 +316,9 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, template) {
 
     }, {
         // Set class level constants
-        redbandHeight: 30 // match with css static height attr
+        redbandHeight: 30, // match with css static height attr
+        colorHighlight: 'red',
+        colorOff: 'black'
     });
 
 

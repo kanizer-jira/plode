@@ -2,34 +2,42 @@ define([
 	'jquery'
 	,'underscore'
 	,'backbone'
+	,'text!template/global/blurb.html'
 	,'text!template/resume/resume.html'
 ],
+function($, _, Backbone, blurb, template) {
 
-function($, _, Backbone, template)
-{
 	var ResumeView = Backbone.View.extend({
+
 		el: '#content'
-		,initialize: function(){
+
+		,initialize: function() {
 			this.$el.append("<div id='about'></div>");
 			this.$about = this.$el.find("#about");
 			this.$about.css("display", "none");
 		}
-		,render: function(){
+
+		,render: function() {
 			// Compile the template using Underscores micro-templating
-			var compiledTemplate = _.template( template);
+			var compiledTemplate = _.template(blurb);
 			this.$about.html(compiledTemplate);
+
+			compiledTemplate = _.template(template);
+			this.$about.append(compiledTemplate);
 			this.$about.fadeIn(400);
 		}
-		,events:{
+
+		,events: {
 			"click .print a" : "onClickPrint"
 		}
-		,onClickPrint: function(e){
+
+		,onClickPrint: function(e) {
 			e.stopPropagation();
 			e.preventDefault();
 			window.print();
 		}
+
 	});
 
-	// Our module now returns our view
 	return ResumeView;
 });

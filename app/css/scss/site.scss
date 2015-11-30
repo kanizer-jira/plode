@@ -75,8 +75,7 @@ a {
   display: inline-block;
   margin: 1px;
   padding: 1px 5px 2px;
-  -moz-border-radius: 15px;
-  border-radius: 15px; // TODO - ADD AUTOPREFIXER
+  border-radius: 15px;
   background: $color-light-grey;
   font-size: .8em;
   text-align: center;
@@ -100,6 +99,17 @@ a {
   width: 4px;
   height: 4px;
   background: $color-red;
+}
+
+.resume-blurb {
+  @include lato-light;
+  @include viewport($break-mini-tablet) {
+    font-size: 1.2em;
+  }
+
+  padding-bottom: 20px;
+  font-size: 1.7em;
+  text-align: justify;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),

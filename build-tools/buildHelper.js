@@ -1,10 +1,12 @@
-var Promise = require('bluebird');
-var _       = require('lodash');
-var fse     = require('fs-extra');
-var glob    = require('glob');
-var chalk   = require('chalk');
-var sass    = require('node-sass');
-var conf    = require('../package.json').buildTools.sass;
+var Promise      = require('bluebird');
+var _            = require('lodash');
+var fse          = require('fs-extra');
+var glob         = require('glob');
+var chalk        = require('chalk');
+var sass         = require('node-sass');
+var autoprefixer = require('autoprefixer');
+var postcss      = require('postcss');
+var conf         = require('../package.json').buildTools.sass;
 
 //----------------------------------------------------------------------
 //
@@ -32,18 +34,27 @@ function compileSass(file) {
 	.then(function(result) {
 		// No errors during the compilation, write this result on the disk
 		if(result) {
-			fse.writeFile(file.dest, result.css, function(writeErr) {
-				if(!writeErr) {
-					// file written on disk
-					count--;
-					if(count === 0) {
-						console.log(chalk.bgGreen('All sass files successfully compiled!'));
-						copyBuilt(); // lame-o
-					}
-				} else {
-					console.log(chalk.red(file.src, 'sass compilation writeErr', writeErr));
-				}
-			});
+
+			// autoprefix
+			postcss([autoprefixer]).process(result.css.toString('utf8'))
+				.then(function(prefixed) {
+					prefixed.warnings().forEach(function(warn) {
+						console.log('buildHelper.js: warn.toString():', warn.toString());
+					})
+
+					fse.writeFile(file.dest, prefixed, function(writeErr) {
+						if(!writeErr) {
+							// file written on disk
+							count--;
+							if(count === 0) {
+								console.log(chalk.bgGreen('All sass files successfully compiled!'));
+								copyBuilt(); // lame-o
+							}
+						} else {
+							console.log(chalk.red(file.src, 'sass compilation writeErr', writeErr));
+						}
+					});
+				});
 		}
 	});
 }

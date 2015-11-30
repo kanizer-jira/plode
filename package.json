@@ -21,12 +21,14 @@
   "author": "Nelson Shin",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^6.1.2",
     "bluebird": "^3.0.5",
     "chalk": "^1.1.1",
     "fs-extra": "^0.26.2",
     "glob": "^5.0.15",
     "lodash": "^3.10.1",
-    "node-sass": "^3.4.1"
+    "node-sass": "^3.4.1",
+    "postcss": "^5.0.12"
   },
   "buildTools": {
     "sass": {

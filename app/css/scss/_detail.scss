@@ -37,6 +37,7 @@
 
     .container {
       @include v-center-table;
+      @include hand;
       width: 26px;
       height: 26px;
     }
@@ -80,8 +81,8 @@
     }
 
     .icon {
-      width: 13px;
-      height: 13px;
+      width: 14px;
+      height: 14px;
       padding-right: 5px;
     }
 
