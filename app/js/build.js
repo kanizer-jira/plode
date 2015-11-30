@@ -8,6 +8,7 @@
 ({
     baseUrl: '.',
     paths: {
+        requireLib : 'libs/require.2.1.2.min',
         jquery     : 'libs/jquery-1.8.3.min',
         underscore : 'libs/amd-enabled/underscore-min',
         backbone   : 'libs/amd-enabled/backbone-min',
@@ -26,6 +27,7 @@
         //     deps: [ 'velocity' ]
         // }
     },
+    include: ['requireLib'],
     name: 'main',
     out: '../../deploy/js/main.js'
 })

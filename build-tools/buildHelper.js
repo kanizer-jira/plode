@@ -17,7 +17,7 @@ var sassRender = Promise.promisify(sass.render);
 var globbers = Promise.promisify(glob);
 
 var count = conf.files.length; // re-used in copyFiles()!
-// _.forEach(conf.files, compileSass);
+_.forEach(conf.files, compileSass);
 
 function compileSass(file) {
 	sassRender({
@@ -56,8 +56,6 @@ function compileSass(file) {
 //
 //----------------------------------------------------------------------
 
-// copyBuilt();
-
 var cwd = 'app/css/';
 var dest = 'deploy/css/';
 function copyBuilt() {
@@ -94,9 +92,7 @@ function copyBuilt() {
 				return copyFiles(files, 'txt')
 			})
 			.then(function() {
-				cwd = 'app/js/libs/';
-				dest = 'deploy/js/libs/';
-				return copyFiles(['swfobject.js'], 'js');
+				return copyFiles(['favicon.ico'], 'ico');
 			})
 			.then(function(label) {
 				console.log(chalk.bgGreen(label, 'copied to deploy'));
@@ -109,19 +105,6 @@ function copyBuilt() {
 
 			// update index for prod
 			.then(updateIndex);
-	});
-}
-
-updateIndex();
-function updateIndex() {
-	fse.readFile('app/index.html', {encoding: 'UTF-8'}, function(err, data) {
-		data = data
-		    .replace(/<!--\{\{STARTPROD\}\}/g, '')
-		    .replace(/\{\{ENDPROD\}\}-->/g, '')
-		    .replace(/<!--\{\{STARTDEV\}\}[\s\S]*\{\{ENDDEV\}\}-->/g, '');
-		fse.writeFile('deploy/index.html', data, function(res) {
-			console.log('buildHelper.js: res:', res);
-		});
 	});
 }
 
@@ -152,6 +135,18 @@ function copyFolder(src, dest, label) {
 			}
 			console.log(chalk.bgGreen(label, 'copied to deploy'));
 			resolve(label);
+		});
+	});
+}
+
+function updateIndex() {
+	fse.readFile('app/index.html', {encoding: 'UTF-8'}, function(err, data) {
+		data = data
+		    .replace(/<!--\{\{STARTPROD\}\}/g, '')
+		    .replace(/\{\{ENDPROD\}\}-->/g, '')
+		    .replace(/<!--\{\{STARTDEV\}\}[\s\S]*\{\{ENDDEV\}\}-->/g, '');
+		fse.writeFile('deploy/index.html', data, function(res) {
+			// console.log('buildHelper.js: res:', res);
 		});
 	});
 }
