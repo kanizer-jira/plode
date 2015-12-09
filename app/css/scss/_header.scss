@@ -118,7 +118,7 @@
       @include hand;
       @include viewport(navmedium) {
         width: 50%;
-        border-bottom: 1px solid $color-grey;
+        border-bottom: 1px solid $color-mid-grey;
         border-top: 1px solid $color-light-grey;
       }
 
