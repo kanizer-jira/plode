@@ -59,10 +59,10 @@ function($, _, Backbone, Spinner) {
 				,links:[{ label: "view at adcade.com", path: "http://www.adcade.com/"}]
 				,slate: "img/slate_adcade.jpg"
 			}
+			,longDesc: "Contributor to product and process development of an ad-serving platform (HTML5 canvas animation framework and IDE) at startup."
 		}
 		,{
 			id: "jordan"
-			,sequence: 0
 			,label: "JORDAN"
 			,desc: "Chris Paul 3 Site"
 			,img: "img/thumb_cp.jpg"
@@ -89,7 +89,6 @@ function($, _, Backbone, Spinner) {
 		}
 		,{
 			id: "visa"
-			,sequence: 1
 			,label: "VISA"
 			,desc: "go.visa.com Site"
 			,img: "img/thumb_visa.jpg"
@@ -107,7 +106,6 @@ function($, _, Backbone, Spinner) {
 		}
 		,{
 			id: "kobe"
-			,sequence: 2
 			,label: "Nike"
 			,desc: "Zoom Kobe IV Site"
 			,img: "img/thumb_kobe.jpg"
@@ -124,7 +122,6 @@ function($, _, Backbone, Spinner) {
 		}
 		,{
 			id: "motion"
-			,sequence: 3
 			,label: "Various"
 			,desc: "Assorted Motion Projects"
 			,img: "img/thumb_motion.jpg"
@@ -140,7 +137,6 @@ function($, _, Backbone, Spinner) {
 		}
 		,{
 			id: "rrl"
-			,sequence: 4
 			,label: "Ralph Lauren"
 			,desc: "RRL Site"
 			,img: "img/thumb_rrl.jpg"
@@ -157,7 +153,6 @@ function($, _, Backbone, Spinner) {
 		}
 		// ,{
 		// 	id: "xbox"
-		// 	,sequence: 5
 		// 	,label: "XBOX"
 		// 	,desc: "Carousel & Media Player"
 		// 	,img: "img/thumb_xbox.jpg"
@@ -173,7 +168,6 @@ function($, _, Backbone, Spinner) {
 		// }
 		,{
 			id: "flip"
-			,sequence: 6
 			,label: "Flip"
 			,desc: "theflip.com Site"
 			,img: "img/thumb_flip.jpg"
@@ -190,7 +184,6 @@ function($, _, Backbone, Spinner) {
 		}
 		,{
 			id: "crackdown"
-			,sequence: 7
 			,label: "Xbox"
 			,desc: "Crackdown 2 Site"
 			,img: "img/thumb_crackdown.jpg"
@@ -203,11 +196,10 @@ function($, _, Backbone, Spinner) {
 				,vid_ogv: "media/crackdown.ogv"
 				,slate: "img/slate_crackdown.jpg"
 			}
-			,longDesc: "Xbox and Rufian Games wanted to generate some interest in this title prior to launch. Users could learn more about the game and story through video galleries, contests and other game feature highlights."
+			,longDesc: "Xbox and Rufian Games title launch site - users could learn more about the game and story through video galleries, contests and other game feature highlights."
 		}
 		,{
 			id: "target"
-			,sequence: 8
 			,label: "TARGET"
 			,desc: "Weekly Ad"
 			,img: "img/thumb_target.jpg"

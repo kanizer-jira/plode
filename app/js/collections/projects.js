@@ -11,8 +11,8 @@ function(_, Backbone, APP, ProjectModel) {
 	    // ,sort_key: "sequence"
 		,initialize: function(){
 			var that = this;
-			_.each(APP.data.projects, function(item){
-				var model = new ProjectModel(item);
+			_.each(APP.data.projects, function(item, ind){
+				var model = new ProjectModel(item, ind);
 				that.add(model);
 			})
 		}
@@ -25,6 +25,7 @@ function(_, Backbone, APP, ProjectModel) {
 		// 	this.sort_key = fieldName;
 		// 	this.sort();
 		// }
+
 	});
 
 	// You don't usually return a collection instantiated

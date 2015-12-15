@@ -27,6 +27,9 @@ function($, _, Backbone, APP, DotNav, desat, ProjectsCollection, template, templ
 			this.$wrapper = this.$el.find("#project-detail");
 			this.$wrapper.css("display", "none");
 			this.destroyEvents();
+
+			document.onkeydown = this.onKey.bind(this);
+
 		}
 		,render: function(){
 			this.collection = new ProjectsCollection();
@@ -52,7 +55,8 @@ function($, _, Backbone, APP, DotNav, desat, ProjectsCollection, template, templ
 		    //COMPLETELY UNBIND THE VIEW
 		    this.undelegateEvents();
 		    $(this.el).removeData().unbind();
-	    }
+			document.onkeydown = null;
+		}
 		,events:{
 			"click .detail-tags .plode-badge" : "onBadgeClick"
 			,"click .arrow" : "onArrowClick"
@@ -93,6 +97,13 @@ function($, _, Backbone, APP, DotNav, desat, ProjectsCollection, template, templ
 			e.stopPropagation();
 			var $img = $(e.currentTarget).find(".arrow-wrapper > img");
 			$img.stop().show().animate({opacity: 0}, 200);
+		}
+		,onKey: function(e) {
+			if(e.keyCode === 37) {
+				this.dotnav.prev();
+			} else if(e.keyCode === 39) {
+				this.dotnav.next();
+			}
 		}
 	});
 

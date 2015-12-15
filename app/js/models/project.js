@@ -5,9 +5,9 @@ define([
 function(_, Backbone) {
 
 	var ProjectModel = Backbone.Model.extend({
-		initialize: function(obj) {
+		initialize: function(obj, ind) {
 			this.id = obj.id;
-			this.sequence = obj.sequence;
+			this.sequence = obj.sequence || ind; // TODO - ACCOUNT FOR SEQUENCE OVERRIDE
 			this.label = obj.label.toUpperCase();
 			this.desc = obj.desc.toUpperCase();
 			this.longDesc = obj.longDesc || obj.detail.desc;

@@ -60,6 +60,9 @@ a {
 
 #content {
   @include lato-reg;
+  @include viewport(medium) {
+    padding-bottom: $footer-h * 2;
+  }
   @include viewport(navmedium) {
     margin-top: 50px;
   }
@@ -67,7 +70,7 @@ a {
   position: relative;
   min-height: 100%;
   margin: 0 auto;
-  padding-bottom: $footer-h * 2;
+  padding-bottom: $footer-h * 4;
 }
 
 .plode-badge {
