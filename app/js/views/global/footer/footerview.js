@@ -2,19 +2,23 @@ define([
 	'jquery'
 	,'underscore'
 	,'backbone'
-	,'applogic'
+	,'util/EmailRiddler'
 	,'text!template/global/footer/footer_main.html'
 ],
 
-function($, _, Backbone, APP, template) {
+function($, _, Backbone, EmailRiddler, template) {
 
 	var FooterView = Backbone.View.extend({
-		el: $('#footer'),
-		render: function(){
+		el: $('#footer')
 
+		,initialize: function() {
+			this.render();
+		}
+
+		,render: function(){
 			// OBSCURE EMAIL
-			var email = APP.riddleEmail(false);
-			var emailHref = APP.riddleEmail(true);
+			var email = EmailRiddler.riddleEmail(false);
+			var emailHref = EmailRiddler.riddleEmail(true);
 
 			// Compile the template using Underscores micro-templating
 			var compiledTemplate = _.template( template, { email: email, emailHref: emailHref });

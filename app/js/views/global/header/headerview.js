@@ -3,19 +3,24 @@ define([
 	,'underscore'
 	,'backbone'
 	,'velocity'
+	,'util/EmailRiddler'
 	,'applogic'
 	,'text!template/global/header/header_main.html'
 ],
 
-function($, _, Backbone, Velocity, APP, template) {
+function($, _, Backbone, Velocity, EmailRiddler, APP, template) {
 
 	var HeaderView = Backbone.View.extend({
 
 		el: $('#masthead')
 
+		,initialize: function() {
+			this.render();
+		}
+
 		,render: function(){
 			// OBSCURE EMAIL
-			var email = APP.riddleEmail(false);
+			var email = EmailRiddler.riddleEmail(false);
 
 			// Compile the template using Underscores micro-templating
 			var compiledTemplate = _.template( template, { email: email });

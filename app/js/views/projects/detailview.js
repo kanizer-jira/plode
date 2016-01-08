@@ -29,7 +29,6 @@ function($, _, Backbone, APP, DotNav, desat, ProjectsCollection, template, templ
 			this.destroyEvents();
 
 			document.onkeydown = this.onKey.bind(this);
-
 		}
 		,render: function(){
 			this.collection = new ProjectsCollection();

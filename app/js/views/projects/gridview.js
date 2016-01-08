@@ -4,11 +4,12 @@ define([
     ,'backbone'
     ,'velocity'
     ,'applogic'
+    ,'views/global/pinwheel'
     ,'collections/projects'
     ,'text!template/global/blurb.html'
     ,'text!template/projects/grid_item.html'
 ],
-function($, _, Backbone, Velocity, APP, ProjectsCollection, blurb, template) {
+function($, _, Backbone, Velocity, APP, Pinwheel, ProjectsCollection, blurb, template) {
 
     var ProjectGridView = Backbone.View.extend({
 
@@ -27,6 +28,7 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, blurb, template) {
             this.thumbsIdList = [];
 
             this.destroyEvents();
+            this.render();
         }
 
         ,render: function() {
@@ -87,7 +89,7 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, blurb, template) {
         }
 
         ,onBadgeClick: function(e){
-            APP.log("click: ", e.currentTarget);
+            console.log("click: ", e.currentTarget);
             var active = [];
             this.$badges.find(".plode-badge.active").each(function(){
                 var tag = $(this).html();
@@ -152,8 +154,7 @@ function($, _, Backbone, Velocity, APP, ProjectsCollection, blurb, template) {
             this.$arrowLrg = this.$el.find('.arrow-lrg');
 
             // ADD SPINNER
-            this.$pinwheel = this.$el.find(".pinwheel");
-            this.pinwheelObj = APP.showPinwheel(this.$pinwheel);
+            this.pinwheelObj = new Pinwheel(this.$el.find(".pinwheel")[0]);
 
             // reference for animation queue
             this.$allEls = [
