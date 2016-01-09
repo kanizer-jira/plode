@@ -3,19 +3,21 @@ define([
     ,'underscore'
     ,'backbone'
     ,'velocity'
+    ,'tweenmax'
     ,'applogic'
     ,'views/global/pinwheel'
     ,'collections/projects'
     ,'text!template/global/blurb.html'
     ,'text!template/projects/grid_item.html'
 ],
-function($, _, Backbone, Velocity, APP, Pinwheel, ProjectsCollection, blurb, template) {
+function($, _, Backbone, Velocity, TweenMax, APP, Pinwheel, ProjectsCollection, blurb, template) {
 
     var ProjectGridView = Backbone.View.extend({
 
         el: '#content'
 
         ,initialize: function(params) {
+
             if(params) this.ids = params.ids;
 
             var blurbTemplate = _.template(blurb);
@@ -131,6 +133,8 @@ function($, _, Backbone, Velocity, APP, Pinwheel, ProjectsCollection, blurb, tem
         ,initialize:  function(options) {
             this.model = options.model;
             this.ind = options.ind;
+            this.tl = new window.TimelineLite();
+            this.animationDefined = false;
         }
 
         ,render: function() {
@@ -203,109 +207,40 @@ function($, _, Backbone, Velocity, APP, Pinwheel, ProjectsCollection, blurb, tem
         }
 
         ,onItemOver: function() {
-            this.stopAnimation();
+            if(this.animationDefined) {
+                this.tl.play();
+            } else {
+                // hide band
+                this.tl.to(this.$arrow, 0.01, { opacity: 0, delay: 0.2 })
+                    .to(this.$label, 0.05, { opacity: 0 })
+                    .to(this.$bg, 0.1, {
+                        height: 0,
+                        bottom: ThumbView.redbandHeight/2
+                    })
 
-            // hide label & arrow
-            this.$arrow.css({ display: 'none' });
-            this.$label.velocity({ opacity: 0 }, { duration: 50 });
+                    // format overlay as card
+                    .call(function() {
+                        this.$bg[0].removeAttribute('style');
+                        this.$bg.toggleClass('card-format')
+                        this.$text.toggleClass('card-format');
+                        this.$longDesc.toggleClass('card-format');
+                        this.$overlayWrapper.toggleClass('card-format');
+                        this.$label.toggleClass('card-format');
+                        this.$tagsWrapper.toggleClass('card-format');
+                    }.bind(this))
 
-            // hide band
-            this.$bg.velocity({
-                height: 0,
-                bottom: ThumbView.redbandHeight/2
-            }, {
-                duration: 100,
-                complete: function() {
-                    this.$bg.css({
-                        width: '100%',
-                        height: '100%',
-                        bottom: 0,
-                        opacity: 0,
-                        backgroundColor: ThumbView.colorHighlight
-                    });
+                    // transition card in
+                    .addLabel('in')
+                    .to(this.$label, 0.2, {opacity: 1}, 'in')
+                    .to(this.$tagsWrapper, 0.2, {opacity: 1}, 'in')
+                    .to(this.$bg, 0.2, {opacity: 0.7}, 'in');
 
-                    this.$title.css('color', ThumbView.colorText);
-
-                    this.$overlayWrapper.css({ margin: 0 });
-
-                    // show large label
-                    this.$text
-                        .css({ padding: '5% 10%'})
-                        .find('span').css('font-size', '2em');
-
-                    this.$longDesc.css('display', 'block');
-
-                    this.$label.css({ top: 20 });;
-
-                    this.$tagsWrapper.css({
-                        height: 'auto',
-                        paddingTop: 5,
-                    });
-
-                }.bind(this)
-            });
-
-            this.$label.velocity({ opacity: 1 }, {
-                duration: 200,
-                delay: 50
-            });
-            this.$tagsWrapper.velocity({ opacity: 1 }, {
-                duration: 200,
-                delay: 50
-            });
-            this.$bg.velocity({ opacity: 0.6 }, {
-                duration: 200,
-                delay: 50
-            });
+                this.animationDefined = true;
+            }
         }
 
         ,onItemOut: function() {
-            this.stopAnimation();
-
-            // hide label and bg
-            if(this.$bg.css('opacity') !== '0.7') {
-                this.$bg.velocity({ opacity: 0 }, 100);
-                this.$label.velocity({ opacity: 0 }, 100);
-            }
-            this.$tagsWrapper.velocity({
-                paddingTop: 0,
-                opacity: 0
-            }, {
-                duration: 100,
-                complete: function() {
-                    // reposition label strip
-                    this.$bg.css({
-                        height: 0,
-                        bottom: ThumbView.redbandHeight/2,
-                        backgroundColor: ThumbView.colorOff
-                    });
-                    this.$text
-                        .css({ padding: '0 10px'})
-                        .find('span').css('font-size', '1em');
-                    this.$title.css('color', ThumbView.colorHighlight);
-                    this.$overlayWrapper.css({ margin: 5 });
-                    this.$tagsWrapper.css({ height: 0 });
-                    this.$longDesc.css('display', 'none');
-                    this.$label.css('top', 'auto');
-                    this.$arrow.css({ display: 'table-cell' });
-                }.bind(this)
-            });
-
-            // fade red bar
-            this.$bg.velocity({
-                display: 'block',
-                height: ThumbView.redbandHeight,
-                bottom: 0,
-                opacity: 0.7
-            }, {
-                duration: 100,
-                delay: 50
-            });
-
-            this.$label.velocity({ opacity: 1 }, {
-                duration: 100,
-                delay: 100
-            });
+            this.tl.pause().reverse();
         }
 
         ,onItemClick: function(e) {

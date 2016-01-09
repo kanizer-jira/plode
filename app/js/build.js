@@ -14,6 +14,7 @@
         backbone   : 'libs/amd-enabled/backbone-min',
         spin       : 'libs/spin.min',
         velocity   : 'libs/velocity.min',
+        tweenmax   : 'libs/gsap/TweenMax.min',
         applogic   : 'applogic',
         text       : 'libs/text',
         template   : '../templates'
@@ -21,11 +22,7 @@
     shim: {
         'velocity': {
             deps: [ 'jquery' ]
-        },
-        // // Optional, if you're using the UI pack:
-        // 'velocity-ui': {
-        //     deps: [ 'velocity' ]
-        // }
+        }
     },
     include: ['requireLib'],
     name: 'main',

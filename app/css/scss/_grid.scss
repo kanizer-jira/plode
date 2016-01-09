@@ -54,6 +54,14 @@
         background: $color-overlay;
 
         @include opac(.7);
+
+        &.card-format {
+          width: 100%;
+          height: 100%;
+          bottom: 0;
+          opacity: 0;
+          background-color: $color-highlight;
+        }
       }
 
       .grid-item-label-wrapper {
@@ -62,7 +70,6 @@
         display: table;
         width: 100%;
         height: $thumb-label-height;
-
 
         .grid-item-label {
           display: table-cell;
@@ -86,10 +93,27 @@
             }
           }
 
+          &.card-format {
+            padding: 5% 10%;
+            span {
+              font-size: 2em;
+            }
+
+            span.label {
+              color: $color-white;
+            }
+
+          }
+
           .grid-item-tags {
             width: $thumb-width - 100px;
             height: 0;
             @include opac(0);
+
+            &.card-format {
+              height: auto;
+              padding-top: 5px;
+            }
           }
         }
 
@@ -105,6 +129,12 @@
             color: white;
           }
         }
+
+        &.card-format {
+          margin: 0;
+          top: 20px;
+        }
+
       }
 
       .long-description {
@@ -116,7 +146,16 @@
         @media only screen and (min-width: $break-column) and (max-width: 830px) {
           display: none !important;
         }
+
+        &.card-format {
+          display: block;
+        }
       }
+
+      &.card-format {
+        margin: 0;
+      }
+
     }
   }
 }
