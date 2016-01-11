@@ -1,6 +1,6 @@
 # project
-*.DS_Store
-.project
+#*.DS_Store
+#.project
 
 # folders
 .sass-cache
