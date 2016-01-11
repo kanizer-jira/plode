@@ -4,13 +4,27 @@ Plode portfolio site
 - requirejs
 - backbone
 - sass
-- codeigniter
+
+### Setup:
+
+Install dependencies
+
+```
+npm install
+```
+
+### Dev environment:
+
+Run a preview server with live updates as you code.
+
+```
+npm start
+```
 
 ### Building the app
 
 Use configured npm tasks to build a deployable package.
 
 ```
-npm install
-npm start
+npm run build
 ```
