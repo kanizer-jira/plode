@@ -1,10 +1,9 @@
 # project
 #*.DS_Store
-#.project
+.project
 
 # folders
-#.sass-cache
-#app/css/.sass-cache
+.sass-cache
 design
 deploy
 node_modules
