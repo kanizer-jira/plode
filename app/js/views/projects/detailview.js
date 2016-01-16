@@ -40,6 +40,10 @@ function($, _, Backbone, APP, DotNav, desat, ProjectsCollection, template, templ
 			// this.$badges = this.$el.find(".plode-badge");
 			// this.$badges.css({ backgroundColor: this.model.color });
 
+			if(this.model.detail.vid) {
+				this.setupVideo();
+			}
+
 			// setup dotnav
 			this.dotnavContainer = this.$el.find('.detail-dotnav')[0];
 			this.dotnav = new DotNav(this.dotnavContainer, this.collection, this.id);
@@ -59,6 +63,13 @@ function($, _, Backbone, APP, DotNav, desat, ProjectsCollection, template, templ
 			,"click .detail-grid-icon" : "onGridIconClick"
 			,"mouseenter .arrow" : "onArrowOver"
 			,"mouseleave .arrow" : "onArrowOut"
+		}
+		,setupVideo: function() {
+			this.vidEl = document.getElementsByTagName('video')[0];
+			this.vidEl.className = '';
+			this.vidEl.oncanplay = function() {
+				this.vidEl.className = 'ready';
+			}.bind(this);
 		}
 		,onBadgeClick: function(e){
 			var id = $(e.currentTarget).html();

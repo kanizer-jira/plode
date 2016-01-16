@@ -27,6 +27,15 @@
       @include fill-absolute;
       width: 100%;
     }
+
+    video {
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    video.ready {
+      opacity: 1;
+    }
   }
 
   .detail-dotnav,
