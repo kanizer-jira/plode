@@ -189,9 +189,13 @@ function($, _, Backbone, Velocity, TweenMax, APP, Pinwheel, ProjectsCollection, 
                 delay: delay
             });
 
+            var ref = this;
             this.$label.css('opacity', 0).velocity({ opacity: 1 }, {
                 duration: 100,
-                delay: delay + 50
+                delay: delay + 50,
+                complete: function() {
+                    ref.ready = true;
+                }
             });
         }
 
@@ -207,40 +211,44 @@ function($, _, Backbone, Velocity, TweenMax, APP, Pinwheel, ProjectsCollection, 
         }
 
         ,onItemOver: function() {
-            if(this.animationDefined) {
-                this.tl.play();
-            } else {
-                // hide band
-                this.tl.to(this.$arrow, 0.01, { opacity: 0, delay: 0.2 })
-                    .to(this.$label, 0.05, { opacity: 0 })
-                    .to(this.$bg, 0.1, {
-                        height: 0,
-                        bottom: ThumbView.redbandHeight/2
-                    })
+            if(this.ready) {
+                if(this.animationDefined) {
+                    this.tl.play();
+                } else {
+                    // hide band
+                    this.tl.to(this.$arrow, 0.01, { opacity: 0, delay: 0.2 })
+                        .to(this.$label, 0.05, { opacity: 0 })
+                        .to(this.$bg, 0.1, {
+                            height: 0,
+                            bottom: ThumbView.redbandHeight/2
+                        })
 
-                    // format overlay as card
-                    .call(function() {
-                        this.$bg[0].removeAttribute('style');
-                        this.$bg.toggleClass('card-format')
-                        this.$text.toggleClass('card-format');
-                        this.$longDesc.toggleClass('card-format');
-                        this.$overlayWrapper.toggleClass('card-format');
-                        this.$label.toggleClass('card-format');
-                        this.$tagsWrapper.toggleClass('card-format');
-                    }.bind(this))
+                        // format overlay as card
+                        .call(function() {
+                            this.$bg[0].removeAttribute('style');
+                            this.$bg.toggleClass('card-format')
+                            this.$text.toggleClass('card-format');
+                            this.$longDesc.toggleClass('card-format');
+                            this.$overlayWrapper.toggleClass('card-format');
+                            this.$label.toggleClass('card-format');
+                            this.$tagsWrapper.toggleClass('card-format');
+                        }.bind(this))
 
-                    // transition card in
-                    .addLabel('in')
-                    .to(this.$label, 0.2, {opacity: 1}, 'in')
-                    .to(this.$tagsWrapper, 0.2, {opacity: 1}, 'in')
-                    .to(this.$bg, 0.2, {opacity: 0.7}, 'in');
+                        // transition card in
+                        .addLabel('in')
+                        .to(this.$label, 0.2, {opacity: 1}, 'in')
+                        .to(this.$tagsWrapper, 0.2, {opacity: 1}, 'in')
+                        .to(this.$bg, 0.2, {opacity: 0.7}, 'in');
 
-                this.animationDefined = true;
+                    this.animationDefined = true;
+                }
             }
         }
 
         ,onItemOut: function() {
-            this.tl.pause().reverse();
+            if(this.ready && this.animationDefined) {
+                this.tl.pause().reverse();
+            }
         }
 
         ,onItemClick: function(e) {

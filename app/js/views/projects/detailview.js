@@ -27,8 +27,10 @@ function($, _, Backbone, APP, DotNav, desat, ProjectsCollection, template, templ
 			this.$wrapper = this.$el.find("#project-detail");
 			this.$wrapper.css("display", "none");
 			this.destroyEvents();
+			this.keys = [];
 
-			document.onkeydown = this.onKey.bind(this);
+			document.onkeydown = this.onKeyDown.bind(this);
+			document.onkeyup = this.onKeyUp.bind(this);
 		}
 		,render: function(){
 			this.collection = new ProjectsCollection();
@@ -108,11 +110,19 @@ function($, _, Backbone, APP, DotNav, desat, ProjectsCollection, template, templ
 			var $img = $(e.currentTarget).find(".arrow-wrapper > img");
 			$img.stop().show().animate({opacity: 0}, 200);
 		}
-		,onKey: function(e) {
+		,onKeyDown: function(e) {
+			this.keys.push(e.keyCode);
+			if(this.keys.length > 1) return;
 			if(e.keyCode === 37) {
 				this.dotnav.prev();
 			} else if(e.keyCode === 39) {
 				this.dotnav.next();
+			}
+		}
+		,onKeyUp: function(e) {
+			var ind = this.keys.indexOf(e.keyCode);
+			if(ind > -1) {
+				this.keys.splice(ind, 1);
 			}
 		}
 	});
