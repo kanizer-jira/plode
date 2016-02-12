@@ -88,6 +88,13 @@ function copyBuilt() {
 				console.log(chalk.bgGreen(label, 'copied to deploy'));
 				cwd = 'app/';
 				dest = 'deploy/';
+				return globbers('sitemap.xml', {cwd: cwd})
+			})
+			.then(function(files) {
+				return copyFiles(files, 'sitemap')
+			})
+			.then(function(label) {
+				console.log(chalk.bgGreen(label, 'copied to deploy'));
 				return globbers('*.html', {cwd: cwd, ignore: 'index.html'})
 			})
 			.then(function(files) {
