@@ -146,7 +146,10 @@ function copyFiles(files, label) {
 
 function copyFolder(src, dest, label) {
 	return new Promise(function(resolve, reject) {
-		fse.copy(src, dest, function (err) {
+		fse.copy(src, dest, function(item) {
+			return !/_backup/.test(item);
+		},
+		function (err) {
 			if (err) {
 				reject(err);
 				return console.log(chalk.red(label, 'copy failure:', err));
