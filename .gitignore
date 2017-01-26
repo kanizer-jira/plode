@@ -1,10 +1,10 @@
 # project
 *.DS_Store
 .project
+npm-debug.log
 
 # folders
 .sass-cache
 design
 deploy
 node_modules
-

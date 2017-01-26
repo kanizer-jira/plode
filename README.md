@@ -3,7 +3,8 @@
 Plode portfolio site
 - requirejs
 - backbone
-- sass
+- sass cli `sudo gem install sass`
+- live-server (need global install for cli)
 
 ### Setup:
 
@@ -27,4 +28,12 @@ Use configured npm tasks to build a deployable package.
 
 ```
 npm run build
+```
+
+### Stop the preview server
+
+Stop all npm processes to kill the preview server.
+
+```
+npm stop
 ```

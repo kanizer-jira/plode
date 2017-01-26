@@ -8,6 +8,7 @@
     "sass": "sass --watch app/css/scss/site.scss:app/css/site.css",
     "preview": "live-server --open=app",
     "start": "npm run preview & npm run sass",
+    "stop": "killall npm",
     "build": "node build-tools/buildHelper.js && node r.js -o app/js/build.js"
   },
   "repository": {

@@ -73,7 +73,7 @@
 
         .grid-item-label {
           display: table-cell;
-          padding: 0 10px;
+          padding-left: 10px;
           font-size: .8em;
           vertical-align: middle;
 
@@ -117,10 +117,14 @@
           }
         }
 
-        .vcenter {
-          float: right;
-          display: table;
-          height: 100%;
+        .grid-item-arrow-wrapper {
+          display: table-cell;
+
+          .vcenter {
+            float: right;
+            display: table;
+            height: 100%;
+          }
 
           .grid-item-arrow {
             display: table-cell;
