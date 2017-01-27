@@ -29,6 +29,8 @@ function($, _, Backbone, Velocity, EmailRiddler, APP, template) {
 			this.$title = $('.header-inner-left');
 			this.$nav = $('.header-nav-block');
 
+			// TODO - fade in horizontal rules and badges
+
 			// tween in sucka
 			$('#masthead').css('opacity', 0)
 			.velocity({ opacity: 1 }, {
