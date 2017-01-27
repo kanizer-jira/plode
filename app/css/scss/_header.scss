@@ -5,12 +5,12 @@
 //----------------------------------------------------------------------
 
 #masthead-wrapper {
+  opacity: 0;
+  padding: $hdr-top-mar 0;
+  height: $hdr-h;
   @include viewport($break-nav - 200) {
     height: $hdr-h-med;
   }
-
-  height: $hdr-h;
-  padding: $hdr-top-mar 0;
 }
 
 #masthead-shadow {
