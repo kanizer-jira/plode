@@ -34,10 +34,6 @@ function($, _, Backbone, Velocity, TweenMax, APP, Pinwheel, ProjectsCollection, 
         }
 
         ,render: function() {
-            this.collection = new ProjectsCollection();
-            this.thumbSequence = 0;
-            this.collection.forEach(this.addOne, this);
-
             // DRAW TAGS
             var tags = APP.data.tags;
             var that = this;
@@ -53,37 +49,48 @@ function($, _, Backbone, Velocity, TweenMax, APP, Pinwheel, ProjectsCollection, 
                 that.$badges.append($badge[0]);
             });
 
-            this.$grid.fadeIn(200);
+            this.$grid.fadeIn(600);
+
+            // DRAW GRID
+            this.collection = new ProjectsCollection();
+            this.thumbSequence = 0;
+            this.addOne(this.thumbSequence);
+            // this.startGridQueue();
+            // this.collection.forEach(this.addOne, this);
         }
 
-        ,addOne: function(thumbModel, ind) {
-            var that = this;
-            var view;
+        ,addOne: function(ind) {
+            // ISSUES IF RECURSION IS INTERRUPTED?
+            var thumbModel = this.collection.at(ind);
 
             if(this.ids){
-                _.each(that.ids, function(id) {
+                _.each(this.ids, function(id) {
                     // FILTER RESULT SET
                     if($.inArray(id, thumbModel.tags) > -1 // TAG MATCHES FILTER ID
-                        && $.inArray(thumbModel.id, that.thumbsIdList) == -1) { // VIEW DOESN'T ALREADY EXIST
-                        view = new ThumbView({model: thumbModel, ind: that.thumbSequence});
-                        view.render();
-                        that.thumbSequence++;
+                        && $.inArray(thumbModel.id, this.thumbsIdList) == -1) { // VIEW DOESN'T ALREADY EXIST
 
                         // CREATE LIST OF EXISTING THUMBS
-                        that.thumbsIdList.push(thumbModel.id);
-
-                        // APPEND CORRECT GRID CLASS
-                        that.$grid.append(view.el);
+                        this.thumbsIdList.push(thumbModel.id);
+                        this.renderThumb(thumbModel);
                     }
                 });
             } else {
-                view = new ThumbView({model: thumbModel, ind: that.thumbSequence});
-                view.render();
-                that.thumbSequence++;
-
-                // APPEND CORRECT GRID CLASS
-                this.$grid.append(view.el);
+                this.renderThumb(thumbModel);
             }
+        }
+
+        ,renderThumb: function(thumbModel) {
+            var view = new ThumbView({model: thumbModel, ind: this.thumbSequence});
+            view.on('imgcomplete', function(e) {
+                if(this.thumbSequence < this.collection.models.length) {
+                  this.addOne(this.thumbSequence);
+                }
+            }.bind(this));
+            view.render();
+            this.thumbSequence++;
+
+            // APPEND CORRECT GRID CLASS
+            this.$grid.append(view.el);
         }
 
         ,events: {
@@ -207,7 +214,7 @@ function($, _, Backbone, Velocity, TweenMax, APP, Pinwheel, ProjectsCollection, 
 
         ,onImageLoaded: function() {
             this.pinwheelObj.stop();
-            // TODO - ADD SOME KIND OF FADE IN FROM A GREY BG
+            this.trigger('imgcomplete', this.model.id);
         }
 
         ,onItemOver: function() {
