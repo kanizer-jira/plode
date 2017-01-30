@@ -29,6 +29,8 @@ function($, _, Backbone, Velocity, TweenMax, APP, Pinwheel, ProjectsCollection, 
             this.$badges = this.$el.find("#project-grid-badges");
             this.thumbsIdList = [];
 
+            console.log('init')
+
             this.destroyEvents();
             this.render();
         }
@@ -54,18 +56,18 @@ function($, _, Backbone, Velocity, TweenMax, APP, Pinwheel, ProjectsCollection, 
             // DRAW GRID
             this.collection = new ProjectsCollection();
             this.thumbSequence = 0;
-            this.addOne(this.thumbSequence);
-            // this.startGridQueue();
-            // this.collection.forEach(this.addOne, this);
+            this.renderGrid(this.thumbSequence);
         }
 
-        ,addOne: function(ind) {
+        ,renderGrid: function(ind) {
             // ISSUES IF RECURSION IS INTERRUPTED?
             var thumbModel = this.collection.at(ind);
 
             if(this.ids){
                 _.each(this.ids, function(id) {
                     // FILTER RESULT SET
+
+                    // TODO - convert to underscore/lodash
                     if($.inArray(id, thumbModel.tags) > -1 // TAG MATCHES FILTER ID
                         && $.inArray(thumbModel.id, this.thumbsIdList) == -1) { // VIEW DOESN'T ALREADY EXIST
 
@@ -73,7 +75,7 @@ function($, _, Backbone, Velocity, TweenMax, APP, Pinwheel, ProjectsCollection, 
                         this.thumbsIdList.push(thumbModel.id);
                         this.renderThumb(thumbModel);
                     }
-                });
+                }.bind(this));
             } else {
                 this.renderThumb(thumbModel);
             }
@@ -83,7 +85,7 @@ function($, _, Backbone, Velocity, TweenMax, APP, Pinwheel, ProjectsCollection, 
             var view = new ThumbView({model: thumbModel, ind: this.thumbSequence});
             view.on('imgcomplete', function(e) {
                 if(this.thumbSequence < this.collection.models.length) {
-                  this.addOne(this.thumbSequence);
+                  this.renderGrid(this.thumbSequence);
                 }
             }.bind(this));
             view.render();

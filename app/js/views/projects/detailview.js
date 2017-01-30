@@ -11,7 +11,7 @@ define([
 	// Pull in the Collection module from above
 	,'collections/projects'
 
-  	// Using the Require.js text! plugin, we are loaded raw text
+  // Using the Require.js text! plugin, we are loaded raw text
 	// which will be used as our views primary template
 	,'text!template/projects/detail_item.html'
 	,'text!template/projects/detail_item_static.html'
@@ -60,7 +60,7 @@ function($, _, Backbone, APP, DotNav, desat, ProjectsCollection, template, templ
 		    //COMPLETELY UNBIND THE VIEW
 		    this.undelegateEvents();
 		    $(this.el).removeData().unbind();
-			document.onkeydown = null;
+				document.onkeydown = null;
 		}
 		,events:{
 			"click .detail-tags .plode-badge" : "onBadgeClick"
