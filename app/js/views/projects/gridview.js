@@ -55,25 +55,24 @@ function($, _, Backbone, Velocity, TweenMax, APP, Pinwheel, ProjectsCollection, 
             this.collection = new ProjectsCollection();
             this.thumbSequence = 0;
             this.addOne(this.thumbSequence);
-            // this.startGridQueue();
-            // this.collection.forEach(this.addOne, this);
         }
 
         ,addOne: function(ind) {
-            // ISSUES IF RECURSION IS INTERRUPTED?
             var thumbModel = this.collection.at(ind);
-
             if(this.ids){
-                _.each(this.ids, function(id) {
-                    // FILTER RESULT SET
-                    if($.inArray(id, thumbModel.tags) > -1 // TAG MATCHES FILTER ID
-                        && $.inArray(thumbModel.id, this.thumbsIdList) == -1) { // VIEW DOESN'T ALREADY EXIST
+                var validFilterIds = _.filter(this.ids, function(id) {
+                    return ( _.contains(thumbModel.tags, id) // TAG MATCHES FILTER ID
+                        && !_.contains(this.thumbsIdList, thumbModel.id) ); // VIEW DOESN'T ALREADY EXIST
+                }, this);
 
-                        // CREATE LIST OF EXISTING THUMBS
-                        this.thumbsIdList.push(thumbModel.id);
-                        this.renderThumb(thumbModel);
-                    }
-                });
+                if(validFilterIds.length > 0) {
+                    // CREATE LIST OF EXISTING THUMBS
+                    this.thumbsIdList.push(thumbModel.id);
+                    this.renderThumb(thumbModel);
+                } else if(this.thumbSequence < this.collection.models.length - 1) {
+                    this.thumbSequence++;
+                    this.addOne(this.thumbSequence);
+                }
             } else {
                 this.renderThumb(thumbModel);
             }
