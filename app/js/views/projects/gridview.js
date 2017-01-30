@@ -84,7 +84,7 @@ function($, _, Backbone, Velocity, TweenMax, APP, Pinwheel, ProjectsCollection, 
             var view = new ThumbView({model: thumbModel, ind: this.thumbSequence});
             view.on('imgcomplete', function(e) {
                 if(this.thumbSequence < this.collection.models.length) {
-                  this.renderGrid(this.thumbSequence);
+                  this.addOne(this.thumbSequence);
                 }
             }.bind(this));
             view.render();
